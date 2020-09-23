@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const first = +prompt("Введите первое число:");
+      const second = +prompt("Введите второе число:");
+
+      if (isNaN(first) || isNaN(second)) {
+        alert("Вы ввели некорректные данные");
+        window.location.reload();
+      } else {
+        alert(`
+            Сложение: ${first + second}\n
+            Вычитание: ${first - second}\n
+            Умножение: ${first * second}\n
+            Деление: ${Math.round(first / second)}
+        `);
+      }
+    </script>
+  </body>
+</html>
