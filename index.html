@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Калькулятор</title>
+</head>
+<body>
+<script>
+    var first, op, second;
+    var ls;
+    var operation = prompt("Введите выражение которе вы хотите рассчитать. Между числами и мат. операциями вставьте пробел");
+
+    ls = operation.split(" ");
+
+    first = parseInt(ls[0]);
+    op = ls[1];
+    second = parseInt(ls[2]);
+
+    if(op === '+'){
+        alert(first + second)
+    }
+
+    if(op === '*'){
+        alert(first * second)
+    }
+
+    if(op === '-'){
+        alert(first - second)
+    }
+
+    if(op === '/'){
+        alert(first / second)
+    }
+
+</script>
+</body>
+</html>
