@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Дронский ПИ_17-1</title>
+
+</head>
+<body>
+    <div class = "container">
+        <div align = "center">
+            <p>
+            <input type="button" value="Блок-схема с загадками" onclick='task1("5+5","10", "1+1", "2")'><br/>
+            </p>
+            <p> 
+                <input type="button" value="Счёт от 1 до 10" onclick='task2()'><br/>
+            </p>
+            <p>
+                <input type="button" value="Застолье" onclick='task3()'><br/>
+            </p>
+            <p>
+                <input type="button" value="Угадай число от 1 до 10" onclick='task4()'><br/>
+            </p>
+        </div>
+    </div>
+    <script>
+
+    let task1=function(zagadka1,otvet1,zagadka2,otvet2)
+    {
+        let otgadki=0;
+        alert(zagadka1);
+        let otvet=prompt();
+        if(otvet.trim()===otvet1.toString().trim())
+        {
+            alert("Верно");
+            otgadki++;
+        }
+        else
+        {
+            alert("Неверно");
+        }
+        alert(zagadka2);
+        otvet=prompt();
+        if(otvet.trim()===otvet2.toString().trim())
+        {
+            alert("Верно :)");
+            otgadki++;
+        }
+        else
+        {
+            alert("Неверно :(");
+        }
+        alert(otgadki);
+    }
+    let task2=function()
+    {
+        for(var i=1;i<=10;i++)
+        {
+            alert(i);
+        }
+    }
+    let task3=function()
+    {
+        do
+        {
+            alert("Еще по одной?");
+        }
+        while(prompt()!="1");
+    }
+    let task4=function()
+    {
+        let s=Math.floor(Math.random() * Math.floor(10))+1;
+        while(prompt()*1!=s)
+        {
+            alert("Неверно");
+        }
+        alert("Верно!");
+    }
+
+    </script> 
+
+</div>
+</body>
+</html>
