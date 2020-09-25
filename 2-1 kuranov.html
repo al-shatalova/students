@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kuranov 2-1 laba</title>
+</head>
+<body>
+<script>
+    let otgadki = 0;
+    let zagadka;
+
+    let a = parseInt(prompt('Введите число а'));
+
+    if (!(isNaN(a))) {
+       zagadk(a)
+    } else {
+        alert('Вы ввели не число')
+    }
+
+    let b = parseInt(prompt('Введите число b'));
+
+    if (!(isNaN(b))) {
+        zagadk(b)
+    } else {
+        alert('Вы ввели не число')
+    }
+
+    function zagadk(num) {
+        zagadka = Math.floor(Math.random() * (5 - 1)) + 1;
+        if (a === zagadka) {
+            ++otgadki;
+            alert(`Вы отгадали, программа загадала ${zagadka}, ваше текущее количество отгадок ${otgadki}`)
+        } else {
+            alert(`Вы не отгадали, программа загадала ${zagadka}, ваше текущее количество отгадок ${otgadki}`)
+        }
+    }
+
+
+
+</script>
+</body>
+</html>
