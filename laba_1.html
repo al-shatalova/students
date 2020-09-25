@@ -1,0 +1,41 @@
+<meta charset="utf-8">
+<head>
+    
+</head>
+
+        <label for="first_num"> введите 1 число </label>
+        <input type="number" id="first_num">
+        <label for="second_num"> введите 2 число </label>
+        <input type="number" id="second_num">
+
+    <button id="plus" onClick="plus();">+</button>
+    <button id="minus" onClick="minus();">-</button>
+    <button id="mult" onClick="mult();">*</button>
+    <button id="div" onClick="div();">/</button>
+    
+    <script language="JavaScript">
+    
+    function plus() {
+        var first = parseInt(document.getElementById("first_num").value);
+        var second = parseInt(document.getElementById("second_num").value);
+            alert(first + second);
+        }
+
+    function minus() {
+        var first = parseInt(document.getElementById("first_num").value);
+        var second = parseInt(document.getElementById("second_num").value);
+        alert(first - second);
+        }
+
+    function mult() {
+        var first = parseInt(document.getElementById("first_num").value);
+        var second = parseInt(document.getElementById("second_num").value);
+        alert(first * second);
+        }
+
+    function div() {
+        var first = parseInt(document.getElementById("first_num").value);
+        var second = parseInt(document.getElementById("second_num").value);
+        alert(first / second);
+        }
+</script>
