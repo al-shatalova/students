@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Семинар 2-1 Конев ПИ17-1</title>
+</head>
+<body>
+
+<p>Отгадано : <span id="counter">0</span></p>
+<script>
+    let otgadki = 0
+
+    window.onload = function() {
+        var firstZ = prompt("Ждали маму с молоком,\n" +
+            "А пустили волка в дом…\n" +
+            "Кем же были эти\n" +
+            "Маленькие дети?");
+        if (firstZ.toLowerCase() == "семеро козлят") {
+            ++otgadki
+            alert("Отгадано!");
+            document.getElementById("counter").innerText = otgadki
+            var secondZ = prompt("Была она артисткой\n" +
+                "Прекрасной, как звезда,\n" +
+                "От злого Карабаса\n" +
+                "Сбежала навсегда.\n");
+            if (secondZ.toLowerCase() == "мальвина") {
+                ++otgadki
+                alert("Отгадано!");
+                document.getElementById("counter").innerText = otgadki
+
+            }
+            else {
+                document.getElementById("counter").innerHTML = otgadki
+                alert("Не отгадано!")
+            }
+        }
+        else {
+            document.getElementById("counter").innerHTML = otgadki
+            alert("Не отгадано!")
+            var secondZ = prompt("Была она артисткой\n" +
+                "Прекрасной, как звезда,\n" +
+                "От злого Карабаса\n" +
+                "Сбежала навсегда.\n");
+            if (secondZ.toLowerCase() == "мальвина") {
+                ++otgadki
+                alert("Отгадано!");
+                document.getElementById("counter").innerText = otgadki
+
+            }
+            else {
+                document.getElementById("counter").innerHTML = otgadki
+                alert("Не отгадано!")
+            }
+        }
+
+
+
+
+    }
+</script>
+
+</body>
+</html>
