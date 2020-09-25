@@ -1,0 +1,34 @@
+<html>
+ <meta charset="utf-8">
+<head>
+    <title>загадки</title>
+    <script language="JavaScript">
+        function Rech() {
+            var otg = 0;
+			var one = document.getElementById("one").value.toString();
+			var two = document.getElementById("two").value.toString();
+            if (one == "Спичка" || one=="Спичку" || one=="спичка" || one=="спичку") {
+                otg = otg + 1;
+                
+            }
+            if (two=="время" || two=="Время"|| two=="температура"|| two=="Температура") {
+                otg = otg + 1;
+                
+            }
+            alert('Отгадки: ' + otg);
+        }
+          </script>
+</head>
+ 
+<body>
+    <p>Вы заходите в темную кухню. В ней есть свеча, керосиновая лампа и газовая плита. Что вы зажжете в первую очередь?</p>
+    <input type="text" id="one">
+    <p>Что не имеет длины, глубины, ширины, высоты, а можно измерить?</p>
+    <input type="text" id="two">
+    <br>
+    <br>
+    <input type="button" onClick="Rech()" value="Проверить">
+    
+</body>
+ 
+</html>
