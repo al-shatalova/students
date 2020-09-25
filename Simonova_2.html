@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<script>
+
+
+// 1 задание. Блок-схема
+var otgadki = 0;
+var answer = prompt("Загадка1. Ответ: ");
+
+if(answer == "ответ1"){
+	alert("Верно");
+	otgadki+=1;
+}
+else{
+	alert("Неверно");
+}
+
+
+var answer = prompt("Загадка2. Ответ: ");
+if(answer == "ответ2"){
+	alert("Верно");
+	otgadki+=1;
+}
+else{
+	alert("Неверно");
+}
+
+alert("Ваши отгадки: "+otgadki);
+
+
+// 2 задание. Счет от 1 до 10
+for(var i = 1; i<11; i++){
+	alert(i);
+}
+
+// 3 задание 
+do{
+	alert('Еще по одной?')
+}while(prompt('Введите 1 чтобы выйти') != '1');
+
+
+</script>
+</body>
+</html>
