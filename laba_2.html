@@ -1,0 +1,56 @@
+<p>Первая Загадка: </p>
+<p id="r1">Шла Саша</p>
+<label for="a1"> Первая отгадка </label>
+<input id="a1">
+<button id="check" onclick="check1()">Проверить</button>
+<p>Вторая Загадка: </p>
+<p id="r2">И сосала</p>
+<label for="a2"> Вторая отгадка </label>
+<input id="a2">
+<button id="check" onclick="check2()">Проверить</button>
+<br> <br>
+<button id="count" onclick="count()">Посчитай до 10</button>
+<br> <br>
+<button id="wannamore" onclick="wanna_more()">Хочешь еще?</button>
+<br> <br>
+
+<script>
+    function check1() {
+        let guesses = 0;
+        let answer1 = document.getElementById("a1").value;
+        if (answer1 == "по шоссе") {
+            guesses = guesses + 1;
+            alert("Верно :)")
+        }
+        else {
+            alert("Неверно :(")
+        }
+        return guesses
+    }
+    function check2() {
+        let guesses = check1();
+        let answer2 = document.getElementById("a2").value;
+        if (answer2 == "сушку") {
+            alert("Верно :)")
+            guesses = guesses + 1
+        }
+        else {
+            alert("Неверно :(")
+        }
+
+        alert(guesses)
+    }
+
+    function count(){
+        let i = 1;
+        for (i; i<11; i++) {
+        alert(i)
+        }
+    }
+
+    function wanna_more() {
+        while (check != 1) {
+            check = prompt("Еще по одной? (чтобы закончить пить, введите 0)",0)
+        }
+    }
+</script>
