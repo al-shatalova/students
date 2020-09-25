@@ -1,0 +1,59 @@
+<meta charset="utf-8" />
+
+<input type="button" value="1) Блок-схема с загадками" onclick='nomer1("2+2","4","1+1","2")'><br />
+<input type="button" value="2) Счёт от 1 до 10" onclick='nomer2()'><br />
+<input type="button" value="3) Застолье" onclick='nomer3()'><br />
+<input type="button" value="4) Угадай число (1-10)" onclick='nomer4()'><br />
+<script>
+let nomer1=function(zagadka1,otvet1,zagadka2,otvet2)
+{
+	let otgadki=0;
+	alert(zagadka1);
+	let otvet=prompt();
+	if(otvet.trim()===otvet1.toString().trim())
+	{
+		alert("верно :)");
+		otgadki++;
+	}
+	else
+	{
+		alert("неверно :(");
+	}
+	alert(zagadka2);
+	otvet=prompt();
+	if(otvet.trim()===otvet2.toString().trim())
+	{
+		alert("верно :)");
+		otgadki++;
+	}
+	else
+	{
+		alert("неверно :(");
+	}
+	alert(otgadki);
+}
+let nomer2=function()
+{
+	for(var i=1;i<=10;i++)
+	{
+		alert(i);
+	}
+}
+let nomer3=function()
+{
+	do
+	{
+		alert("Еще по одной?");
+	}
+	while(prompt()!="1");
+}
+let nomer4=function()
+{
+	let s=Math.floor(Math.random() * Math.floor(10))+1;
+	while(prompt()*1!=s)
+	{
+		alert("Неверно");
+	}
+	alert("Верно!");
+}
+</script>
