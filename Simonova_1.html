@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<script>
+
+
+function summ(){
+var first = document.getElementById("first").value;
+var second = document.getElementById("second").value;
+var a = parseInt(first);
+var b = parseInt(second);
+return a+b;
+}
+
+function diff(){ 
+var first = document.getElementById("first").value;
+var second = document.getElementById("second").value;
+var a = parseInt(first);
+var b = parseInt(second);
+return a-b;
+}
+
+function increase(){ 
+var first = document.getElementById("first").value;
+var second = document.getElementById("second").value;
+var a = parseInt(first);
+var b = parseInt(second);
+return a*b;
+}
+function divide() {
+var first = document.getElementById("first").value;
+var second = document.getElementById("second").value;
+var a = parseInt(first);
+var b = parseInt(second);
+return a/b;
+}
+
+</script>
+
+Первое число <input type="text" id="first"><br>
+Второе число <input type="text" id="second"><br>
+
+<button onclick="alert(summ())"> +</button>
+<button onclick="alert(diff())"> -</button>
+<button onclick="alert(increase())"> *</button>
+<button onclick="alert(divide())"> /</button>
+
+
+   
+
+
+
+</body>
+</html>
+
