@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Borodakiy</title>
+</head>
+<body>
+<span>Выбирете нужный знак а _ b</span>
+<button id="sum">+</button>
+<button id="subtraction">-</button>
+<button id="multiplication">*</button>
+<button id="Division">÷</button>
+<span id="answer"></span>
+<script>
+    let a = parseInt(prompt('Введите переменную а'));
+    let b = parseInt(prompt('Введите переменную b'));
+
+    alert(`Ты ввел a: ${a} - тип ${typeof a}`)
+    alert(`Ты ввел b: ${b} - тип ${typeof b}`)
+
+    if (!(isNaN(a)) && !(isNaN(b))) {
+        document.getElementById('sum').addEventListener('click', function () {
+            document.getElementById('answer').innerText = a+b
+        })
+        document.getElementById('subtraction').addEventListener('click', function () {
+            document.getElementById('answer').innerText = a-b
+        })
+        document.getElementById('multiplication').addEventListener('click', function () {
+            document.getElementById('answer').innerText = a*b
+        })
+        document.getElementById('Division').addEventListener('click', function () {
+            document.getElementById('answer').innerText = a/b
+        })
+    } else {
+        alert('Ты ввел не число, операции не будут работать')
+    }
+
+
+</script>
+</body>
+</html>
