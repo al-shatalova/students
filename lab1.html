@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script>
+		var n1 = prompt("Введите первое число:");
+		var n2 = prompt("Введите второе число:");
+		document.write("Вы ввели числа "+n1+" и "+ n2 + ". Выберите математическую операцию:");
+		
+		function summa(){
+			var res=parseInt(n1,10)+parseInt(n2,10);
+			alert("Сумма = "+res);
+		}
+
+		function minus(){
+			var res=parseInt(n1,10)-parseInt(n2,10);
+			alert("Разность = "+res);
+		}
+
+		function delit(){
+			var res=parseInt(n1,10)/parseInt(n2,10);
+			alert("Деление = "+res);
+		}
+
+		function umnoj(){
+			var res=parseInt(n1,10)*parseInt(n2,10);
+			alert("Умножение = "+res);
+		}
+
+	</script>
+</head>
+<body>
+
+	<input type="button" value="+" onclick="summa()">
+	<input type="button" value="-" onclick="minus()">
+	<input type="button" value="/" onclick="delit()">
+	<input type="button" value="*" onclick="umnoj()">
+</body>
+</html>
