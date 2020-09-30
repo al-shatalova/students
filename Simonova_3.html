@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<script>
+
+// 1 задание
+var red = 0;
+var arr = [];
+for(var i = 0; i <=1000000; i++){
+	arr[i] = Math.round(Math.random()*2);
+	if (arr[i] == 0) red+=1;
+}
+ alert("Кол-во красных значений: "+red);
+
+// 2 задание
+function getSum(arr){
+var sum = 0;
+var i = arr.length-1;
+for(i; i >= 0; i--){
+	if(arr[i] > 0){
+		sum +=parseInt(arr[i]);
+	}else if(arr[i] == 'J'){
+	sum+=11
+	}else if(arr[i] == 'Q'){
+	sum+=12
+	}else if(arr[i] == 'K'){
+	sum+=13
+	}else if(arr[i] == 'A'){
+	sum+=14
+	}else{
+	alert('alert '+arr[i])
+	}
+}
+return sum;
+}
+
+alert(getSum([2,5,'Q','K']));
+
+</script>
+</head>
+<body>
+</body>
+</html>
