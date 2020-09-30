@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script>
+		function getRandomInt(max) {
+		  return Math.floor(Math.random() * Math.floor(max));
+		}
+		var colors = [0, 1, 2];
+		var count_red = 0;
+		for (var i = 1; i < 1000000; i++) {
+			var a = getRandomInt(3);
+			if (a==0){
+				count_red = count_red + 1;
+			}
+		}
+		alert ('Количество выпадений красного цвета: '+count_red.toString());
+	</script>
+	<title>Simulation1kk</title>
+</head>
+<body>
+	<p>empty page</p>
+</body>
+</html>
