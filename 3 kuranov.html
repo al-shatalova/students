@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kuranov 3 laba</title>
+</head>
+<body>
+<span id="output"></span>
+<script>
+    let arr = []
+
+    for(i=0; i<1000000; i++) {
+
+        arr[i] = Math.round(Math.random()*2);
+
+    }
+    console.log(arr)
+    let result = arr.reduce(function(acc, el) {
+        acc[el] = (acc[el] || 0) + 1;
+        return acc;
+    }, {})
+    document.getElementById('output').innerText = JSON.stringify(result['0'])
+</script>
+</body>
+</html>

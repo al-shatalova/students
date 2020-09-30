@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kuranov 3 laba</title>
+</head>
+<body>
+<span id="output"></span>
+<script>
+    let getSum = function (arr) {
+        let sum = 0;
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] == `J`) {
+                sum += 11;
+            } else if (arr[i] == `Q`) {
+                sum += 12;
+            } else if (arr[i] == `K`) {
+                sum += 13;
+            } else if (arr[i] == `A`) {
+                sum += 14;
+            } else if (arr[i] > 0) {
+                sum += parseInt(arr[i]);
+            }
+        }
+
+        return sum;
+    }
+
+    document.getElementById('output').innerText = getSum([6, 7, 8, 9, 10, `J`, `Q`, `K`, `A`])
+</script>
+</body>
+</html>
