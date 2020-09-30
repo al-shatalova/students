@@ -1,0 +1,31 @@
+<meta charset="utf-8">
+<script>
+	let array = [];
+
+	for (let i = 0; i <= 1000000; i++) {
+		array[i] = Math.round(Math.random() * 2);
+	}
+	getSum(array);
+
+	function getSum(array) {
+		let redSum = 0;
+		let blackSum = 0;
+		let whiteSum = 0;
+
+		for (let i = 0; i <= array.length; i++) {
+			if (array[i] == 0) {
+				redSum++;
+			} else if (array[i] == 1) {
+				blackSum++;
+			} else {
+				whiteSum++;
+			}
+		}
+		alert(`
+			Red: ${redSum},
+			Black: ${blackSum},
+			White: ${whiteSum}`)
+	}
+
+
+</script>
