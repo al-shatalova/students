@@ -1,0 +1,34 @@
+<meta charset="utf-8">
+<script>
+let arr = [];
+
+for (let i = 0; i <= 1000000; i++) {
+let rand = Math.round(Math.random() * 2);
+arr.push(rand);
+}
+
+getSum(arr);
+
+function getSum(arr) {
+let red = 0;
+let black = 0;
+let white = 0;
+
+for (let i of arr) {
+if (i == 0) {
+red++;
+} else if (i == 1) {
+black++;
+} else {
+white++;
+}
+}
+
+alert(`
+Красных: ${red},
+Черных: ${black},
+Белых: ${white}`)
+}
+
+
+</script>
