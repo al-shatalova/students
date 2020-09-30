@@ -1,0 +1,34 @@
+<meta charset="utf-8" />
+<script>
+class Card
+	{
+		constructor(text)
+		{
+			this.text=text;
+		}
+		getInt()
+		{
+			switch(this.text)
+			{
+				case "J":
+					return 11;
+				case "Q":
+					return 12;
+				case "K":
+					return 13;
+				case "A":
+					return 14;
+			}
+			return this.text*1;
+		}
+	}
+let m=[new Card("Q"),new Card("Q"),new Card("K"),new Card("A"),new Card("J"),new Card("10")];
+let summaCard=function(m)
+{
+	let summa=0;
+	for(let i in m)
+	{ summa+=m[i].getInt(); }		
+	return summa;
+}
+alert(summaCard(m));
+</script>
