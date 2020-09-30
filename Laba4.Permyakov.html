@@ -1,0 +1,50 @@
+<meta charset="utf-8">
+<script>
+// Task 1
+
+let answers = 0;
+let question1 = prompt('What is our planet name?');
+
+if (question1 == 'Earth') {
+	alert('True');
+	answers++;
+} else {
+	alert('False')
+}
+
+let question2 = prompt('What is our country name?');
+
+if (question2 == 'Russia') {
+	alert('True');
+	answers++;
+} else {
+	alert('False')
+}
+
+alert(`Number Of True: ${answers}`);
+
+// Task 2
+
+for (let i = 1; i <= 10; i++) {
+	alert(i);
+}
+
+// Task 3
+
+do {
+	alert('The next one')
+} while (prompt('Enter 1 to exit') != '1')
+
+// Task 4
+
+let rand = Math.round(1 - 0.5 + Math.random() * (5 - 1 + 1));
+let num = prompt('Guess the number from 1 to 5');
+
+while (num != rand) {
+	console.log(rand);
+	num = prompt('Guess the number from 1 to 5');
+}
+
+alert('True')
+
+</script>
