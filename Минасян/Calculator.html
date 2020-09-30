@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <script>
+        function proc() {
+            first = +document.getElementById("first").value;
+            second = +document.getElementById("second").value;
+            alert(`
+              Сложение: ${first + second} Вычитание: ${first - second}
+              Умножение: ${first * second} Деление: ${first / second}
+          `);
+        }
+    </script>
+    <p>Первое число<input  id="first"></p>
+    <p>Второе число<input  id="second"></p>
+    <button onclick="proc()">Посчитать</button>
+
+</body>
+
+</html>

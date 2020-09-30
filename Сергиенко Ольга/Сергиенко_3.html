@@ -1,0 +1,11 @@
+<script>
+    var arr = [];
+    for(i = 0; i <= 1000000; i++) {
+        arr.push(Math.round(Math.random()*2));
+    }  
+    var k = 0;
+    for (const i of arr) {
+        if (i == 0) {k++}
+    }
+    alert (k); 
+</script>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script>
+		function plus()
+		{
+			var num1=document.getElementById("number1");
+			var num2=document.getElementById("number2");
+			a=parseInt(num1.value, 10) + parseInt(num2.value, 10);
+			document.getElementById("outro").value=a;
+
+		}
+		function minus()
+		{
+			var num1=document.getElementById("number1");
+			var num2=document.getElementById("number2");
+			a=parseInt(num1.value, 10) - parseInt(num2.value, 10);
+			document.getElementById("outro").value=a;
+
+		}
+		function multiply()
+		{
+			var num1=document.getElementById("number1");
+			var num2=document.getElementById("number2");
+			a=parseInt(num1.value, 10) * parseInt(num2.value, 10);
+			document.getElementById("outro").value=a;
+
+		}
+		function divide()
+		{
+			var num1=document.getElementById("number1");
+			var num2=document.getElementById("number2");
+			a=parseInt(num1.value, 10) / parseInt(num2.value, 10);
+			document.getElementById("outro").value=a;
+
+		}
+	</script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Calculator</title>
+</head>
+<body>
+	<H1 align="center">Calculator</H1>
+	<div align="center">
+		<input type="number" value="50" min="1" id="number1" placeholder="Введите первое число">
+		<input type='button' value='+' onclick='plus()'>
+		<input type='button' value='-' onclick='minus()'>
+		<input type='button' value='*' onclick='multiply()'>
+		<input type='button' value='/' onclick='divide()'>
+		<input type="number" value="50" min="1" id="number2" placeholder="Введите второе число">
+    </div>
+    <div align="center"> 
+    	<h2>Ответ:</h2>
+    	<input type="number" value="100" min="1" id="outro"	readonly="True" placeholder="Введите число">
+    </div>
+</body>
+</html>

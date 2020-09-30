@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Card sum</title>
+	<script>
+		var cards = new Map();
+		let suit = ['b', 'c', 'p', 'k']
+		for (var i = 6; i <15; i++) {
+			for (var m = suit.length - 1; m >= 0; m--) {
+				//alert ('check '+i.toString()+m.toString())
+				if (i<10) {
+					cards.set(i+'-'+suit[m], 0)
+				}
+				else if (i==10) {
+					cards.set(i+'-'+suit[m], 10)
+				}
+				else if (i==11) {
+					cards.set('J-'+suit[m], 2)
+				}
+				else if (i==12) {
+					cards.set('D-'+suit[m], 3)
+				}
+				else if (i==13) {
+					cards.set('K-'+suit[m], 4)
+				}
+				else if (i==14) {
+					cards.set('T-'+suit[m], 11)
+				}
+			}
+		}
+		console.log(cards);
+
+		var mas_cards = ['T-k', 'J-b'];
+		console.log(mas_cards);
+		var score = 0;
+		function getSum(mas_cards) {
+			for (var c = mas_cards.length - 1; c >= 0; c--) {
+				score = cards.get(mas_cards[c]) + score;
+			}
+			return score;
+		}
+		t = getSum(mas_cards);
+		console.log(t);
+
+		
+	</script>
+</head>
+<body>
+	<p align="center">Card sum</p>
+</body>
+</html>
