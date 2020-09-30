@@ -1,9 +1,35 @@
-<meta charset="utf-8">
-<script type="text/javascript">
-
-let i = 0;
-while (i < 11) { // выводит 0, затем 1, затем 2
-alert( i );
-i++;
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+</head>
+<body>
+<script>
+function getSum(arr){
+var sum = 0;
+var i = arr.length-1;
+for(i; i >= 0; i--){
+	if(arr[i] > 0){
+		sum +=parseInt(arr[i]);
+	}else if(arr[i] == 'J'){
+	sum+=11
+	}else if(arr[i] == 'Q'){
+	sum+=12
+	}else if(arr[i] == 'K'){
+	sum+=13
+	}else if(arr[i] == 'A'){
+	sum+=14
+	}else{
+	alert('alert '+arr[i])
+	}
 }
+return sum;
+}
+
+alert(getSum([2,5,'Q','K']));
+
+
 </script>
+</body>
+</html>
