@@ -1,0 +1,49 @@
+<html>
+ <meta charset="utf-8">
+<head>
+    <title>калькулятор</title>
+    <script language="JavaScript">
+        function Rech() {
+            zn = document.getElementById("znak").value;
+			one = parseInt(document.getElementById("one").value);
+			two = parseInt(document.getElementById("two").value);
+            if (zn == "+") {
+                var R = one + two;
+                alert('Результат: ' + R);
+            }
+            if (zn == "-") {
+                var R = one - two;
+                alert('Результат: ' + R);
+            }
+            if (zn == "*") {
+                var R = one * two;
+                alert('Результат: ' + R);
+            }
+            if (zn == "/") {
+                var R = one / two;
+                alert('Результат: ' + R);
+            }
+ 
+        }
+    </script>
+</head>
+ 
+<body>
+    <input type="text" id="one">
+    <select id="znak" name="znaki">
+        <option value="+">+</option>
+ 
+        <option value="-">-</option>
+ 
+        <option value="*">*</option>
+ 
+        <option value="/">/</option>
+    </select>
+ 
+    <input type="text" id="two">
+    <br>
+    <br>
+    <input type="button" onClick="Rech()" value="Посчитать">
+</body>
+ 
+</html>
