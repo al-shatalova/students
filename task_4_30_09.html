@@ -7,24 +7,37 @@
 <body>
 <script>
 
-    function getRandomInt(min, max) {
-        return Math.floor(Math.random() * (max - min)) + min;
-    }
-
-    var cards = [];
+    var cards = prompt("Input your cards");
     var sum = 0;
 
-    for (var i = 0; i < 6; i++){
-        cards.push(getRandomInt(2, 14))
-    }
+    var parsed_cards = cards.split(",");
 
-    alert(cards);
+    // alert(parsed_cards);
 
-    for (var i = 0; i < 6; i++){
-        sum = sum + cards[i];
+    for (var i = 0; i < parsed_cards.length; i++){
+
+        if (parsed_cards[i] === 'В'){
+            parsed_cards[i] = 11;
+        }
+
+        if (parsed_cards[i] === 'Д'){
+            parsed_cards[i] = 12;
+        }
+
+        if (parsed_cards[i] === 'К'){
+            parsed_cards[i] = 13;
+        }
+
+        if (parsed_cards[i] === 'Т'){
+            parsed_cards[i] = 14;
+        }
+
+        sum = sum + parseInt(parsed_cards[i]);
+
     }
 
     alert(sum);
+
 </script>
 </body>
 </html>
