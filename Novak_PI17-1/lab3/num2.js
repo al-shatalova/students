@@ -14,3 +14,9 @@ const getSum = arr => {
         }
     }, 0)
 }
+
+// парочка тестов
+alert(`getSum([]) = ${getSum([])}
+getSum(['10', '8', 'Q']) = ${getSum(['10', '8', 'Q'])}
+getSum(['10', '8', 'Q', 'qwe']) = ${getSum(['10', '8', 'Q', 'qwe'])}
+`)
