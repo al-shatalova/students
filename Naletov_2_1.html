@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Блок-схема</title>
+</head>
+<body>
+<script>
+    var guesses = 0;
+    var answer1, answer2;
+
+    answer1 = prompt("Загадка 1. Напиши что-то");
+
+    if (answer1 === 'ответ1'){
+        alert("Правильно. Следущая загадка");
+
+        guesses = guesses + 1;
+    }
+
+    else {
+        alert("Не верно. Следущая загадка");
+    }
+
+    answer2 = prompt("Загадка 2 . Напиши что-то");
+
+    if (answer2 === 'ответ1'){
+        alert("Правильно");
+
+        guesses = guesses + 1;
+    }
+
+    else {
+        alert("Не верно");
+    }
+
+    alert(guesses);
+
+</script>
+
+</body>
+</html>
