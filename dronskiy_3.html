@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport">
+	<title>Laba4</title>
+    <script type="text/javascript">
+    
+		function arrayRandElement(arr) {
+		    var rand = Math.floor(Math.random() * arr.length);
+		    return arr[rand];
+		}
+
+		
+		function maxRed(){
+			var exitarr = [];
+
+			var arr = [0,1,2];
+			var vvivod=0;
+			
+            for (i=0; i<=1000000;i++)
+                {
+				exitarr[i]=arrayRandElement(arr);
+			    }
+
+            for (i=0; i<=1000000;i++)
+                {
+				if (exitarr[i]==0){
+					vvivod+=1;
+				}
+				
+			}
+			alert("Красный выпал "+vvivod+" раз");
+
+
+		}
+
+        function countCard()
+            {
+			var exitarr = [];
+			var arr = [2,3,4,5,6,7,8,9,10,' Queen ',' Joke ',' King ',' Tuz '];
+			var sum=0;
+
+            for (i=0; i<=3;i++)
+                {
+				exitarr[i]=arrayRandElement(arr);
+			    }
+
+			alert("Были выбраны карты: "+exitarr[0]+exitarr[1]+exitarr[2]);
+
+            for (i=0; i<=2;i++)
+                {
+                if (exitarr[i]>0)
+                {
+					sum+= parseInt(exitarr[i]);
+				}
+                else if (exitarr[i]=="Joke ")
+                {
+					sum+=11;
+
+				}
+                else if (exitarr[i]=="Queen ")
+                {
+					sum+=12;
+				}
+                else if (exitarr[i]=="King ")
+                {
+					sum+=13;
+				}
+                else if (exitarr[i]=="Tuz ")
+                {
+					sum+=14;
+				}
+			}
+
+			alert("Сумма карт " +sum+ " очков");
+
+		}
+
+	</script>
+</head>
+<body align = "center">
+	<table align="center" >
+    <tr>
+        <td>
+            <input type="button" value="Узнать, какое максимальное число раз выпадало красное значение" onclick="maxRed()">
+        </td>
+        <td>
+            <input type="button" value="Рассчитать количество очков в колоде карт" onclick="countCard()">
+        </td>
+    </tr>
+
+  </table>
+</body>
+</html>
