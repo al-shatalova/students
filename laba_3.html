@@ -1,0 +1,42 @@
+<button id="check" onclick="count_red()">Проверить</button>
+<button id="check" onclick="getSum()">Сколько карт?</button>
+<script>
+    function count_red() {
+        var reds = 0
+        var array = []
+        for (i=0; i < 1000000; i++){
+            array.push(Math.floor(Math.random()*3))
+            if (array[i] == 0){
+                reds += 1;
+            }
+        }
+        alert(reds)
+        return reds
+    }
+
+    function getSum(arr){
+        arr  = ['K','Q', 9, 7]
+        var sum = 0 
+        var i = arr.length - 1
+        for (i; i >= 0; i--){
+            if (arr[i] > 0) {
+                sum += parseInt(arr[i]) }
+            else if (arr[i] == 'J') {
+                sum += 11
+            }
+            else if (arr[i] == 'Q') {
+                sum += 12
+            }
+            else if (arr[i] == 'K') {
+                sum += 13
+            }
+            else if (arr[i] == 'A') {
+                sum += 14
+            } else {
+                alert('alert' + arr[i])
+            }
+        }
+        alert(sum)
+        return sum 
+    }
+</script>
