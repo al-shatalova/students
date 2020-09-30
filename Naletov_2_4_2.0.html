@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Карты_2.0</title>
+</head>
+<body>
+<script>
+
+    var cards = prompt("Введите ваши карты");
+    var sum = 0;
+    var parsed_cards = cards.split(",");
+    for (var i = 0; i < parsed_cards.length; i++){
+
+        if (parsed_cards[i] === 'Валет'){
+            parsed_cards[i] = 11;
+        }
+
+        if (parsed_cards[i] === 'Дама'){
+            parsed_cards[i] = 12;
+        }
+
+        if (parsed_cards[i] === 'Король'){
+            parsed_cards[i] = 13;
+        }
+
+        if (parsed_cards[i] === 'Туз'){
+            parsed_cards[i] = 14;
+        }
+
+        sum = sum + parseInt(parsed_cards[i]);
+
+    }
+
+    alert(sum);
+
+</script>
+</body>
+</html>
