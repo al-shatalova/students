@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="3">
+<head>
+    <meta charset="UTF-8">
+    <title>Konev_3</title>
+</head>
+<body>
+
+
+
+    <label>Сколько карт генерируем? <input id = "c" type="number"></label>
+
+    <button id = 'but'>Отправить</button>
+
+    <script>
+        var arr_c = [2,3,4,5,6,7,8,9,10,'J','Q','K','A'];
+        var k = [];
+
+        function randomInteger(min, max) {
+            // случайное число от min до (max+1)
+            let rand = min + Math.random() * (max + 1 - min);
+            return Math.floor(rand);
+        }
+
+        function getSum(arr) {
+            var sum = 0
+            var i = arr.length - 1
+            for (i; i >= 0; i--) {
+                if (arr[i] > 0){
+                    sum+= parseInt (arr[i])}
+                else if (arr[i] == 'J'){
+                    sum += 11
+                }
+                else if (arr[i] == 'Q'){
+                    sum += 12
+                }
+                else if (arr[i] == 'K'){
+                    sum += 13
+                }
+                else if (arr[i] == 'A'){
+                    sum += 14
+                }
+            }
+            alert(sum)
+        }
+
+        function getCards(amount) {
+            for (i = 0; i <= amount; i++) {
+                k.push(arr_c[randomInteger(0, 12)])
+            }
+            getSum(k)
+        }
+
+        document.getElementById('but').addEventListener('click', ()=>{
+            getCards(document.getElementById("c").value)
+
+        });
+
+
+
+
+
+    </script>
+
+
+</body>
+</html>

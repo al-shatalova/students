@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="3">
+<head>
+    <meta charset="UTF-8">
+    <title>Konev_3</title>
+</head>
+<body>
+<script>
+    var arr = [];
+    var j = 0;
+    var arr_c = [2,3,4,5,6,7,8,9,10,'J','Q','K','A'];
+    var k = [];
+
+    function randomInteger(min, max) {
+        // случайное число от min до (max+1)
+        let rand = min + Math.random() * (max + 1 - min);
+        return Math.floor(rand);
+    }
+    for(i=0; i<=1000000; i++) {
+        arr.push(randomInteger(0, 2));
+    }
+
+    for(i=0; i<=1000000; i++) {
+        if (arr[i] === 0) {
+            j = j + 1
+        }
+
+    }
+    alert(j)
+</script>
+</body>
+</html>
