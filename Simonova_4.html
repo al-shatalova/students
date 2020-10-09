@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<script>
+function getRandomInt(min, max){
+	return Math.floor(Math.random() * (max - min +1))+min; 
+}
+
+function getCard(){
+	var cards = ['6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+	return cards[getRandomInt(0, cards.length-1)];
+}
+
+function getSum(hand){
+	var sum = 0;
+	for(var i = 0; i < hand.length; i++){
+		var card = hand[i];
+		if(card != 'A'){
+			if(card == 'J' || card == 'Q' || card == 'K'){
+				sum += 10;
+			} else{
+				sum += parseInt(card);
+			}
+		}
+	}
+	
+	for(var i =0; i < hand.length; i++){
+		var card = hand[i];
+		if(card == 'A'){
+			if(sum > 10){
+				sum += 1;
+			}else{
+				sum+=11;
+			}
+		}
+	}
+	return sum;
+}
+
+var dealer = [getCard()];
+var player = [getCard(), getCard()];
+var answer = '';
+
+function getStatus(){
+	return 'Дилер: '+dealer.join(' ')+ '. Игрок: '+player.join(' ')+'.';
+}
+
+var answer = '1';
+var motion = 0;
+do{
+	
+	if(answer == '1'){
+		if(motion>0){
+			player.push(getCard());					
+		}	
+		alert('Дилер: '+dealer.join(' ')+' игрок '+player.join(' '));
+		var sumPlayer = getSum(player);
+		var sumDealer = getSum(dealer);
+		
+		
+		
+		if(sumPlayer>21){
+			alert('Перебор '+getStatus());
+			break;
+		}else if(sumPlayer == 21 && motion == 0){ // первым ходом игроку выпадает 21 - это блек-джек
+			if(dealer[0] == '10' || dealer[0] == 'J'|| dealer[0] == 'Q'|| dealer[0] == 'K'|| dealer[0] == 'A'){ // исключение - дилеру первой картой попадается 10, картинка или туз
+				if(dealer[0] == 'A'){
+					alert('У диллера туз первой картой.\n ');
+					var answer2 = prompt('Забрать выигрыш: 1. Дождаться окончания: 2');
+					if(answer2 == '1') {
+					alert('Ваш выигрыш 1 к 1');
+					break;
+					}
+					else {
+					answer = prompt(getStatus()+'Хотите еще карту? 1 - да, иначе - нет');
+					continue;
+					};
+				}else{
+				alert("Дождитесь окончания");
+				}
+				
+				
+				}else{							
+				alert('Black Jack! '+getStatus());
+				break;
+			}				
+
+		}
+
+		else if(sumPlayer == 21 && motion > 0){
+			alert('Вы выиграли');
+			break;
+		}
+
+		else if(sumPlayer == sumDealer){
+			alert('Равно');
+			break;
+		}
+		if(sumDealer < 17){ // дилер берет до тех пор, пока у него меньше 17
+			dealer.push(getCard());				
+		}
+		alert('Текущая сумма карт у игрока: '+getSum(player));
+	}
+	answer = prompt(getStatus()+'Хотите еще карту? 1 - да, иначе - нет');
+	motion +=1;
+}while(answer == '1');
+
+if((getSum(dealer) < getSum(player)) && sumPlayer<=21) alert('Вы выиграли.');
+// alert('Дилер: '+dealer.join(' ')+' игрок '+player.join(' '));
+alert('Текущая сумма карт у игрока: '+getSum(player)+". "+'Текущая сумма карт у дилера: '+getSum(dealer));
+
+
+</script>
+</head>
+<body>
+</body>
+</html>
