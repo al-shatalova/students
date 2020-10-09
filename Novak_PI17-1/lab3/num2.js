@@ -3,7 +3,7 @@ const getSum = arr => {
         J: 11,
         Q: 12,
         K: 13,
-        A: 14
+        A: 14,
     };
 
     return arr.reduce((sum, elem) => {
