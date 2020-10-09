@@ -1,0 +1,113 @@
+<html>
+<head>
+<meta charset = "utf-8">
+</head>
+<body>
+    <button id="start" onclick="getRandomInt()">Начать игру</button>
+    <p id="current">Текущий баланс: </p>
+<script type="text/javascript">
+
+// функция для получения числа случайным образом
+function getRandomInt(min,max){
+   return Math.floor(Math.random()*(max-min+1))+min;    
+}
+
+// функция для получения карты случайным образом
+function getCard(){
+    var cards = ["6","7","8","9","10","J","Q","K","A"];
+    return cards[getRandomInt(0,cards.length-1)];
+}
+
+// сумма карт
+function getSum(hand){
+    var sum = 0;
+
+    for (var i = 0; i < hand.length; i++){
+        var card = hand[i];
+        if(card != "A"){
+            if (card == "J" || card == "Q" || card == "K"){
+                sum += 10;
+            } else {
+                sum += parseInt(card);
+            }
+        }   
+    }
+    for (var i = 0; i < hand.length; i++){
+        var card = hand[i];
+        if (card == "A"){
+            if (sum > 10){
+                sum += 1;
+            } else {
+                sum += 11;
+            }
+        }   
+    }   
+return sum;
+}
+
+// текущий баланс
+function getstatus(){
+    return "дилер: " + dealer.join(' + ') + "\nигрок: " + player.join(" + ");
+}
+
+// карты дилера и игрока
+var dealer = [getCard()];
+var player = [getCard(), getCard()];
+
+if (getSum(player) == 21){
+    alert("Black Jack!");
+    }
+    else {
+
+var answer = "";
+do {
+     answer = prompt(getstatus() + "\n" + "Еще карту? 1 - да, что угодно - нет");
+    if (answer == "1"){
+
+        player.push(getCard());
+
+// проверка на выигрыш
+     if(getSum(player) > 21){
+        alert("!Перебор! \n" + getstatus());
+     break;
+     }
+
+     else if (getSum(player) == 21){
+        alert("Black Jack!");
+    break;
+     }
+    }
+
+    else{
+        // дилер берет карту
+        while(getSum(dealer) < 17){
+            dealer.push(getCard());
+        }
+            if (getSum(dealer) > 21){
+                alert("!Перебор! \n" + getstatus());
+            } else if(getSum(dealer) == 21){
+                alert("Black Jack " + getstatus());
+            } else if (getSum(player) == getSum(dealer)){
+                alert("!Ничья! \n" + getstatus());
+            }
+
+            else if(getSum(dealer) > getSum(player)){
+                alert("!Выигрыш! \n" + getstatus());
+            } else{
+                alert("!Проигрыш! \n" + getstatus());
+            }
+
+        }
+
+        document.getElementById('current').textContent = getstatus();
+
+     }
+     while(answer == '1');
+    }
+
+    alert("Карты дилера: " + dealer.join(' + ') + "\nКарты игрока: " + player.join(' + '));
+    alert("Текущая сумма карт: " + getSum(player));
+
+</script>
+</body>
+</html> 
