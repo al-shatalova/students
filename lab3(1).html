@@ -1,0 +1,19 @@
+<meta charset="utf-8">
+<script>
+    var myarr = [0,1,2];    
+    function arrayRandElement(arr) {
+        var rand = Math.floor(Math.random() * arr.length);
+        return arr[rand];}
+        var arr=[];
+        for(i=0; i<=1000000; i++) {
+             arr[i] = arrayRandElement(myarr); }
+     
+
+        var occurrences = { };
+        for (var i = 0, j = arr.length; i < j; i++) {
+         occurrences[arr[i]] = (occurrences[arr[i]] || 0) + 1;
+        }
+
+        alert(occurrences[0]); 
+    
+</script>
