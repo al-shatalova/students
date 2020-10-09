@@ -1,0 +1,215 @@
+<!DOCTYPE HTML>
+
+<HTML><HEAD><TITLE>Blackjack</TITLE>
+    <META charset="utf-8">
+
+
+    <SCRIPT language=JavaScript>
+
+
+        var GameOver  = 0;
+        var CardCount = 0;
+        var Advising  = 0;
+        var HouseTxt, GuestTxt;
+
+        function Shuffle(max)
+        {
+            num=Math.random()*max;
+            return Math.round(num)+1;
+        }
+
+
+
+        function CardName(card)
+        {
+            switch(card)
+            {
+                case 1  : return "Туз";
+                case 11 : return "Валет";
+                case 12 : return "Дама";
+                case 13 : return "Король";
+                default : return  card;
+            }
+        }
+
+        function CardValue(f,card,who)
+        {
+            if(card == 1)
+            {
+                if(who == "You" && f.you.value >10)
+                {
+                    f.guest.value = f.guest.value + " (1)";
+                    return 1;
+                }
+                else return 11;
+            }
+            if(card > 10) return 10;
+            return card;
+        }
+
+        function DrawCard(f,who)
+        {
+            card = Shuffle(12);
+
+
+            if(who == "You")
+            {
+                f.guest.value=(CardName(card) );
+            }
+            else
+            {
+                f.house.value=(CardName(card) );
+            }
+
+            return CardValue(f,card,who);
+        }
+
+        function NewHand(f)
+        {
+            if(GameOver !=0)
+            {
+                Advise(f,"Игра","начата");
+                return;
+            }
+            else
+            {
+                f.dealer.value = 0;
+                f.you.value = 0;
+                CardCount=0;
+                f.dealer.value = eval(f.dealer.value) + DrawCard(f, "Dealer");
+                f.you.value = eval(f.you.value) + DrawCard(f, "You");
+                GameOver= -1;
+                CardCount+=1;
+            }
+        }
+
+        function Advise(f,top,btm)
+        {
+            if (!Advising)
+            {
+                Advising=-1;
+                HouseTxt=f.house.value;
+                GuestTxt=f.guest.value;
+                f.house.value=top;
+                f.guest.value=btm;
+                window.setTimeout("document.display.house.value=HouseTxt;"+
+                    "document.display.guest.value=GuestTxt;"+
+                    "Advising=0;", 1000);
+            }
+        }
+
+        function Dealer(f)
+        {
+            if (!GameOver)
+            {
+                Advise(f,"Начните ","новую игру!");
+                return;
+            }
+            else if(f.you.value<10)
+            {
+                Advise(f,"Меньше 10 очков","Возьмите еще карту");
+                return;
+            }
+            else if (CardCount <2)
+            {
+                Advise(f,"Минимум 2 карты","Возьмите еще карту");
+                return;
+            }
+            else while(f.dealer.value < 17)
+                {
+                    f.dealer.value = eval(f.dealer.value) + DrawCard(f, "Dealer");
+                }
+        }
+
+
+        function Player(f)
+        {
+            if (!GameOver)
+            {
+                Advise(f,"Начните ","новую игру ");
+                return;
+            }
+            else
+            {
+                CardCount +=1;
+                f.house.value="Ваш ход";
+                f.you.value = eval(f.you.value) + DrawCard(f, "You");
+            }
+
+            if(f.you.value > 21)
+            {
+                f.house.value="Перебор";
+                GameOver=0;
+                f.score.value=eval(f.score.value)-1;
+            }
+        }
+
+        function Declare(f)
+        {
+            if (!GameOver || f.you.value<10 || CardCount <2)
+            {
+                return;
+            }
+            else if(f.dealer.value > 21)
+            {
+                f.house.value="Поражение";
+                f.guest.value="Победа!";
+                GameOver=0;
+                f.score.value=eval(f.score.value)+1;
+            }
+            else if(f.you.value > f.dealer.value)
+            {
+                f.house.value="Победа!";
+                f.guest.value="Поражение";
+                GameOver=0;
+                f.score.value=eval(f.score.value)+1;
+            }
+            else if(f.dealer.value == f.you.value)
+            {
+                f.house.value="Ничья";
+                f.guest.value="Сыграйте еще";
+                GameOver=0;
+                f.score.value=eval(f.score.value)-1;
+            }
+            else
+            {
+                f.house.value="Победа!";
+                f.guest.value="Поражение";
+                GameOver=0;
+                f.score.value=eval(f.score.value)-1;
+            }
+        }
+
+
+
+    </SCRIPT>
+
+</HEAD>
+<BODY  >
+
+
+<FORM name=display>
+    <TABLE cellSpacing=0 cellPadding=5 border=2>
+        <TBODY>
+        <TR>
+            <TD>Счет :</TD>
+            <TD>Диллер </TD>
+            <TD><INPUT onfocus=dealer.blur(); size=2 name=dealer></TD>
+            <TD>Карта:<INPUT onfocus=house.blur(); size=18
+                             value=" Блэк Джек " name=house></TD>
+        </TR>
+        <TR>
+            <TD><INPUT onfocus=score.blur(); size=3 value=0
+                       name=score></TD>
+            <TD>Игрок</TD>
+            <TD><INPUT onfocus=you.blur(); size=2 name=you></TD>
+            <TD>Карта:<INPUT onfocus=guest.blur(); size=18
+                             value="Начните игру" name=guest></TD></TR>
+        <TR>
+            <TD><INPUT onclick=NewHand(this.form) type=button value="Новая игра" name=deal>
+            </TD>
+            <TD colSpan=3><INPUT onclick=Dealer(this.form);Declare(this.form) type=button value="Остановиться">
+                <INPUT onclick=Player(this.form) type=button value=" Взять еще карту ">
+            </TD></TR></TBODY></TABLE></FORM>
+
+</BODY></HTML>
