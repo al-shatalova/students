@@ -1,0 +1,261 @@
+<html>
+    <meta charset="utf-8" />
+    <div>
+        <input type="button" onclick="newGame()" value="Новая игра" />
+        <input type="button" onclick="plusKarta()" id="knopka_pk" value="Ещё карту" disabled="true" />
+        <input type="button" onclick="hvatit()" id="hvatit" value="Достаточно" disabled="true" />
+    </div>
+    <div>
+        Счёт: <input type="text" id="stavka" type="number" disabled="true" value="1" />
+    </div>
+    Карты игрока:
+    <div id="igrok"></div>
+    Сумма у игрока:
+    <div id="si"></div>
+    <br />
+    <br />
+    Карты дилера:
+    <div id="diler"></div>
+    Сумма у дилера:
+    <div id="sd"></div>
+    <script>
+        class Karta
+        {
+            constructor(z)
+            {
+                this.z=z;
+                this.rub=false;
+            }
+            getInt(ts)
+            {
+                switch(this.z)
+                {
+                    case "A":
+                        if(ts>10)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 11;
+                        }
+                        break;
+                    case "K":
+                    case "Q":
+                    case "J":
+                        return 10;
+                        break;
+                    default:
+                        return this.z*1;
+                        break;
+                }
+            }
+            getHTML()
+            {
+                let tpx=0;
+                switch(this.z)
+                {
+                    case "A":
+                        tpx="0";
+                        break;
+                    case "K":
+                        tpx="75";
+                        break;
+                    case "Q":
+                        tpx="150";
+                        break;
+                    case "J":
+                        tpx="225";
+                        break;
+                    default:
+                        tpx=-75*(this.z*1-1);
+                        break;
+                }
+                return '<div style="background-position: '+tpx+'px 0px; display:inline-block;width: 75px; height: 105px; background-image: url(\'https://i.pinimg.com/originals/2c/e6/58/2ce6586d7de9ea91c4b44e942af22be9.png\'); background-size: 975px;"></div>';
+                
+            }
+        }
+        let newKoloda=function()
+        {
+            let m=[];
+            for(let i=1;i<=4;i++)
+            {
+                m.push(new Karta("A"));
+                for(let i2=2;i2<=10;i2++)
+                {
+                    m.push(new Karta(i2.toString()));
+                }
+                m.push(new Karta("J"));
+                m.push(new Karta("Q"));
+                m.push(new Karta("K"));
+            }
+            return m;
+        }
+        class Koloda
+        {
+            constructor()
+            {
+                this.m=[];
+                for(let i=1;i<=4;i++)
+                {
+                    this.m.push(new Karta("A"));
+                    for(let i2=2;i2<=10;i2++)
+                    {
+                        this.m.push(new Karta(i2.toString()));
+                    }
+                    this.m.push(new Karta("J"));
+                    this.m.push(new Karta("Q"));
+                    this.m.push(new Karta("K"));
+                }
+                this.m.sort(() => Math.random() - 0.5);
+            }
+            getKarta()
+            {
+                return this.m.pop();
+            }
+        }
+        let k=[];
+        let kd=[];
+        let ki=[];
+        let igra=false;
+        let newGame=function()
+        {
+            igra=true;
+            document.getElementById("stavka").value="1";
+            k=new Koloda();
+            kd=[];
+            ki=[];
+            kd.push(k.getKarta());
+            ki.push(k.getKarta());
+            ki.push(k.getKarta());
+            otrisovka();
+
+        }
+        let otrisovka=function()
+        {
+            document.getElementById("igrok").innerHTML="";
+            for(let i in ki)
+            {
+                document.getElementById("igrok").innerHTML+=ki[i].getHTML();
+            }
+            document.getElementById("diler").innerHTML="";
+            for(let i in kd)
+            {
+                document.getElementById("diler").innerHTML+=kd[i].getHTML();
+            }
+            let tsi=0;
+            for(let i in ki)
+            {
+                tsi+=ki[i].getInt(tsi);
+            }
+            document.getElementById("si").innerHTML=tsi;
+            let tsd=0;
+            for(let i in kd)
+            {
+                tsd+=kd[i].getInt(tsd);
+            }
+            document.getElementById("sd").innerHTML=tsd;
+            if((tsi===21)&&(tsd===21))
+            {
+                igra=false;
+                alert("Ничья");
+                document.getElementById("knopka_pk").disabled=true;
+                document.getElementById("hvatit").disabled=true;
+            }
+            if(tsi===21)
+            {
+                igra=false;
+                alert("Вы выиграли!");
+                document.getElementById("stavka").value*=1.5;
+                document.getElementById("knopka_pk").disabled=true;
+                document.getElementById("hvatit").disabled=true;
+            }
+            if(tsd===21)
+            {
+                igra=false;
+                alert("Вы проиграли!");
+                document.getElementById("stavka").value=0;
+                document.getElementById("knopka_pk").disabled=true;
+                document.getElementById("hvatit").disabled=true;
+            }
+            if(tsd>21)
+            {
+                igra=false;
+                alert("Вы выиграли!");
+                document.getElementById("knopka_pk").disabled=true;
+                document.getElementById("hvatit").disabled=true;
+            }
+            if(tsi>21)
+            {
+                igra=false;
+                alert("Вы проиграли!");
+                document.getElementById("stavka").value=0;
+                document.getElementById("knopka_pk").disabled=true;
+                document.getElementById("hvatit").disabled=true;
+            }
+            if((tsi<21)&&(tsd<21))
+            {
+                document.getElementById("knopka_pk").disabled=false;
+                if(tsd<17)
+                {
+                    document.getElementById("hvatit").disabled=false;
+                }
+            }
+        }
+        let hvatit=function()
+        {
+            let tsd=0;
+            for(let i in kd)
+            {
+                tsd+=kd[i].getInt(tsd);
+            }
+            if(tsd>=17)
+            {
+                document.getElementById("knopka_pk").disabled=true;
+                document.getElementById("hvatit").disabled=true;
+                let tsi=0;
+                for(let i in ki)
+                {
+                    tsi+=ki[i].getInt(tsi);
+                }
+                if(tsi===tsd)
+                {
+                    igra=false;
+                    alert("Ничья!");
+                }
+                if(tsi>tsd)
+                {
+                    igra=false;
+                    alert("Вы выиграли!");
+                }
+                if(tsi<tsd)
+                {
+                    igra=false;
+                    document.getElementById("stavka").value=0;
+                    alert("Вы проиграли!");
+                }
+                return;
+            }
+            if(tsd<17)
+            {
+                kd.push(k.getKarta());
+            }
+            otrisovka();
+            if(igra)
+            {
+                hvatit();
+            }
+            else
+            {
+                document.getElementById("knopka_pk").disabled=true;
+                document.getElementById("hvatit").disabled=true;
+            }
+        }
+        let plusKarta=function()
+        {
+            ki.push(k.getKarta());
+            otrisovka();
+        }
+        newGame();
+    </script>
+</html>
