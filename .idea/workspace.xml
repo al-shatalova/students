@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="005b49f1-e8dd-410d-81f3-475db0d60ead" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/task-5Girba/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/task-5Girba/index.html" afterDir="false" />
-    </list>
+    <list default="true" id="005b49f1-e8dd-410d-81f3-475db0d60ead" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -65,7 +63,7 @@
       <option name="presentableId" value="Default" />
       <updated>1601017350570</updated>
       <workItem from="1601017351809" duration="2897000" />
-      <workItem from="1601470020797" duration="1816000" />
+      <workItem from="1601470020797" duration="2392000" />
     </task>
     <servers />
   </component>
