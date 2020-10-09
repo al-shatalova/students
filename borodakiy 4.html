@@ -138,7 +138,7 @@
 
             if(f.you.value > 21)
             {
-                f.house.value="Перебор";
+                f.guest.value="Перебор";
                 GameOver=0;
                 f.score.value=eval(f.score.value)-1;
             }
@@ -150,22 +150,23 @@
             {
                 return;
             }
-            else if(f.dealer.value > 21)
+            else if(f.dealer.value > 21 || f.you.value < 21)
             {
-                f.house.value="Поражение";
+                f.house.value="Поражение!";
                 f.guest.value="Победа!";
                 GameOver=0;
                 f.score.value=eval(f.score.value)+1;
             }
             else if(f.you.value > f.dealer.value)
             {
-                f.house.value="Победа!";
-                f.guest.value="Поражение";
+                f.house.value="Поражение!";
+                f.guest.value="Победа!";
                 GameOver=0;
                 f.score.value=eval(f.score.value)+1;
             }
             else if(f.dealer.value == f.you.value)
             {
+
                 f.house.value="Ничья";
                 f.guest.value="Сыграйте еще";
                 GameOver=0;
