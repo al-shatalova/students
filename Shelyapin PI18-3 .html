@@ -1,0 +1,28 @@
+<pre>
+Шеляпин ПИ18-3
+
+</pre>
+<input type = button value = bt1 id = "bt1" onclick = rnd_col()><input size = 5 id = out>
+
+<script>
+
+
+
+function rnd_col()
+	{
+		var arr = [0, 1, 2];
+		let counter = 0;
+		
+		
+		
+		for(i = 0; i <= 1000000; i++)
+			{
+				var rand = arr[Math.floor(Math.random() * arr.length)];
+				if(rand == 0){counter=counter+1;}
+			}
+		out.value = counter
+		
+	}
+
+
+</script>
