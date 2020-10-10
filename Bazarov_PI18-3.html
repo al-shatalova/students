@@ -1,0 +1,32 @@
+<!doctype html>
+ <h3>
+  <p style="border: 1px black solid; padding: 5px;">
+      Базаров 
+	  <br>Группа ПИ18-3
+   
+</p>
+</h3>
+     
+<html>
+
+<body>
+	<br><input type='button' id = 'get' size=3 value = "." onclick = f1() > <input size=3 id="out" readonly>
+	<script>
+function f1()
+{
+	var arr = [0,1,2]
+	let counter = 0;
+	for(i=0; i<=1000000; i++) 
+	{
+		var f1 = arr[Math.floor(Math.random() * arr.length)];
+		if (f1 == 0)
+				{
+				counter++;
+				}
+	}
+	out.value=counter
+
+}
+	</script>
+</body>
+</html>
