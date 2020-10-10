@@ -3,6 +3,7 @@
 
 </pre>
 <input type = button value = bt1 id = "bt1" onclick = rnd_col()><input size = 5 id = out>
+<br><input type = button value = bt1 id = "bt2" onclick = cards()><input size = 5 id = out2>
 
 <script>
 
@@ -24,5 +25,26 @@ function rnd_col()
 		
 	}
 
-
+function cards()
+{
+	 var deck = [2,3,4,5,6,7,8,9,10, 'J', 'Q', 'K', 'A']
+	 
+	 var hand = []
+	 for(i = 0; i<=4; i++)
+	{
+		hand.push(deck[Math.floor(Math.random() * deck.length)])
+	}
+	var sum = 0
+	var i = hand.length - 1
+	
+	for(i; i>=0; i--)
+	{
+		if(hand[i]>0){sum += parseInt(hand[i])}
+		else if(hand[i] == 'J'){sum +=11}
+		else if(hand[i] == 'Q'){sum +=12}
+		else if(hand[i] == 'K'){sum +=13}
+		else if(hand[i] == 'A'){sum +=14}
+	}
+	out2.value = sum;
+}
 </script>
