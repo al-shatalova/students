@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<h1>Комлев, ПИ18-3, Вариант 13</h1>
+	<style>
+	</style>
+	<div></div>
+	<input type="button" value="Обновить" onclick="colors()">
+	<br><br>
+	<select>
+		<option id="op1">Туз = 1</option>
+		<option id="op2">Туз = 14</option>
+	</select>
+	<br>
+	<input type="button" value="Рассчитать" onclick="cards(arr)">
+</head>
+
+<body>
+
+</body>
+
+<script>
+	colors()
+	function colors()
+	{
+		let arr = [];
+		let count = {"Красный": 0, "Черный": 0, "Белый": 0};
+		
+		for(let i=0;i<1000000;i++)
+		{
+			let x = Math.round(Math.random()*2);
+			
+			if(x==0){ x = "Красный" }
+			else if(x==1){ x = "Черный" }
+			else{ x = "Белый" }
+			
+			arr[i] = x;
+			count[arr[i]]++;
+		}
+			
+		let s="<table border>";
+		for(x in count)
+		{
+			s+=('<tr>')
+			s+=('<td>'+x+'<td>'+count[x])
+		}
+		$('div').html(s);
+	}
+	
+	let arr = [];
+	for(let i=2;i<11;i++)
+	{
+		arr.push(i);
+		arr.push(i);
+		arr.push(i);
+		arr.push(i);
+	}
+	for(let i=0;i<4;i++)
+	{
+		arr.push("J");
+		arr.push("Q");
+		arr.push("K");
+		arr.push("A");
+	}
+	
+	function cards(arr)
+	{
+		let sum = 0;
+		let i = arr.length - 1
+		for(i; i>=0; i--)
+		{
+			if (arr[i] > 0){sum += parseInt(arr[i])}
+			else if(arr[i] == 'J') {sum += 11}
+			else if(arr[i] == 'Q') {sum += 12}
+			else if(arr[i] == 'K') {sum += 13}
+			else if(arr[i] == 'A') 
+			{
+				if($("select").val()=="Туз = 1"){sum += 1}
+				else {sum += 14}
+			}
+		}
+		alert("sum: " + sum)
+	}
+</script>
+
+</html>
