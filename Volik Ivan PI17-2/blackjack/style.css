@@ -1,0 +1,72 @@
+html{
+    height: 100%;
+}
+body{
+    height: 100%;
+    width: 100%;
+    background-image: url(./assets/background.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: whitesmoke !important;
+}
+
+.field {
+  position: relative;
+}
+
+.field > *:not(.play-card) {
+  height: 50%;
+}
+
+.play-card {
+  width: 120px;
+  height: 168px;
+  background-image: url(./assets/Cards.png);
+  background-repeat: no-repeat;
+  background-size: 1560px 672px;
+  position: absolute;
+}
+
+.action-buttons{
+    width: 200px;
+}
+
+.field .dealer-cards,
+.field .player-cards {
+  width: 70%;
+}
+
+.field .pack,
+.field .controls {
+  width: 30%;
+}
+
+.cards-pack{
+    width: 150px;
+    height: 210px;
+    background: url(./assets/cardsBack.png);
+    background-size: cover;
+}
+
+.action-buttons .bet-action {
+  width: 40px;
+  height: 40px;
+  font-size: 30px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  padding-bottom: 5px;
+  color: white;
+}
+
+.action-buttons .bet-action:hover {
+  color: white;
+}
+
+.action-buttons .bet span {
+  font-size: 18px;
+  font-weight: bold;
+}
