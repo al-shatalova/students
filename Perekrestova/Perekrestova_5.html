@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script type="text/javascript">
+		class User{
+			constructor(name){
+				this.name=name;
+			}
+			sayName(){
+				alert("User name: "+ this.name);
+			}
+		}
+		function p1(){
+			var n = document.getElementById("name").value;
+			let user = new User(n);
+			user.sayName();
+		}
+
+		class Clock {
+			constructor({ template }) {
+			this.template = template;
+			}
+
+		render() {
+			let date = new Date();
+
+			let hours = date.getHours();
+			if (hours < 10) hours = '0' + hours;
+
+			let mins = date.getMinutes();
+			if (mins < 10) mins = '0' + mins;
+
+			let secs = date.getSeconds();
+			if (secs < 10) secs = '0' + secs;
+
+			let output = this.template
+			.replace('h', hours)
+			.replace('m', mins)
+			.replace('s', secs);
+
+			console.log(output);
+		}
+
+		stop() {
+			clearInterval(this.timer);
+		}
+
+		start() {
+			this.render();
+			this.timer = setInterval(() => this.render(), 1000);
+			}
+		}
+
+		function start(){
+			let clock = new Clock({template: 'h:m:s'});
+			clock.start();
+			}
+
+
+
+		
+
+			
+	</script>
+</head>
+<body>
+	
+	<br>
+	
+	<table width="400" border="0" cellpadding="5" cellspacing="0">
+   <col width="150" valign="top">
+   <col width="250" valign="top">
+   <tr><td><h3>1. Создайте класс, который будет сохранять в переменную имя
+пользователя и выводить его на экран. Используйте его.</h3></td>
+	<td><h3>2. Перепишите код с использованием синтаксиса класса:</h3></td>
+	</tr>
+   <tr>
+
+    <td style="background: #B0B28E">
+    	Введите имя:
+    	<input type="text" id="name">
+    	<input type="button" value="Ввести имя" onclick="p1()">
+    </td>
+    <td style="background: #CCCCCC">
+    	<input type="button" value="Старт" onclick="start()">
+    	
+    </td>
+    
+   </tr>
+  </table>
+</body>
+</html>		
