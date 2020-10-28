@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>5 Kuranov K</title>
+  </head>
+  <body>
+    <h1>1</h1>
+    <p>Имя:</p>
+    <p id="nameShow"></p>
+    <input type="text" id="name" />
+    <button id="first_bt">Submit</button>
+    <br />
+    <h1>2</h1>
+    <p id="clock"></p>
+    <script>
+      // 1
+      class User {
+        constructor(name) {
+          this.name = name;
+        }
+
+        showName() {
+          document.querySelector("#nameShow").innerText = this.name;
+        }
+      }
+
+      document.querySelector("#first_bt").addEventListener("click", () => {
+        let user = new User(document.querySelector("#name").value);
+        user.showName();
+      });
+
+      // 2
+
+      class startTime {
+        constructor() {
+          this.count();
+        }
+
+        count() {
+          let date = new Date();
+          let h = date.getHours();
+          let m = date.getMinutes();
+          let s = date.getSeconds();
+
+          h = this.checkTime(h);
+          m = this.checkTime(m);
+          s = this.checkTime(s);
+
+          document.querySelector("#clock").innerHTML = h + ":" + m + ":" + s;
+          setTimeout(this.count.bind(this), 1000); // фиксируем this
+        }
+
+        checkTime(i) {
+          if (i < 10) i = "0" + i;
+          return i;
+        }
+      }
+      let Clock = new startTime();
+    </script>
+  </body>
+</html>
