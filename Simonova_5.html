@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<script>
+// 1 задание
+class User{
+	constructor(name){
+	this.name = name;
+	alert(name);
+	}
+}
+
+let user = new User("Вася");
+
+
+// 2 задание
+class Clock{
+
+	
+	constructor(template){
+		this.date = new Date();
+		this.templ = template;
+		this.timer = '';
+		
+	}
+	
+	
+	 render(){
+		let hours = this.date.getHours();
+		if(hours < 10) hourse = '0' + hours;
+		
+		let mins = this.date.getMinutes();
+		if (mins < 10) mins = '0' + mins;
+		
+		let secs = this.date.getSeconds();
+		if (secs < 10) secs = '0' + secs;
+			
+		let result;
+		result = this.templ
+		.replace('h', hours)
+		.replace('m', mins)
+		.replace('s', secs);
+		
+		alert(result);
+	}
+	
+	start(){
+		this.render();
+		this.timer = setInterval(this.render(), 1000);
+		
+	}
+	
+	stop(){
+		clearInterval(this.timer);
+	}
+}
+
+let clock = new Clock('h:m:s');
+clock.start();
+</script>
+</head>
+<body>
+</body>
+</html>
