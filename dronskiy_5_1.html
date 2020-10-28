@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <title>Дронский Михаил ПИ17-1 Семинар 5-2</title>
+ </head>
+ <body>
+
+ <script>
+     class User {
+         constructor(name) {
+             this.name = name;
+         }
+         privet() {
+             alert(this.name);
+         }
+     }
+     let name = prompt('Мне нужно ваше имя, все остальное оставьте себе: ');
+     let user = new User(name);
+     user.privet();
+ </script>
+
+ </body>
+ </html>
