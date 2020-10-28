@@ -27,6 +27,7 @@ class Clock{
 	
 	
 	 render(){
+
 		let hours = this.date.getHours();
 		if(hours < 10) hourse = '0' + hours;
 		
@@ -46,8 +47,7 @@ class Clock{
 	}
 	
 	start(){
-		this.render();
-		this.timer = setInterval(this.render(), 1000);
+		this.timer = setInterval(() => this.render(), 1000);
 		
 	}
 	
