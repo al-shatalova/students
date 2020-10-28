@@ -1,25 +1,20 @@
 <!doctype html>
-<html lang="ru">
-<head>
-  <meta charset="utf-8" />
-  <title></title>
-</head>
-<body>
 <script>
-const a = [0, 1, 2];
-function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min)) + min;
-}
-var c=0;
-var b=0;
+'use strict';
 
-for (let i = 0; i < 1000000; i++){
-	b=getRandomInt(0,2);
-	if (a[b]==0){
-		c++;
-	}
+class User {
+
+  constructor(name) {
+    this.name = name;
+  }
+
+  sayHi() {
+    alert(this.name);
+  }
+
 }
-alert("Красных " +c);
-</script>
-</body>
+
+let user = new User("Вася");
+user.sayHi();
+	</script>
 </html>

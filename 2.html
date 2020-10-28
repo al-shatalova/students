@@ -1,35 +1,36 @@
 <!doctype html>
-<html lang="ru">
-<head>
-  <meta charset="utf-8" />
-  <title></title>
-</head>
-<body>
 <script>
-function getSum(arr){
-var sum = 0;
-var i = arr.length-1;
-for(i; i >= 0; i--){
-	if(arr[i] > 0){
-		sum +=parseInt(arr[i]);
-	}else if(arr[i] == 'J'){
-	sum+=11
-	}else if(arr[i] == 'Q'){
-	sum+=12
-	}else if(arr[i] == 'K'){
-	sum+=13
-	}else if(arr[i] == 'A'){
-	sum+=14
-	}else{
-	alert('alert '+arr[i])
+	function Clock({template}){
+		let timer;
+		function render(){
+			let date = new Data();
+
+			let hours=date.getHours();
+			if (hours<10) hours ='0'+ hours;
+
+			let mins=date.getMinutes();
+			if (mins<10) mins ='0'+ mins;
+
+			let secs=date.getSeconds();
+			if (secs<10) secs ='0'+ secs;
+
+			let output=template
+				.replace('h', hours)
+				.replace('m', mins)
+				.replace('s', secs);
+			console.log(output);
+
+		}
+
+		this.stop=function(){
+			clearInterval(timer);
+		};
+		this.start=function(){
+			render();
+			timer=setInterval(render, 1000);
+		};
 	}
-}
-return sum;
-}
-
-alert(getSum([2,5,'Q','K']));
-
-
+	let clock = new Clock({template:'h:m:s'});
+	clock.start();
 </script>
-</body>
 </html>
