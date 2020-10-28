@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Бородакий ПИ17-1 Семинар 5-1</title>
+</head>
+<body>
+
+<script>
+    class User {
+        constructor(name) {
+            this.name = name;
+        }
+
+        sayHi() {
+            alert(this.name);
+        }
+    }
+    let name = prompt('Введите ваше имя: ');
+    let user = new User(name);
+    user.sayHi();
+</script>
+
+</body>
+</html>
