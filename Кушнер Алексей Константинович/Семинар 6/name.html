@@ -1,0 +1,15 @@
+<!doctype html>
+    <script>
+        class User{
+            constructor(name){
+                this.name = name;
+            }
+
+            sayHi(){
+                alert(`Здравствуйте,${this.name}!`)
+            }
+        }
+        let user = new User(prompt('Введите ваше имя'));
+        user.sayHi();
+    </script>
+</html> 

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title> Tatarenkova_t-5 </title>
+</head>
+
+<style>
+    table 
+    {
+        width: auto;
+    }
+
+    td 
+    {
+        border: 1px solid;
+        padding: 15px;
+    }
+
+</style>
+
+<body>
+	<h3>
+		<br> Татаренкова Алена ПИ18-3
+		<!-- <br> Вариант: 9 <br> -->
+	</h3>
+	
+	<input type="button" style="width: 150px;" value="Создать рандом" onclick="getRandom()"><br>
+	<input size = '10' id="out"><br>
+	
+	 <input type="button" style="width: 150px;" value="Карты" onclick="getSum()"><br>
+	<input size = '10' id="out1"> 
+	
+
+	
+</body>
+
+<script>
+	
+
+	function getRandom()
+	{
+		var arr = [0, 1, 2];
+		let counter = 0;
+		
+		for(i=0; i<=1000000; i++)
+		{
+			var rnd = arr[Math.floor(Math.random()* arr.length)];
+			if(rnd == 0)
+			{
+			counter = counter + 1;
+			}	
+		}	
+		out.value = counter
+	//arr.push(Math.round(Math.random()*2))
+	}
+		
+		
+</script>
+
+<script>
+	function getSum()
+	{
+		var arr = [2,3,4,5,6,7,8,9,10,'J','Q','K','A'];
+		var sum = 0
+		var i = arr.length - 1
+		for (i, i >=0; i--)
+		{
+			if (arr[i] > 0)
+			{
+				sum += parseInt (arr[i])
+			}
+			else if (arr[i] == 'J')
+			{
+				sum += 11
+			}
+			else if (arr[i] == 'Q')
+			{
+				sum += 12
+			}
+			else if (arr[i] == 'K')
+			{
+				sum += 13
+			}
+			else if (arr[i] == 'A')
+			{
+				sum += 14
+			}
+			else
+			{
+				alert('alert' + arr[i]
+			}
+			
+		}
+		out1.return = sum
+	}
+	
+</script>

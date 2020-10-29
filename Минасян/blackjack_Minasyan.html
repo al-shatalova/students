@@ -1,0 +1,62 @@
+<meta charset="utf-8" />
+<script>
+function getRandomInt(min ,max){
+    return Math.floor(Math.random()*(max-min+1))+min;
+}
+
+function getCard(){
+    let cards = ['2' ,'3', '4' , '5', '6' , '7' , '8', '9' ,'10' , 'J' , 'Q', "K" , 'A' ]
+    return cards[getRandomInt(0,cards.length - 1)];
+}
+
+function getSum(hand){
+    let sum = 0;
+    for (var i=0; i <hand.length;i++){
+        let card = hand[i];
+        if (card != 'A'){
+            if (card == 'J' || card == 'Q' || card == 'K') {
+                sum+= 10;
+            } else {
+                sum+= parseInt(card);
+            }
+        }
+    }
+    for (var i=0; i <hand.length;i++){        
+        let card = hand[i];
+        if (card == 'A'){
+            if (sum > 10) {
+                sum+= 1;
+            } else {
+                sum+=11
+            }
+        }
+    }
+    return sum
+}       
+let dealer = [getCard()];
+let player = [getCard(),getCard()];
+
+let answer = '';
+let lose = false;
+let fl = false;
+function getStatus(){
+    return  `Рука дилера ${dealer}\nВаша рука ${player}`    
+}
+
+do {
+    answer = prompt(`${getStatus()} Сумма : ${getSum(player)}
+                    Продолжим? Да/нет`);
+    if (answer == 'Да'){
+        player.push(getCard());
+        sum = getSum(player);
+        if (sum > 21){
+            alert (`Перебор ${getStatus()}
+            Вы проиграли`);
+            break;
+        } else if (sum == '21'){
+            alert (`BlackJack ${getStatus()}`)
+        }
+    }
+    alert (getStatus());
+} while (answer == 'Да');
+</script>

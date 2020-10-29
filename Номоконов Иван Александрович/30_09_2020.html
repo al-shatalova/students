@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Номоконов 30.09.2020</title>
+  </head>
+  <body>
+    <script>
+      let answers = 0;
+      const questions = [
+        {
+          question: `
+            В Полотняной стране\n
+            По реке Простыне\n
+            Плывет пароход\n
+            То назад, то вперед,\n
+            А за ним такая гладь —
+            Ни морщинки не видать.`,
+          answer: "утюг",
+        },
+        {
+          question: `
+            В брюшке — баня,\n
+            В носу — решето,\n
+            Нос — хоботок,\n
+            На голове — пупок,\n
+            Всего одна рука\n
+            Без пальчиков,\n
+            И та — на спине\n
+            Калачиком.\n`,
+          answer: "чайник",
+        },
+      ];
+
+      questions.forEach((question) => {
+        const answer = prompt(question.question).toLowerCase();
+        if (answer === question.answer) {
+          answers++;
+          alert(`
+                Правильно!\n
+                Ваш счет: ${answers}
+            `);
+        } else {
+          alert(`
+                Не равильно!\n
+                Ваш счет: ${answers}
+            `);
+        }
+      });
+
+      alert(`
+                Тест окончен\n
+                Ваш счет: ${answers}
+            `);
+
+      for (let i = 1; i < 11; alert(i++));
+
+      do {} while (prompt("Еще по одной?") !== "1");
+      alert("Бывай!");
+    </script>
+  </body>
+</html>

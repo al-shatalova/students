@@ -1,0 +1,26 @@
+<script>
+let arr=["A","K","Q","J"];
+function summaCard(m)
+{
+	let sum=0;
+	for(let i of m)
+	{ sum+=getInt(i); }		
+	return sum;
+}
+function getInt(i)
+		{
+			switch(i)
+			{
+				case "J":
+					return 11;
+				case "Q":
+					return 12;
+				case "K":
+					return 13;
+				case "A":
+					return 14;
+			}
+			return parseInt(i);
+		}
+alert(summaCard(arr));
+</script>

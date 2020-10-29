@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var a = 0;
+        p1 = prompt('Не боюсь я слова "брысь", - я лесная кошка …');
+        alert ('Рысь');
+        if (p1 == "Рысь"){
+            alert("Молодец!");
+            a=a+1;
+        } else{
+            alert('Попробуй следующую')
+        }
+        p2 = prompt('Пара долгих ушек, серенький кожушек, быстрый побегайчик, как он звется?');
+        alert ('Зайчик');
+        if (p2 == "Зайчик"){
+            alert("Молодец!");
+            a=a+1;
+        } else{
+            alert('Ну все :(')
+        }
+        alert ("У тебя правильных ответов " + a);
+
+        for (let i = 1; i <= 10; i++) {
+            alert (i);         
+        }
+
+         do{} while(prompt('Еще по одной?') != '1');
+         alert('бывай!')
+
+
+
+
+    </script>
+</body>
+</html>

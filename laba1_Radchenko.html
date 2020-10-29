@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var ch = prompt("Введите любое число:");
+        alert("Вау, я так и знал, что вы выберете " + ch);
+        alert("Теперь посчитаем ");
+        var num1 = parseInt(prompt("Введите первое число:"));
+        var num2 = parseInt(prompt("Введите второе число число:"));
+        var x = prompt("Что будем с ними делать:+,-,/,*");
+        if(x == "+"){
+            rez = num1+num2;
+            alert("Получается:" + rez);
+        }
+        else if(x == "-"){
+            rez = num1-num2;
+            alert("Получается:" + rez);
+        }
+        else if(x == "/"){
+            rez = num1/num2;
+            alert("Получается:" + rez);
+        }
+        else if(x == "*"){
+            rez = num1*num2;
+            alert("Получается:" + rez);
+        }
+
+    </script>
+
+</body>
+</html>
