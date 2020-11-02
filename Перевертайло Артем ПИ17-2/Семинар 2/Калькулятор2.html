@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Calculator</title>
+</head>
+
+<body>
+    <script>
+        //let first = +prompt("Введите первое число:");
+        //let second = +prompt("Введите второе число:");
+
+
+        function calc() {
+            first = +document.getElementById('n1').value;
+            second = +document.getElementById('n2').value;
+            alert(`
+              Сложение: ${first + second}\n
+              Вычитание: ${first - second}\n
+              Умножение: ${first * second}\n
+              Деление: ${Math.round(first / second)}
+          `);
+        }
+    </script>
+    <p>number 1<input type="number" id="n1"></p>
+    <p>number 2<input type="number" id="n2"></p>
+    <button onclick="calc()">Вычислить</button>
+
+</body>
+
+</html>
