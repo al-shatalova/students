@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>6 Kuranov K</title>
+    </head>
+    <style>
+        code {
+            font-size: 16px;
+            display: inline-block;
+            border: 2px solid grey;
+            width: 300px;
+            border-left: 12px solid green;
+            border-radius: 5px;
+            padding: 14px;
+            margin: 5px 0;
+        }
+        .code-format {
+            width: 300px;
+        }
+        .res {
+            color: darkgrey;
+        }
+    </style>
+    <body>
+        <h1>Kuranov K</h1>
+        <h3>1. Создайте пустую стрелочную функцию возвращает undefined</h3>
+        <div class="code-format">
+            <code>(() => undefined)()</code>
+            <code id="undRes" class="res">> undefined</code>
+        </div>
+        <h3>
+            2. Создайте массив и напишите стрелочные функции для него:
+            суммирование всех элементов, выявить все четные, умножить каждый
+            элемент на 2.
+        </h3>
+        <div class="code-format">
+            <code id="arr"></code>
+            <code> let sum = arr.reduce((sum, current) => sum + current) </code>
+            <code id="sumRes" class="res"></code>
+            <code> let even = arr.filter( i => i%2 === 0) </code>
+            <code id="evenRes" class="res"></code>
+            <code> let multiply = arr.map( i => i+2) </code>
+            <code id="multiplyRes" class="res"></code>
+        </div>
+        <h3>
+            3. Создайте массив с e-mail. Организуйте фильтр на странице html по
+            названию почты.
+        </h3>
+        <p id="mails"></p>
+        <input type="text" placeholder="mail.ru, yandex.ru, gmail.com" />
+        <button>Найти</button>
+        <p id="mailFilter"></p>
+        <script>
+            // 1
+            document.querySelector("#undRes").innerText = `> ${(() => undefined)()}`;
+            // 2
+            let arr = [];
+            for (let i = 1; i < 11; i++) {arr.push(i)}
+            document.querySelector("#arr").innerText = `(${arr.length}) [${arr}]`;
+            // 2.1
+            let sum = arr.reduce((sum, current) => sum + current);
+            document.querySelector("#sumRes").innerText = `> ${sum}`;
+            // 2.2
+            let even = arr.filter((i) => i % 2 === 0);
+            document.querySelector("#evenRes").innerText = `> ${even}`;
+            // 2.3
+            let multiply = arr.map((i) => i + 2);
+            document.querySelector("#multiplyRes").innerText = `> ${multiply}`;
+
+            // 3
+            let mails = [
+                "asdafsdfa@mail.ru",
+                "dsafafdsa@mail.ru",
+                "asdafsd213a@mail.ru",
+                "dsadafsdsdfasd@yandex.ru",
+                "losdfs@gmail.com",
+                "natant@gmail.com",
+                "domdfdsd@gmail.com",
+            ];
+            document.querySelector("#mails").innerText = mails;
+
+            document.querySelector("button").addEventListener("click", () => {
+                let domain = document.querySelector("input").value;
+                let mailFilter = mails.filter((i) => i.split("@")[1] === domain);
+                console.log(mailFilter);
+                if (mailFilter.length === 0) {
+                    mailFilter = "Почты с таким доменом не существует";
+                }
+                document.querySelector("#mailFilter").innerText = `${mailFilter}`;
+            });
+        </script>
+    </body>
+</html>
