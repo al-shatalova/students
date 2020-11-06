@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    Поле ввода фильтра:
+    <input type="text" id="vvod" onkeypress="vyvod()" onchange="vyvod()" onkeyup="vyvod()" />
+    <table id="t"> </table>
+    <script>
+        //Номер 1
+        let empty = () => {undefined};
+
+        //Номер 2
+        function n2(){
+            var mass=[7,4,2,5];
+            console.log(mass);
+            console.log(mass.reduce((a,b)=>a+b));
+            console.log(mass.filter(x=>x%2===0));
+            console.log(mass.map(x=>x*2));}
+        
+        //Номер 3
+        let emails=["nyusha1999@gmail.com","kate-kostereva@mail.ru","175399@edu.fa.ru", 'kate@mail.ru'];
+        function vyvod(){
+            t.innerHTML="";
+            let tm=emails.filter(x=>x.indexOf(vvod.value)>=0);
+            console.log(tm);
+            for(var i in tm){
+                let a=document.createElement("tr");
+                let b=document.createElement("td");
+                a.appendChild(b);
+                b.innerHTML=tm[i];
+                t.appendChild(a);}}
+        vyvod()
+
+    </script>
+</body>
+</html>
