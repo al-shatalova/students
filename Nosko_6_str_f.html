@@ -1,0 +1,37 @@
+<meta charset="utf-8" />
+Поле ввода фильтра:
+<input type="text" id="vvod" onkeypress="vyvod()" onchange="vyvod()" onkeyup="vyvod()" />
+<table id="t" border="1">
+</table>
+<script>
+//1
+let n1=()=>{undefined};
+
+//2
+function n2()
+{
+	let m=[1,4,2,3];
+	console.log(m);
+	console.log(m.reduce((a,b)=>a+b));
+	console.log(m.filter(x=>x%2===0));
+	console.log(m.map(x=>x*2));
+}
+
+//3
+let emails=["maxnosko@mail.ru","maxnosko2@mail.ru","pochta@maximnosko.ru","174549@edu.fa.ru"];
+function vyvod()
+{
+	t.innerHTML="";
+	let tm=emails.filter(x=>x.indexOf(vvod.value)>=0);
+	console.log(tm);
+	for(var i in tm)
+	{
+		let a=document.createElement("tr");
+		let b=document.createElement("td");
+		a.appendChild(b);
+		b.innerHTML=tm[i];
+		t.appendChild(a);
+	}
+}
+vyvod();
+</script>
