@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Task 6</title>
+ </head>
+ <body>
+    <div align = 'center'>
+        <button onclick="alert(undef())">Задание 1</button> <br><br>
+        <button onclick="alert(arr)">Задание 2 массив</button>
+        <button onclick="alert(arr.reduce(reducer))">Задание 2 суммирование</button>
+        <button onclick="alert(arr.filter(filters))">Задание 2 четные</button>
+        <button onclick="alert(arr.map(mapper))">Задание 2 умножение</button> <br> <br>
+        <div>Задание 3</div> <br>
+        <div>Название почты</div>
+        <input type="text" id="mail-name">
+        <button onclick="filterValues()">Filter</button>
+        <div>Список почтовых адресов:</div>
+        <div id="mail-list"></div>
+    </div>
+
+     <script>
+         undef = () => undefined;
+         let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+         let reducer = (first, second) => (first + second);
+         let filters = el => (el % 2 == 0);
+         let mapper = el => el * 2;
+         let mailArray = ['justwannahavefun@gmail.com', 'somebody-test@yandex.ru', 'metro_b00min@hotmail.com',
+                                 'vision2020@kanye.com'];
+         document.getElementById('mail-list').innerHTML = printArray(mailArray);
+         function printArray(arr) {
+             res = ''
+             for (let el of arr) {
+                 res += el + '<br>';
+             }
+             return res;
+         }
+         function filterValues() {
+             mailName = document.getElementById('mail-name').value;
+             if (mailName == '') return;
+             newArray = mailArray.filter(el => el.includes(mailName));
+             document.getElementById('mail-list').innerHTML = printArray(newArray);
+         }
+     </script>
+ </body>
+ </html>

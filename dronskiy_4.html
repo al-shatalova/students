@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <title>Дронский ПИ17-1</title>
+ </head>
+ <body>
+    <div align = 'center'>
+        <div>
+            <p style="display: inline-block">ВАШ БАНК: </p>
+            <p id="balance" style="display: inline-block">1000</p>
+        </div>
+        <div>
+            <label for="bet">Ставка (Только кратная 10):</label>
+            <input id="bet" type="text">
+            <br>
+            <button id="confirm" style="margin-top: 15px">ПОДТВЕРДИТЬ</button>
+        </div>
+        <div>
+            <p id="message"></p>
+        </div>
+    </div>
+ <script>
+     document.getElementById('confirm').addEventListener('click', () => {
+         let balance = document.getElementById('balance')
+         let balanceValue = parseInt(balance.innerText)
+         let bet = document.getElementById('bet')
+         let betValue = parseInt(bet.value)
+         let message = document.getElementById('message')
+
+         if (betValue && betValue>0 && betValue%10 === 0 && balanceValue-betValue >= 0) {
+             balance.innerText = balanceValue-betValue;
+             let dealer = [getCard()];
+             let player = [getCard(), getCard()];
+             let answer = ''
+             let sumP = getSum(player)
+             let sumD = getSum(dealer)
+
+             do {
+                 console.log(sumP)
+                 answer = prompt(getStatus(dealer, player) + ` Сумма ${sumP} Вы хотите взять еще карту? y - да, нет - n`)
+                 if (answer === 'y') {
+                     player.push(getCard());
+                     sumP = getSum(player);
+                     if (sumP > 21) {
+                         message.innerText = `Перебор ${getStatus(dealer, player)}`
+                         break
+                     } else if (sumP === 21) {
+                         message.innerText = `Black Jack! + ${getStatus(dealer, player)}`
+                         balance.innerText = balanceValue+betValue*1.5;
+                     }
+
+                 }
+             } while (answer === 'y' && sumP < 21)
+
+             do {
+                 dealer.push(getCard());
+                 sumD = getSum(dealer)
+             } while (sumD < 17 && sumP !== 21)
+
+             message.innerText += `\n${getStatus(dealer, player)}`
+
+
+         } else  {
+             message.innerText = "Ставка должна быть кратная 10"
+         }
+
+     });
+
+     function getRandomInt(max) {
+         return Math.floor(Math.random() * max);
+     }
+
+     function getCard() {
+         let cards = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+         return cards[getRandomInt(cards.length)]
+     }
+
+     function getSum(hand) {
+         let sum = 0;
+         for (let i = 0; i < hand.length; i++) {
+             let card = hand[i]
+             if (card !== 'A') {
+                 if (card === 'J' || card === 'Q' || card === 'K') {
+                     sum = sum + 10;
+                 } else {
+                     sum = sum + parseInt(card);
+                 }
+             }
+         }
+         for (let i = 0; i < hand.length; i++) {
+             let card = hand[i];
+             if (card === 'A') {
+                 if (sum < 10) {
+                     sum = sum + 1
+                 } else {
+                     sum = sum + 11
+                 }
+             }
+         }
+         return sum
+     }
+
+     function getStatus (dealer, player) {
+         return `Дилер: ${dealer.join(' ')} Игрок: ${player.join(' ')}.`;
+     }
+
+
+ </script>
+ </body>
+ </html>
