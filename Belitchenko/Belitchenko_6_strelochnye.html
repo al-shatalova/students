@@ -1,0 +1,28 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 6</title>
+</head>
+
+<body>
+<script>
+    let empty = () => {};
+    alert(empty);
+
+    var arr = [1, 2, 3, 4, 5, 6];
+    alert('Задан массив ' + arr);
+    var sum = arr.reduce((a, b) => a + b);
+    alert('Сумма элементов: ' + sum);
+    var even = arr.filter(v => v % 2 == 0);
+    alert('Четные элементы: ' + even);
+    var double = arr.map(v => v * 2);
+    alert('Задан массив ' + double);
+
+    var mails = ['123@gmail.com', '123@mail.com', '12345@gmail.com'];
+    var gmails = mails.filter(v => v.slice(-10, -1) == '@gmail.co');
+    alert('Отсортированные e-mails: ' + gmails);
+</script>
+</body>
+
+
+
