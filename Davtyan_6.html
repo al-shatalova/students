@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<title>Давтян А 6 задание</title>
+
+<script>
+// 1 задание
+let first = () => {};
+alert('Пустая стрелочная функция: ' + first());
+
+// 2 задание
+var mas2 = [5, 6, 4, 7];
+
+var second = mas2.reduce((a, b)=> a + b);
+alert("Сумма всех элементов: " + second);
+
+var even = mas2.filter(v => v%2 == 0);
+alert("Все четные элементы: " + even);
+
+var increase = mas2.map(v => v*2);
+alert("Умноженные на 2: " + increase);
+
+// 3 задание
+function getMail(){
+	var mails = ["asdafsdfa@mail.ru", "affhfhf@gmail.com", "aaaaa@gmail.com",
+    "bbbbb@mail.ru","cccc@gmail.com"];
+	var email = document.getElementById("email_name").value;
+	var res = mails.filter(v => v.startsWith(email));
+
+	alert("Результат фильтра: " + res);
+}
+
+</script>
+</head>
+<body>
+<input type="text" id = "email_name">Напишите начало почты<br>
+<button onclick ="getMail()" type="submit" value="Фильтр">Поиск</button>
+</body>
+</html> 
