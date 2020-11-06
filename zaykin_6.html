@@ -36,7 +36,6 @@
         }
         function filterValues() {
             mailName = document.getElementById('mail-name').value;
-            if (mailName == '') return;
             newArray = mailArray.filter(el => el.includes(mailName));
             document.getElementById('mail-list').innerHTML = printArray(newArray);
         }
