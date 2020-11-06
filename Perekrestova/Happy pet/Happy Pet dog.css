@@ -1,0 +1,106 @@
+body{
+background: radial-gradient(22.1% 33.6% at 71.25% 49.93%, #FFFFFF 1.78%, rgba(253, 187, 58, 0.96) 100%);
+
+width: 95%;
+height: 95%;}
+.dogimg{
+	
+width: 691px;
+height: 1140px;
+left: 773px;
+top: 277px;
+}
+.logo{
+	margin-left: 5%;
+	margin-top: 5%;
+}
+.menu{
+	margin-top: 5%;
+	margin-left: 5%;
+}
+.txtmenu{
+	width: 44px;
+height: 15px;
+left: 483px;
+top: 58px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 13px;
+line-height: 15px;
+
+color: #000000;
+margin: 50px;
+
+}
+.txtmenu_bold{
+	
+width: 57px;
+height: 12px;
+left: 373px;
+top: 61px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: bold;
+font-size: 13px;
+line-height: 15px;
+
+color: #000000;
+margin: 50px;
+}
+h1{
+	font-size: 40px;
+	margin-left: 10%;
+	margin-top: 10%;
+}
+p{
+	position: absolute;
+width: 399px;
+height: 69px;
+left: 106px;
+top: 355px;
+
+font-family: Rokkitt;
+font-style: normal;
+font-weight: normal;
+font-size: 20px;
+line-height: 23px;
+
+color: #000000;
+}
+.backdog{
+
+
+
+}
+.saint{
+
+}
+title{
+	position: absolute;
+width: 136px;
+height: 29px;
+left: 143px;
+top: 50px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: 900;
+font-size: 25px;
+line-height: 29px;
+
+color: #000000;
+}
+.butt{
+	position: absolute;
+width: 399px;
+height: 69px;
+left: 106px;
+top: 505px;
+
+background: #FF2113;
+box-shadow: inset -4px -9px 9px 4px rgba(0, 0, 0, 0.2);
+border-radius: 28px;
+}
