@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+
+
+
+<script>
+// 1 задание
+let first = () => {};
+alert(first());
+
+// 2 задание
+var mas2 = [5, 6, 4, 7];
+// суммирование всех элементов
+var second = mas2.reduce((a, b)=> a + b);
+alert(second);
+// выявить все четные элементы
+var even = mas2.filter(v => v%2 == 0);
+alert(even);
+// умножить каждый элемент на 2
+var increase = mas2.map(v => v*2);
+alert(increase);
+
+// 3 задание
+function getMail(){
+	var mails = ["alex@gmail.com", "al@gmail.com", "petr@gmail.com","all4@gmail.com","b@gmail.com"];
+	var email = document.getElementById("email_name").value;
+	var res = mails.filter(v => v.startsWith(email));
+	
+	alert(res);
+}
+
+</script>
+</head>
+<body>
+<input type="text" id = "email_name">Начало почты<br>
+<button onclick ="getMail()" type="submit" value="Фильтр">Фильтр</button>
+</body>
+</html>
