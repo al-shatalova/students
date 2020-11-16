@@ -1,0 +1,22 @@
+<!doctype html>
+    <script>
+    let empty = () => {};//Вернет undefined
+    let arr = [5, 6, 13, 0, 1, 18, 23];
+    let sum = arr.reduce((a, b) => a + b);//Сумма всех элементов
+    let even = arr.filter(v => v % 2 == 0)//Только четные
+    let double = arr.map(v => v * 2);//Удваивает значения
+    let email = ["Karom45@mail.ru",
+                "Alexaaa@mail.ru",
+                "Perlo@mail.ru",
+                "Kuznechik@yandex.ru",
+                "Kaspii@gmail.com",
+                "Rafik_kr@gmail.com",
+                "Terminator@gmail.com",
+            ];
+    dom = 'mail.ruq'
+    let result = email.filter(item => item.split("@")[1] == dom)
+    if (result.length == 0) {
+        result = `По фильтру ${dom} ничего не найдено`;}
+    alert(result)
+    </script>
+</html> 
