@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>banz_3</title>
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+</head>
+
+<body>
+
+  <!--опишем объект-->
+  <script type="text/babel">
+    const user = {
+        id : 5,
+        age: 20,
+        firstName: 'Софья',
+        lastName: 'Банзаракцаева',
+        getFullName: function(){ 
+            return `${this.firstName} ${this.lastName}`;
+        }
+    };
+
+    const userClassName = "user-info";
+    const styleObj = {
+        color:'blue', 
+        fontFamily:'Arial'
+    };
+
+    ReactDOM.render(
+      <h2>1 + 1 = {1 + 1}</h2>,
+      document.getElementById("app")
+    )
+
+    ReactDOM.render(
+        <div className={userClassName}  style={styleObj}>
+                <p>Полное имя: {user.getFullName()}</p>
+                <p>Возраст: {user.age}</p>
+        </div>,
+        document.getElementById("app1")
+    )
+
+
+    
+  </script>
+  <!--поместим описанный объект-->
+  <div id="app"> </div>
+  <div id="app1"> </div>
+</body>
+
+</html>
