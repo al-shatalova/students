@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab3</title>
+</head>
+<body>
+    <div id="main"></div>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <script type="text/babel">
+        const userClassName = "user-info";
+        const styleObj = {
+            color:'green', 
+            fontFamily:'Verdana',
+            border: '1px solid green',
+            padding: '10px'
+        };
+        const user = {
+        id : 1,
+        age: 21,
+        firstName: 'Иван',
+        lastName: 'Волик',
+        getFullName: () => { 
+            return `${user.firstName} ${user.lastName}`;
+            }  
+        };
+        ReactDOM.render(
+            <div>
+                <h2>5 + 2 = {5 + 2}</h2>
+                <div className={userClassName}  style={styleObj}>
+                    <p>Полное имя: { user.getFullName()}</p>
+                    <p>Возраст: {user.age}</p>
+                </div>
+            </div>,
+            document.getElementById("main")
+        )
+    </script>  
+</body>
+</html>
