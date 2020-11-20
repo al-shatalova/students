@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSX</title>
+</head>
+<body>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- styles -->
+    <link rel="stylesheet" href="style.css">
+    <div id="el-1"></div>
+    <div id="t-1"></div>
+    <script type="text/babel">
+        const person = {
+            name: "Ivan",
+            surname: "Zaykin",
+            age: "21"
+        };
+        const styles = {
+            color: "grey"
+        };
+        const name = 'mystyle';
+        ReactDOM.render(
+            <div className={name} style={styles}>{person.name}, {parseInt(person.age)} of age.</div>,
+            document.getElementById("el-1")
+        );
+        ReactDOM.render(
+            <div>{10 + 11}, {person.name}, {person.name + " " + person.surname}</div>,
+            document.getElementById("t-1")
+        );
+    </script>
+</body>
+</html>

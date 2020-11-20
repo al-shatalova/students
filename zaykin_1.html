@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 1</title>
+</head>
+
+<body>
+    <form>
+        <label for="number1">Введите первую цифру:</label> <br>
+        <input type="number" id="number1"> <br>
+        <label for="number2">Введите вторую цифру:</label> <br>
+        <input type="number" id="number2"> <br>
+        Выберите операцию: <br>
+        <label for="sum">+</label>
+        <input type="radio" name="operation" id="sum" value="sum" checked />
+        <label for="diff">-</label>
+        <input type="radio" name="operation" id="diff" value="diff" />
+        <label for="mul">*</label>
+        <input type="radio" name="operation" id="mul" value="mul" />
+        <label for="div">/</label>
+        <input type="radio" name="operation" id="div" value="div" />
+        <br>
+        <input onclick="alertRes()" type="submit" value="Вычислить">
+    </form>
+    <script>
+        function alertRes() {
+            let number1 = Number(document.getElementById("number1").value);
+            let number2 = Number(document.getElementById("number2").value);
+            let res = 0;
+            if (document.getElementById("sum").checked) {
+                res = number1 + number2;
+            } else if (document.getElementById("diff").checked) {
+                res = number1 - number2;
+            } else if (document.getElementById("mul").checked) {
+                res = number1 * number2;
+            } else if (document.getElementById("div").checked) {
+                res = number1 / number2;
+            }
+            alert(res)
+        }
+    </script>
+</body>
+
+</html>

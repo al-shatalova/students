@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 5</title>
+    <script src="classes.js"></script>
+</head>
+<body>
+    <button onclick="sayUser()">Вопрос 1</button>
+    <button onclick="startClock()">Вопрос 2</button>
+
+    <script>
+        function sayUser() {
+            let user = new User('Alex');
+            user.sayHi();
+        }
+
+        function startClock() {
+            let clock = new Clock('h:m:s');
+            clock.start();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2</title>
+</head>
+
+<body>
+    Нажмите на кнопку, чтобы запустить код для выбранного задания: <br>
+    <button onclick="t1()">Задание 1</button>
+    <button onclick="t2()">Задание 2</button>
+    <button onclick="t3()">Задание 3</button>
+    <script>
+        function t1() {
+            tAnsw1 = 6;
+            tAnsw2 = "и";
+            trueAnswers = 0;
+            answ1 = prompt("2 + 2 * 2 = ?")
+            if (Number(answ1.trim()) === tAnsw1) {
+                alert("Верно");
+                trueAnswers += 1;
+            } else { alert("Неверно") }
+            answ2 = prompt("А и Б сидели на трубе, А упало, Б пропало, что осталось на трубе?");
+            if (answ2.trim().toLowerCase() === tAnsw2) {
+                alert("Верно");
+                trueAnswers += 1;
+            } else {
+                alert("Неверно");
+            }
+            alert("Правильные ответы");
+            alert("Загадка 1: " + tAnsw1 + "\nЗагадка 2: " + tAnsw2)
+            alert("Набрано очков: " + trueAnswers);
+        }
+
+        function t2() {
+            for (let n = 0; n < 10; n++) {
+                alert(n + 1);
+            }
+        }
+
+        function t3() {
+            do {
+                alert("Ещё по одной?")
+            } while (prompt("Если не уважаешь, введи 1!") != 1);
+            alert("Некрасиво!")
+        }
+    </script>
+</body>
+
+</html>
