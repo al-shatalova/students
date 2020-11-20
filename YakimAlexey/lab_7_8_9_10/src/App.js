@@ -1,6 +1,9 @@
 import React from 'react';
 import { HeartTwoTone, LikeTwoTone } from '@ant-design/icons';
-import { Space, Button, Tooltip, notification } from 'antd';
+import { Space, Button, Tooltip, notification, Divider } from 'antd';
+import ClockClass from './ClockClass';
+import ClockFunction from './ClockFunction';
+import ClockArrowFunction from './ClockArrowFunction';
 
 class App extends React.Component {
   constructor(props) {
@@ -29,7 +32,15 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          width: '100%',
+          height: '100%',
+          padding: '8px 16px',
+        }}
+      >
         <Space>
           <Tooltip placement="right" title={this.state.heartLikes}>
             <Button
@@ -51,6 +62,11 @@ class App extends React.Component {
               icon={<LikeTwoTone twoToneColor="#eb2f96" />}
             />
           </Tooltip>
+        </Space>
+        <Space direction="vertical" split={<Divider type="horizontal" />}>
+          <ClockClass />
+          <ClockFunction />
+          <ClockArrowFunction />
         </Space>
       </div>
     );
