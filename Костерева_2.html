@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h4>Kostereva, PI17-1</h4>
+    <p>Загадка1: <br>Сто одежек и все без застежек </p>
+    <p>
+        Ответ: <input type="text" id='a1'>
+    </p>
+    <button onclick="res()">Проверить</button>
+
+    <p>Загадка2: <br>У какого молодца часто капает с конца? </p>
+    <p>
+        Ответ: <input type="text" id='a2'>
+    </p>
+    <button onclick="res2()">Проверить</button>
+    
+    <hr>
+    <p>Счетчик: </p>
+    <button onclick="counter()">Запустить</button>
+    
+
+    <hr>
+    <button onclick="z3()">Застолье</button>
+
+    <script>
+        let a2 = "КРАН";
+        let a1 = "КАПУСТА";
+        let answers = 0;
+
+        function res() {
+            if (document.getElementById('a1').value.toUpperCase() == a1) {
+                alert("Верно");
+                answers += 1;
+            }
+            else {
+                alert("Неверно");
+            }
+        }
+
+        function res2() {
+            if (document.getElementById('a2').value.toUpperCase() == a2) {
+                alert("Верно");
+                answers += 1;
+            }
+            else {
+                alert("Неверно");
+            }
+            alert("Кол-во верных ответов: " + answers)
+            if (answers<2)
+            {
+                alert("ОТВЕТЫ: " + a1 + ", " + a2);
+            }
+            answers = 0;
+            
+        }
+
+        function z3() {
+            do {
+                alert("ну, еще по одной");
+            } while (prompt('введи 1 чтобы выйти') != "1");
+            alert ('бывай');
+
+        }
+
+        function counter() {
+            for (let i = 1; i <= 10; i++) { 
+            alert(i);
+            }
+        }
+       
+
+        
+    </script>
+</body>
+</html>
+

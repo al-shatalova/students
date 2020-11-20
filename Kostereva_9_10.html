@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Игрок</h2>
+    <div id="player-hand"></div>
+    <h4>Сумма карт</h4>
+    <div id="player-hand-value"></div>
+    <h2>Дилер</h2>
+    <div id="dealer-hand"></div>
+    <h4>Сумма карт</h4>
+    <div id="dealer-hand-value"></div>
+    <div id="game-status"></div>
+    <button onclick="hit()">Раздать</button>
+    <button onclick="stand()">Cтоп</button> 
+    <button onclick="newgame()">Новая игра</button> 
+    
+    <script>
+        var deck = [2,3,4,5,6,7,8,9,10,10,10,10,11,
+                    2,3,4,5,6,7,8,9,10,10,10,10,11,
+                    2,3,4,5,6,7,8,9,10,10,10,10,11,
+                    2,3,4,5,6,7,8,9,10,10,10,10,11];
+        var playerHand;
+        var dealerHand;
+
+        function drawRandomCard(deck) {
+            var randomIndex = Math.floor(deck.length * Math.random());
+            return deck[randomIndex];
+        }
+
+
+        function startGame(){
+            playerHand = [drawRandomCard(deck),drawRandomCard(deck)];
+            dealerHand = [drawRandomCard(deck),drawRandomCard(deck)];
+        }
+
+        function getHandValue(hand){
+            let sum = 0;
+            //for (let i = 0; i<hand.length; i++) {
+            for (let i in hand) {
+                sum += hand[i];
+            } 
+            if (sum == 21) {
+                document.getElementById("game-status").innerHTML="Black Jack";;
+            }
+            return sum;
+            
+            
+        }
+        
+        startGame();
+        console.log("player Hand: " + playerHand);
+        console.log("player Hand value: " + getHandValue(playerHand));
+        console.log("dealer Hand: " + dealerHand);
+        console.log("dealer Hand value: " + getHandValue(dealerHand));
+        
+        function hit(){
+            playerHand.push(drawRandomCard(deck));
+            document.getElementById("player-hand").innerHTML=playerHand;
+            document.getElementById("player-hand-value").innerHTML=getHandValue(playerHand);
+            console.log("new player hand " + playerHand);
+            if (getHandValue(playerHand) > 21) {
+                document.getElementById("player-hand").innerHTML=playerHand;
+                document.getElementById("player-hand-value").innerHTML=getHandValue(playerHand);
+                document.getElementById("game-status").innerHTML="Перебор";
+                //alert("Перебор");
+                //location.reload();
+            }
+            // dealerGame();
+        }
+
+        function stand(){
+            // alert ('Cумма карт игрока ' + getHandValue(playerHand) + '. Cумма карт дилера ' + getHandValue(dealerHand));
+            dealerGame();
+        }
+        function newgame(){
+            location.reload();
+        }
+
+        function dealerGame() {
+            while (getHandValue(dealerHand) < 17) {
+                    dealerHand.push(drawRandomCard(deck));
+                document.getElementById("dealer-hand-value").innerHTML=getHandValue(dealerHand);
+                }
+                document.getElementById("dealer-hand").innerHTML=dealerHand;
+                document.getElementById("dealer-hand-value").innerHTML=getHandValue(dealerHand);
+
+                if (getHandValue(dealerHand) > 21){
+                    document.getElementById("game-status").innerHTML="Перебор dealer";
+                    return;
+                } 
+                if (getHandValue(dealerHand) >= getHandValue(playerHand)) {
+                    document.getElementById("game-status").innerHTML="Вы проиграли дилеру";
+                }
+        }
+
+        document.getElementById("player-hand").innerHTML=playerHand;
+        document.getElementById("player-hand-value").innerHTML=getHandValue(playerHand);
+        document.getElementById("dealer-hand").innerHTML=dealerHand;
+        document.getElementById("dealer-hand-value").innerHTML=getHandValue(dealerHand);
+
+       
+
+    </script>
+
+</body>
+</html>
