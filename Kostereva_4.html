@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Hello React</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+</head>
+
+<body>
+<script type="text/babel"> 
+//2
+// определить объект функционально
+function Hello1() {
+  return <h1>Привет, мир!</h1>;
+}
+
+ReactDOM.render(
+  <Hello1 />,
+  document.getElementById('app1')
+);
+
+// определить объект используя классы ES6
+class Hello2 extends React.Component {
+  render() {
+    return <h1>Привет, мир!</h1>;
+  }
+}
+
+ReactDOM.render(
+  <Hello2 />,
+  document.getElementById('app2')
+);
+
+// определить объект с помощью стрелочной функции
+var Hello3 =() => {
+    return (<h1>Привет, мир!</h1>);
+}
+ReactDOM.render(
+  <Hello3 />,
+  document.getElementById('app3')
+);
+
+function tick() {
+  const element = (
+    <div>
+      <h1>Сейчас {new Date().toLocaleTimeString()}</h1>
+    </div>
+  );
+  // highlight-next-line
+  ReactDOM.render(element, document.getElementById('root'));
+}
+setInterval(tick, 1000);
+</script>
+<div id="app1"> </div>
+<div id="app2"> </div>
+<div id="app3"> </div>
+<div id="root"></div>
+</body>
+</html> 
