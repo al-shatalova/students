@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<div class="girba"></div>
+<script type="text/babel">
+    const user = {
+        name: `Vladimir`,
+        surname: `Girba`,
+        age: 20
+    }
+
+    ReactDOM.render(
+        <h2>90 + 2 = {90 + 2}</h2>,
+        document.getElementById("root")
+    );
+
+    ReactDOM.render(
+        <div style={{color: `blue`}}>
+            <p>Фамилия: {user.name}</p>
+            <p>Имя: {user.surname}</p>
+            <p>Возраст: {user.age}</p>
+        </div>,
+        document.querySelector(`.girba`)
+    );
+
+</script>
+</body>
+</html>

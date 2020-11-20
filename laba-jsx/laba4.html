@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+<div id="container"></div>
+<div id="container1"></div>
+<div id="container2"></div>
+<div id="timer-example"></div>
+<div id="button"></div>
+<script type="text/babel">
+    function Hello() {
+        return <h1>Привет, я простая функция</h1>;
+    };
+
+    const Hello1 = () => {
+        return <h2>Привет, я стрелочная функция</h2>;
+    };
+
+    class Hello2 extends React.Component {
+        render() {
+            return <h3>Привет, я класс с методом рендер</h3>;
+        }
+    };
+
+    ReactDOM.render(
+        <Hello />,
+        document.getElementById("container")
+    );
+
+    ReactDOM.render(
+        <Hello1 />,
+        document.getElementById("container1")
+    );
+
+    ReactDOM.render(
+        <Hello2 />,
+        document.getElementById("container2")
+    );
+
+    class Timer extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = { seconds: 0 };
+        }
+
+        tick() {
+            this.setState(state => ({
+                seconds: state.seconds + 1
+            }));
+        }
+
+        componentDidMount() {
+            this.interval = setInterval(() => this.tick(), 1000);
+        }
+
+        componentWillUnmount() {
+            clearInterval(this.interval);
+        }
+
+        render() {
+            return (
+                <div>
+                    Seconds: {this.state.seconds}
+                </div>
+            );
+        }
+    }
+
+    const startTimer = () => {
+        ReactDOM.render(
+            <Timer/>,
+            document.getElementById('timer-example')
+        );
+    };
+
+    ReactDOM.render(
+        <button onClick={startTimer}>
+            Включить секундомер
+        </button>,
+        document.getElementById('button')
+    );
+</script>
+</body>
+</html>
