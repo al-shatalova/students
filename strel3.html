@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<head>
+    <meta charset ="UTF-8">
+</head>
+<input type="text" id="search">
+<ul id="results">
+</ul>
+<script>
+    let list = ['lepanova@gmail.com','dakota@ya.ru','ivanov@mail.ru','qwerty@ya.ru','abvgd@gmail.com','lepanova2899@ya.ru'];
+
+    const result = document.getElementById('results')
+    renderList(list,result)
+    function filter(val,list){
+    return list.filter(i=>(~i.indexOf(val)))
+    };
+    function renderList(_list=[],el=document.body){
+        el.innerHTML='';
+        _list.forEach(i=>{
+        let new_el = document.createElement('li')
+        new_el.innerHTML=i
+        el.appendChild(new_el)
+    })
+    }
+    document.getElementById('search').addEventListener('input',e=>renderList(filter(e.target.value,list),result))
+</script>
+</html>
