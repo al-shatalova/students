@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Borodakiy Laba 3</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+</head>
+<body>
+<div id="app"> </div>
+<script type="text/babel">
+    const userClassName = "user-info";
+    const styleObj = {
+        color: '#310062',
+        fontFamily: 'Cascadia Code PL',
+        fontSize: 20,
+        'text-align': 'center'
+    };
+    const user = {
+        id : 12,
+        age: 21,
+        firstName: 'Borodakiy',
+        lastName: 'Artem',
+        getFullName: function(){
+            return `${this.firstName} ${this.lastName}`;
+        }
+    };
+
+    ReactDOM.render(
+        <div className={userClassName}  style={styleObj}>
+            <p>Полное имя: {user.getFullName()}</p>
+            <p>Возраст: {user.age}</p>
+        </div>,
+        document.getElementById("app")
+
+    )
+</script>
+</body>
+</html>
