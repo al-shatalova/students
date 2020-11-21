@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Hello React</title>
+</head>
+<body>
+    <div style="text-align: center;" id="todos-example"></div>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script> 
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+    <script type="text/babel" src="index.jsx"></script>
+    <script>
+        const styleObj = {
+        color:'grey',
+        fontFamily:'Verdana',
+        fontSize: 14
+        };
+    </script>
+
+<style> 
+    button.a {
+    display: inline-block;
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    user-select: none;
+    padding: .2em 1em;
+    outline: none;
+    border: 0.2px solid;
+    border-radius: 0.2px;
+    transition: 0.2s;
+    } 
+    button.a:hover { background: rgba(255,255,255,.2); }
+    button.a:active { background: white; }
+
+   UL {list-style: none;}
+
+   .rectangle {
+    counter-reset: li; 
+    list-style: none; 
+    font: 14px "Trebuchet MS", "Lucida Sans";
+    padding: 0;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+    }
+    .rectangle li {
+    position: relative;
+    display: block;
+    padding: .4em .4em .4em .8em;
+    margin: .5em 0 .5em 2.5em;
+    background: #D3D4DA;
+    color: #444;
+    text-decoration: none;
+    transition: all .3s ease-out;
+    }
+    .rectangle li:hover {background: #DCDDE1;}       
+    .rectangle li:before {
+    content: counter(li);
+    counter-increment: li;
+    position: absolute;
+    left: -2.5em;
+    top: 50%;
+    margin-top: -1em;
+    background: #9097A2;
+    height: 2em;
+    width: 2em;
+    line-height: 2em;
+    text-align: center;
+    font-weight: bold;
+    }
+    .rectangle li:after {
+    position: absolute;
+    content: "";
+    border: .5em solid transparent;
+    left: -1em;
+    top: 50%;
+    margin-top: -.5em;
+    transition: all .3s ease-out;
+    }
+    .rectangle li:hover:after {
+    left: -.5em;
+    border-left-color: #9097A2;
+    }
+  </style>
+</style>
+</body>
+
+</html>
