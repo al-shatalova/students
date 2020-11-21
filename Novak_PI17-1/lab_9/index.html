@@ -1,0 +1,65 @@
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>task 9</title>
+  <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+
+<body>
+<div id="app">
+
+</div>
+
+
+<script type="text/babel">
+  const user = {
+    lastName: 'Новак',
+    firstName: 'Ян',
+    age: 20
+  }
+  const styleObj = {
+    border: '10px',
+    backgroundColor: '#cdcdcd',
+    borderRadius: 10,
+    padding: 10,
+    shadowColor: '#000000',
+    shadowOffset: {
+      width: 0,
+      height: 3
+    },
+    shadowRadius: 5,
+    maxWidth: '20%',
+    shadowOpacity: 1.0,
+    textAlign: 'center',
+    marginLeft: 'auto',
+    marginRight: 'auto'
+  }
+
+  class UserCard extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = props;
+    }
+
+    render() {
+      return (
+              <div style={styleObj}>
+                <p> Фамилия: {this.state.user.lastName} </p>
+                <p> Имя: {this.state.user.firstName} </p>
+                <p> Возраст: {this.state.user.age} </p>
+              </div>
+      );
+    }
+  }
+
+  ReactDOM.render(
+          <UserCard user={user}/>,
+          document.getElementById("app")
+  )
+</script>
+
+</body>
+
+</html>
