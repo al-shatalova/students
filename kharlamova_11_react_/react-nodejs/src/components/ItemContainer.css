@@ -1,0 +1,68 @@
+.share-button {
+    width: 150px;
+    height: 30px;
+    background: #dfe6e9;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 50px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: .3s linear;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.share-button:active {
+    border-radius: 40px;
+    background: #dfe6e9;
+}
+
+.row {
+    background: #ececec;
+    border-color: #c8cfd2;
+    text-align: center;
+    height: 30px;
+    vertical-align: center !important;
+    font-size: 20px;
+    margin: auto;
+}
+
+.row:nth-child(2n) {
+    background: #f8f8f8;
+}
+
+.row:hover {
+    background: #c8cfd2;
+}
+
+.inp {
+    width: 200px;
+    height: 30px;
+    border-radius: 20px;
+    border-color: #c7efff;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.inp:active {
+    border-radius: 20px;
+    border-color: #2cc2ff;
+    transition-duration: 300ms;
+}
+
+.inp:hover {
+    border-radius: 20px;
+    border-color: #2cc2ff;
+    transition-duration: 300ms;
+}
+
+.txt {
+    font-size: 26px;
+    text-align: center;
+}
+
+

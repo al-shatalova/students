@@ -1,0 +1,16 @@
+button {
+    width: 100px;
+    height: 30px;
+    border-radius: 4px;
+    margin: 50px;
+}
+
+.on {
+    color: #666;
+    background-color: #7cff61;
+}
+
+.off {
+    color: #000000;
+    background-color: #ff8e8e;
+}
