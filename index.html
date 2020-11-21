@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Лаба 5</title>
+    <link href="/tailwind.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div>
+      <div id="todos-example"></div>
+    </div>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.production.min.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+    <script type="text/babel">
+      class TodoApp extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = { items: [], text: "" };
+          this.handleChange = this.handleChange.bind(this);
+          this.handleSubmit = this.handleSubmit.bind(this);
+        }
+
+        render() {
+          return (
+            <div class="container px-5 py-24 mx-auto grid justify-items-center">
+              <div class="flex flex-col  w-full mb-12">
+                <h3 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
+                  TODO
+                </h3>
+                <TodoList
+                  items={this.state.items}
+                  class="leading-7 text-sm text-gray-600"
+                />
+                <input
+                  id="new-todo"
+                  class=" w-1/2 h-auto placeholder-gray-500 placeholder-opacity-25 ..."
+                  placeholder="Todo task"
+                  onChange={this.handleChange}
+                  value={this.state.text}
+                />
+                <div class="-space-y-3 font-extralight">
+                  <form onSubmit={this.handleSubmit}>
+                    <label
+                      htmlFor="new-todo"
+                      class="leading-7 text-sm text-gray-600"
+                    >
+                      What needs to be done?
+                    </label>
+
+                    <div class="-bottom-0">
+                      <button class="animate-pulse text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg shadow-2xl">
+                        Add #{this.state.items.length + 1}
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          );
+        }
+
+        handleChange(e) {
+          this.setState({ text: e.target.value });
+        }
+
+        handleSubmit(e) {
+          e.preventDefault();
+          if (this.state.text.length === 0) {
+            return;
+          }
+          const newItem = {
+            text: this.state.text,
+            id: Date.now(),
+          };
+          this.setState((state) => ({
+            items: state.items.concat(newItem),
+            text: "",
+          }));
+        }
+      }
+
+      class TodoList extends React.Component {
+        render() {
+          return (
+            <ul>
+              {this.props.items.map((item) => (
+                <li key={item.id}>{item.text}</li>
+              ))}
+            </ul>
+          );
+        }
+      }
+
+      ReactDOM.render(<TodoApp />, document.getElementById("todos-example"));
+    </script>
+  </body>
+</html>
