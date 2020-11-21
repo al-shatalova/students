@@ -1,0 +1,55 @@
+h3 {
+    font-family: "Arial";
+    font-size: 30px;
+    margin-left: 105px;
+}
+
+form {
+}
+
+label {
+    display: block;
+    font-family: "Arial";
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+input {
+    font-family: "Arial";
+    margin-right: 8px;
+    border: 2px solid blue;
+    height: 25px;
+    width: 250px;
+    padding-left: 10px;
+}
+
+button {
+    display: inline-block;
+    font-family: "Arial";
+    border: 2px solid blue;
+    border-radius: 10px;
+    height: 32px;
+    background: blue;
+    color: white;
+}
+
+li {
+    font-family: "Arial";
+    font-size: 20px;
+    list-style-type: none;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+ul {
+    padding-left: 15px;
+}
+
+li::before {
+    color: blue;
+    content: "•";
+    position: absolute;
+    width: 10px;
+    top: 2px;
+    left: -10px;
+}
