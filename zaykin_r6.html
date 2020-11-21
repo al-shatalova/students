@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <div id='app'></div>
+    <div id='app2'></div>
+
+    <script type="text/babel">
+        class Hello extends React.Component {
+            render() {
+            return  <div>
+                        <p>Имя: {this.props.name}</p>
+                        <p>Возраст: {this.props.age}</p>
+                    </div>;
+            }
+        }
+
+        ReactDOM.render(
+            <Hello name="Ivan" age="21" />,
+            document.getElementById("app")
+        );
+
+        class ClickButton extends React.Component {
+
+            constructor(props) {
+                super(props);
+                this.state = {class: "off", label: "Нажми"};
+                this.press = this.press.bind(this);
+            }
+
+            press(){
+                let className = (this.state.class==="off")?"on":"off";
+                this.setState({class: className});
+            }
+
+            render() {
+                return <button onClick={this.press} className={this.state.class}>{this.state.label}</button>;
+            }
+
+            }
+
+            ReactDOM.render(
+                <ClickButton />,
+                document.getElementById("app2")
+            )
+    </script>
+
+</body>
+</html>
