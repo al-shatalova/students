@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Kuranov K Laba 4</title>
+        <script
+            crossorigin
+            src="https://unpkg.com/react@16/umd/react.production.min.js"
+        ></script>
+        <script
+            crossorigin
+            src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"
+        ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="timer"></div>
+        <script type="text/babel">
+            class Timer extends React.Component {
+                constructor(props) {
+                    super(props)
+                }
+
+                tick() {
+                    this.setState(state => ({
+                        time: new Date().toLocaleTimeString(),
+                    }))
+                }
+
+                componentWillMount() {
+                    this.setState(state => ({
+                        time: new Date().toLocaleTimeString(),
+                    }))
+                }
+
+                componentDidMount() {
+                    this.interval = setInterval(() => this.tick(), 1000)
+                }
+
+                componentWillUnmount() {
+                    clearInterval(this.interval)
+                }
+
+                shouldComponentUpdate() {
+                    console.log('shouldComponentUpdate()')
+                    return true
+                }
+
+                componentWillUpdate() {
+                    console.log('componentWillUpdate()')
+                }
+
+                componentDidUpdate() {
+                    console.log('componentDidUpdate()')
+                }
+
+                render() {
+                    return <div>Текущее время: {this.state.time}</div>
+                }
+            }
+
+            ReactDOM.render(<Timer />, document.getElementById('timer'))
+        </script>
+    </body>
+</html>
