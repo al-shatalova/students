@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Hello React</title>
+    <script>
+        const styleObj = {
+        color:'grey',
+        fontFamily:'Verdana',
+        fontSize: 22
+        };
+
+        const styleObj2 = {
+        color:'grey',
+        fontFamily:'Verdana',
+        fontSize: 16
+        };
+    </script>
+</head>
+<body>
+    <div style="text-align: center;" id="app"></div>
+    <div style="text-align: center;" id="app2"></div>  
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+    <script type="text/babel">
+        class Clock extends React.Component {
+            constructor(props) {
+              super(props);
+              this.state = {date: new Date(), name: "world"};
+            }
+    
+            componentDidMount() {
+              this.timerId = setInterval(
+                ()=> this.tick(),
+                1000 
+              );
+            }
+    
+            componentWillUnmount() {
+              clearInterval(this.timerId);
+            }
+
+            tick() {
+              this.setState({
+                date: new Date()
+              });
+              console.log("componentDidMount()")
+            }
+    
+            render() {
+              return (
+                <div>
+                  <h1 style={styleObj}>Bonjour, {this.state.name}</h1>
+                  <h1 style={styleObj2}>it's {this.state.date.toLocaleTimeString()}</h1>
+                </div>
+              );
+            }
+          }
+          ReactDOM.render(
+              <Clock />,
+              document.getElementById("app")
+          )
+    </script>
+
+    <script type="text/babel">
+        const propsValues = {
+        title: "Список группы",
+        items: [
+            "Студент 1", 
+            "Студент 2", 
+            "Студент 3", 
+            "Студент 4", 
+            "Студент 5", 
+            "Студент 6"
+            ]
+        };
+              
+    class Item extends React.Component {
+        render() {
+            return <li>{this.props.name}</li>;
+        }
+    }
+         
+    class SearchPlugin extends React.Component{
+                 
+        constructor(props){
+            super(props);
+            this.onTextChanged = this.onTextChanged.bind(this);
+        }
+                 
+        onTextChanged(e){
+            var text = e.target.value.trim();   // удаляем пробелы
+            this.props.filter(text); // передаем введенный текст в родительский компонент
+        }
+                 
+        render() {
+            return <input placeholder="Поиск" onChange={this.onTextChanged} />;
+        }
+    }
+                      
+    class ItemsList extends React.Component {
+        constructor(props){
+        super(props);
+        this.state = { items: this.props.data.items};
+                          
+        this.filterList = this.filterList.bind(this);
+    }
+             
+        filterList(text){
+            var filteredList = this.props.data.items.filter(function(item){
+                return item.toLowerCase().search(text.toLowerCase())!== -1;
+            }); 
+            this.setState({items: filteredList});
+        }
+                  
+        render() {
+            return(
+                <div>         
+                    <h2>{this.props.data.title}</h2>
+                    <SearchPlugin filter={this.filterList} />
+                    <ul>
+                        {
+                            this.state.items.map(function(item){
+                                return <Item key={item} name={item} />
+                            })
+                        }
+                    </ul>
+                </div>);
+        }
+    }
+              
+    ReactDOM.render(
+        <ItemsList data={propsValues} />,
+        document.getElementById("app2")
+    )
+</script>
+
+<style> 
+   
+    li {
+    width: 100px;
+    position: relative;
+    left: 43%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    padding: .4em .4em .4em .8em;
+    margin: .5em 0 .5em 2.5em;
+    background: #D3D4DA;
+    color: #444;
+    text-decoration: none;
+    
+    }
+    li:hover {background: #DCDDE1;}       
+
+    li:after {
+    position: absolute;
+    line-height:5px;
+    content: "";
+    border: .5em solid transparent;
+    left: -1em;
+    top: 50%;
+    margin-top: -.5em;
+    transition: all .3s ease-out;
+    }
+    li:hover:after {
+    left: -.5em;
+    border-left-color: #9097A2;
+    }
+    </style>
+
+</body>
+</html>
