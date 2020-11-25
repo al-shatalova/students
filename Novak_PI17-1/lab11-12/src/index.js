@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
 import Typography from '@material-ui/core/Typography';
 import TodoForm from './TodoForm';
@@ -8,6 +8,8 @@ import './styles.css';
 
 const App = () => {
   const { todos, addTodo, deleteTodo } = useTodoState([]);
+
+  const [ search, setSearch ] = useState()
 
   return (
     <div className="App">
@@ -23,9 +25,10 @@ const App = () => {
             addTodo(trimmedText);
           }
         }}
+        setSearch={setSearch}
       />
 
-      <TodoList todos={todos} deleteTodo={deleteTodo} />
+      <TodoList todos={todos} deleteTodo={deleteTodo} search={search} />
     </div>
   );
 };

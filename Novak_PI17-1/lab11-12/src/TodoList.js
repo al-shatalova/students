@@ -7,9 +7,9 @@ import Checkbox from '@material-ui/core/Checkbox';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 
-const TodoList = ({ todos, deleteTodo }) => (
+const TodoList = ({ todos, deleteTodo, search }) => (
   <List className="todoList">
-    {todos.map((todo, index) => (
+    {todos.filter(todo => !search || todo.indexOf(search) > -1).map((todo, index) => (
       <ListItem key={index.toString()} dense button>
         <Checkbox tabIndex={-1} disableRipple />
         <ListItemText primary={todo} />
