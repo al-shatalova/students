@@ -1,0 +1,27 @@
+html, body {
+    height: 100%;
+    color: #2D2D2D; 
+    background: #F5F5F5;
+  }
+  
+  #main {
+    margin: 0 auto;
+    text-align: left;
+  }
+  
+  ul {
+    list-style: none;
+  }
+  
+  ul>li:hover {
+    background-color: #b8dcf1;
+  }
+  
+  .undone {
+    color:#2D2D2D;
+  }
+  
+  .icon {
+    margin: 6px 10px 6px 0;
+  }
+  

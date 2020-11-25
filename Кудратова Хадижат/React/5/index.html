@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Task5</title>
+    <style type="text/css">
+        body{
+            background-size: 100% auto; 
+
+        }
+        button {
+            display: inline-block;
+            color: white;
+            font-weight: 700;
+            text-decoration: none;
+            user-select: none;
+            padding: .5em 2em;
+            outline: none;
+            border: 1px solid;
+            border-radius: 1px;
+            transition: 0.2s;
+            } 
+            button:hover { background: rgba(30, 135, 233, 0.2); }
+            button:active { background: rgb(96, 45, 216); }
+
+        </style>
+</head>
+<body>
+    <div id='todos'></div>
+
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+    <script type="text/babel" src="index.jsx"></script>
+</body>
+</html>
