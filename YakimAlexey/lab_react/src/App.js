@@ -4,6 +4,7 @@ import { Space, Button, Tooltip, notification, Divider } from 'antd';
 import ClockClass from './ClockClass';
 import ClockFunction from './ClockFunction';
 import ClockArrowFunction from './ClockArrowFunction';
+import Search from 'antd/lib/transfer/search';
 
 class App extends React.Component {
   constructor(props) {

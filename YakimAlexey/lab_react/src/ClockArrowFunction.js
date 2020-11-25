@@ -1,4 +1,4 @@
-import { Space, Spin, Typography, Tooltip } from 'antd';
+import { Space, Spin, Typography, Tooltip, notification } from 'antd';
 import React, { useState, useEffect } from 'react';
 
 var { Title } = Typography;
@@ -16,6 +16,18 @@ const ClockArrowFunction = ({}) => {
       clearInterval(timerID);
     };
   }, []);
+
+  const [counter, setCounter] = useState(0);
+
+  useEffect(() => {
+    setCounter(counter + 1);
+    if (counter % 10 === 0) {
+      notification['success']({
+        message: 'Функционально-стрелочные секунды',
+        description: `Прошло ${counter} функционально-стрелочных секунд`,
+      });
+    }
+  }, [date]);
 
   return (
     <Space>
