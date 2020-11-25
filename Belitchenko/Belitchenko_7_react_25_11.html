@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Belitchenko Task 7 25.11</title>
+        <script
+            crossorigin
+            src="https://unpkg.com/react@16/umd/react.production.min.js"
+        ></script>
+        <script
+            crossorigin
+            src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"
+        ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+    </head>
+    <body>
+        <h2>Belitchenko Task 7 25.11</h2>
+		<div id='click'></div>
+        <div id="timer"></div>
+        <script type="text/babel">
+			    
+			class ClickButton extends React.Component {
+
+                constructor(props) {
+                    super(props);
+                    this.state = {class: "off", label: "Нажми"};
+                    this.press = this.press.bind(this);
+                    console.log("constructor");
+                }
+
+				compomentWillMount(){
+					console.log('compomentWillMount');
+				}
+				componentWillReceiveProps(nextProps) {
+					console.log('componentWillReceiveProps');
+				}
+
+				componentWillUnmount(){
+					console.log('componentWillUnmount');
+				}
+
+				shouldComponentUpdate(nextProps, nextState) {
+					console.log('shouldComponentUpdate');
+					return true;
+				}
+
+				componentWillUpdate(nextProps, nextState){
+					console.log('componentWillUpdate');
+				}
+
+				componentDidUpdate(prevProps, prevState){
+					console.log('componentDidUpdate');
+				}
+
+				componentDidMount(){
+					console.log('componentDidMount');
+				}
+
+
+
+				press(){
+					let className = (this.state.class==="off")?"on":"off";
+					this.setState({class: className});
+				}
+
+				render() {
+					return <button onClick={this.press} className={this.state.class}>{this.state.label}</button>;
+				}
+
+			}
+
+			ReactDOM.render(
+				<ClickButton/>,
+				document.getElementById('click')
+			);
+		
+            class Timer extends React.Component {
+                constructor(props) {
+                    super(props)
+                }
+
+                tick() {
+                    this.setState(state => ({
+                        time: new Date().toLocaleTimeString(),
+                    }))
+                }
+
+                componentWillMount() { //получение времени
+                    this.setState(state => ({
+                        time: new Date().toLocaleTimeString(),
+                    }))
+                }
+
+                componentDidMount() { //обновление времени
+                    this.interval = setInterval(() => this.tick(), 1000)
+                }
+
+                componentWillUnmount() { //освобождение ресурсов после обновления
+                    clearInterval(this.interval)
+                }
+
+                shouldComponentUpdate() { //вызывается каждый раз при обновлении props
+                    console.log('shouldComponentUpdate()')
+                    return true
+                }
+
+                componentWillUpdate() { //вызывается перед обновлением компонента
+                    console.log('componentWillUpdate()')
+                }
+
+                componentDidUpdate() { //вызывается после обновления компонента
+                    console.log('componentDidUpdate()')
+                }
+
+                render() {
+                    return <div>Текущее время: {this.state.time}</div>
+                }
+            }
+
+            ReactDOM.render(<Timer />, document.getElementById('timer'))
+        </script>
+    </body>
+</html>
