@@ -1,0 +1,26 @@
+h3 {
+  color:#2C1B9E;
+  word-spacing:30px;
+  font-family: 'Courier New', Courier, monospace;
+  
+
+}
+form{
+  
+  border-color: #988BEF;
+}
+label{
+  
+  color: #2C1B9E;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+div{
+  padding-bottom:0,5%;
+}
+input{
+  background-color: #FFF8CA;
+}
+button{
+  background-color:#988BEF;
+  width: 12.5%;
+}
