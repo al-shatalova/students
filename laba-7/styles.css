@@ -17,7 +17,7 @@ label {
 input {
     font-family: "Arial";
     margin-right: 8px;
-    border: 2px solid blue;
+    border: 1px solid blue;
     height: 25px;
     width: 250px;
     padding-left: 10px;
