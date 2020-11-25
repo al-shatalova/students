@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Hello React</title>
+</head>
+<body>
+  <div id="click"></div>  
+  <div id="app"></div>
+      
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+    <script type="text/babel">
+
+class ClickButton extends React.Component {
+
+           constructor(props) {
+               super(props);
+               this.state = {class: "off", label: "Нажми"};
+               this.press = this.press.bind(this);
+               console.log("constructor");
+           }
+
+            compomentWillMount(){
+                console.log('compomentWillMount');
+            }
+            componentWillReceiveProps(nextProps) {
+               console.log('componentWillReceiveProps');
+           }
+
+            componentWillUnmount(){
+                console.log('componentWillUnmount');
+            }
+
+            shouldComponentUpdate(nextProps, nextState) {
+                console.log('shouldComponentUpdate');
+                return true;
+            }
+
+            componentWillUpdate(nextProps, nextState){
+                console.log('componentWillUpdate');
+            }
+
+            componentDidUpdate(prevProps, prevState){
+                console.log('componentDidUpdate');
+            }
+
+            componentDidMount(){
+                console.log('componentDidMount');
+            }
+
+
+
+            press(){
+                let className = (this.state.class==="off")?"on":"off";
+                this.setState({class: className});
+            }
+
+            render() {
+                return <button onClick={this.press} className={this.state.class}>{this.state.label}</button>;
+            }
+
+        }
+
+        ReactDOM.render(
+            <ClickButton/>,
+            document.getElementById('click')
+        );
+
+
+        class Clock extends React.Component {
+            constructor(props) {
+              super(props);
+              this.state = {date: new Date()};
+            }
+    
+            componentDidMount() {
+              this.timerId = setInterval(
+                ()=> this.tick(),
+                1000
+              );
+            }
+    
+            componentWillUnmount() {
+              clearInterval(this.timerId);
+            
+            }
+    
+            tick() {
+              this.setState({
+                date: new Date()
+              });
+            }
+    
+            render() {
+              return (
+                <div>
+                  <h1>Время: {this.state.date.toLocaleTimeString()}</h1>
+                </div>
+              );
+            }
+          }
+          ReactDOM.render(
+              <Clock />,
+              document.getElementById("app")
+          )
+    </script>
+</body>
+</html>
