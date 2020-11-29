@@ -1,0 +1,68 @@
+ <!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Task4</title>
+	<script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+</head>
+
+<body bgcolor=pink>
+	<div id="task4_1"> </div>
+
+	<div id="task4_2"> </div>
+
+	<div id="task4_3"> </div>
+
+	<script type="text/babel">
+
+		function Hello() {
+			return <h2><center>Добрый день</center></h2>;}
+		var Hello1 =() => {
+			return (<h2><center>Добрый день</center></h2>);}
+		class Hello2 extends React.Component {render() {
+			return <h2><center>Добрый день</center></h2>}}
+
+
+
+		ReactDOM.render(
+			<Hello />,
+			document.getElementById("task4_2")
+		)
+
+		class Timer extends React.Component { 
+            constructor(props) { 
+                super(props); 
+            this.state = { seconds: 0 }; 
+            } 
+            tick() { 
+                this.setState(state => ({ 
+                seconds: state.seconds + 1 
+                })); 
+            } 
+            componentDidMount() { 
+                this.interval = setInterval(() => this.tick(), 1000); 
+            } 
+            componentWillUnmount() { 
+                clearInterval(this.interval); 
+            } 
+
+            render() { 
+                return ( 
+                    <div><center>Секундочки: {this.state.seconds}</center></div> 
+                ); 
+            } 
+		} 
+		
+        ReactDOM.render( 
+			<Timer />,
+			document.getElementById('task4_3') 
+        )
+	</script>
+</body>
+
+</html>
+
+

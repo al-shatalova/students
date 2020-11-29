@@ -1,0 +1,41 @@
+ <!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Task3</title>
+	<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+</head>
+
+<body>
+	<div id="react3"> </div>
+
+	<script type="text/babel">
+
+	const userClassName = "user-info";
+	const styleObj = { color:'black', fontFamily:'Tahoma'};
+	
+	const user = {
+		id : 1,
+		age: 21,
+		firstName: 'Сергиенко',
+		lastName: 'Ольга',
+		group: "ПИ17-2",
+		getFullName: function(){
+		return `${this.firstName} ${this.lastName}`;}
+	};
+
+	ReactDOM.render(
+	<div className={userClassName} style={styleObj}>
+	<h3>ФИО: {user.getFullName()}</h3>
+	<h3>Группа: {user.group}</h3>
+	<h3>Возраст: {user.age}</h3>
+	</div>,
+	document.getElementById("react3")
+	)	
+	</script>
+</body>
+</html>
+
+

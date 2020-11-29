@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script> 
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script> 
+	<title>React Lab6</title>
+	<style>
+		button{
+            width: 100px;
+            height:30px;
+            border-radius: 4px;
+            margin:50px;
+        }
+        .on{
+            color:#666;
+            background-color: #ccc;
+        }
+        .off{
+            color:#888;
+            background-color: white;
+        }
+
+	</style>
+
+	<script type="text/babel">
+		function Hello(props) { 
+			return <div> 
+            <p>Имя: {props.name}</p> 
+            <p>Возраст: {props.age}</p> 
+	    </div>; } 
+
+ 		ReactDOM.render( 
+              <Hello name="Anna" age="20" />, 
+              document.getElementById("app1") 
+          ) 
+
+		
+		class ClickButton extends React.Component {
+             
+           constructor(props) {
+               super(props);
+               this.state = {class: "off", label: "Нажми"};
+                 
+               this.press = this.press.bind(this);
+           }
+           press(){
+               let className = (this.state.class==="off")?"on":"off";
+               this.setState({class: className});
+           }
+           render() {
+               return <button onClick={this.press} className={this.state.class}>{this.state.label}</button>;
+           }
+       }
+         
+       ReactDOM.render(
+           <ClickButton />,
+           document.getElementById("app2")
+       )
+
+
+	</script>
+</head>
+<body>
+	<div id="app1"></div>
+	<div id="app2"></div>
+</body>
+</html>

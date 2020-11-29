@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Функции и массивы</title>
+  </head>
+
+  <body>
+    <button class="red">Количество выпадений красного</button>
+    <button class="getSum">Подсчет суммы</button>
+    <script>
+      document.querySelector(".red").addEventListener("click", () => {
+        let arr = [];
+        let red = 0;
+        for (let i = 0; i < 1000000; i++) {
+          arr.push(Math.round(Math.random() * 3));
+        }
+        for (let num of arr) {
+          if (num == 0) {
+            red++;
+          }
+        }
+        alert(`Количество выпадений красного: ${red}`);
+      });
+
+      document.querySelector(".getSum").addEventListener("click", () => {
+        let el = prompt(
+          "Введите карты через пробел (2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K, A).\nДругие значения учитаны не будут."
+        );
+        let arr = el.split(" ");
+        let result = [];
+        for (i = 0; i < arr.length; i++) {
+          const element = arr[i];
+          if (element >= 2 && element <= 10) {
+            result.push(element);
+          }
+          if (
+            element.toUpperCase() == "A" ||
+            element.toUpperCase() == "K" ||
+            element.toUpperCase() == "Q" ||
+            element.toUpperCase() == "J"
+          ) {
+            result.push(element.toUpperCase());
+          }
+        }
+        getSum(result);
+      });
+
+      function getSum(arr) {
+        let sum = 0;
+        for (let card of arr) {
+          switch (card) {
+            case "J":
+              sum += 11;
+              break;
+            case "Q":
+              sum += 12;
+              break;
+            case "K":
+              sum += 13;
+              break;
+            case "A":
+              sum += 14;
+              break;
+            default:
+              sum += +card;
+              break;
+          }
+        }
+        alert(`Сумма очков: ${sum}`);
+      }
+    </script>
+  </body>
+</html>
