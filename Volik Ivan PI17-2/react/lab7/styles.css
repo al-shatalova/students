@@ -1,0 +1,16 @@
+button{
+    cursor: pointer;
+    outline: none;
+    width: 100px;
+    height:30px;
+    border-radius: 10px;
+    margin:50px;
+}
+.on{
+    color: black;
+    background-color: rgb(9, 236, 9);
+}
+.off{
+    color: white;
+    background-color: rgb(230, 10, 10);
+}
