@@ -1,0 +1,35 @@
+button{
+    cursor: pointer;
+    outline: none;
+    width: 100px;
+    height:30px;
+    border-radius: 10px;
+    margin:50px;
+}
+.on{
+    color: black;
+    background-color: rgb(9, 236, 9);
+}
+.off{
+    color: white;
+    background-color: rgb(230, 10, 10);
+}
+
+.helloBlock{
+    width: 40%;
+    margin: auto;
+    border: 2px solid brown;
+    border-radius: 15px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
