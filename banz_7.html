@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+  <title>SEM7</title>
+  <style>
+    button {
+      width: 100px;
+      height: 30px;
+      border-radius: 4px;
+      margin: 50px;
+    }
+
+    .on {
+      color: #666;
+      background-color: pink;
+    }
+
+    .off {
+      color: black;
+      background-color: gray;
+    }
+  </style>
+
+  <script type="text/babel">
+
+
+
+    class ClickButton extends React.Component {
+
+      constructor(props) {
+        super(props);
+        this.state = { class: "off", label: "Нажми" };
+
+        this.press = this.press.bind(this);
+
+        console.log("constructor");
+      }
+
+      componentWillReceiveProps(nextProps) {
+        console.log("componentWillReceiveProps()");
+      }
+      componentWillMount() {
+        console.log("componentWillMount()");
+      }
+      componentDidMount() {
+        console.log("componentDidMount()");
+      }
+      componentWillUnmount() {
+        console.log("componentWillUnmount()");
+      }
+      shouldComponentUpdate() {
+        console.log("shouldComponentUpdate()");
+        return true;
+      }
+      componentWillUpdate() {
+        console.log("componentWillUpdate()");
+      }
+      componentDidUpdate() {
+        console.log("componentDidUpdate()");
+      }
+        press() {
+          let className = (this.state.class === "off") ? "on" : "off";
+          this.setState({ class: className });
+        }
+        render() {
+          return <button onClick={this.press} className={this.state.class}>{this.state.label}</button>;
+        }
+      }
+
+      ReactDOM.render(
+      <ClickButton />,
+    document.getElementById("app2")
+    )
+
+
+    const propsValues = {
+      title: "Список группы",
+      items: [
+        "Иванов Николай",
+        "Александрова Наталья",
+        "Пушкин Иван",
+        "Борисов Евгений",
+        "Орлова Виктория",
+        "Иванов Александр"
+      ]
+    };
+
+
+    class Item extends React.Component {
+      render() {
+        return <li>{this.props.name}</li>;
+      }
+    }
+
+    class SearchPlugin extends React.Component {
+
+      constructor(props) {
+        super(props);
+        this.onTextChanged = this.onTextChanged.bind(this);
+      }
+
+      onTextChanged(e) {
+        var text = e.target.value.trim();   // удаляем пробелы
+        this.props.filter(text); // передаем введенный текст в родительский компонент
+      }
+
+      render() {
+        return <input placeholder="Поиск" onChange={this.onTextChanged} />;
+      }
+    }
+
+    class Clock extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = {
+          time: new Date().toLocaleString()
+        };
+      }
+
+      componentDidMount() {
+        this.intervalID = setInterval(() => this.tick(), 1000);
+      }
+      componentWillUnmount() {
+        clearInterval(this.intervalID);
+      }
+
+      tick() {
+        this.setState({
+          time: new Date().toLocaleString(),
+        });
+      }
+
+      render() {
+        return (
+          <p className="App-clock">
+            Текущее время: {this.state.time}.
+          </p>
+        );
+      }
+
+    }
+
+    class ItemsList extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = { items: this.props.data.items };
+
+        this.filterList = this.filterList.bind(this);
+      }
+
+      filterList(text) {
+        var filteredList = this.props.data.items.filter(function (item) {
+          return item.toLowerCase().search(text.toLowerCase()) !== -1;
+        });
+        this.setState({ items: filteredList });
+      }
+
+      render() {
+        return (
+          <div>
+            <Clock />
+            <h2>{this.props.data.title}</h2>
+            <SearchPlugin filter={this.filterList} />
+            <ul>
+              {
+                this.state.items.map(function (item) {
+                  return <Item key={item} name={item} />
+                })
+              }
+            </ul>
+          </div>);
+      }
+    }
+
+    ReactDOM.render(
+      <ItemsList data={propsValues} />,
+      document.getElementById("app")
+    )
+
+
+
+  </script>
+</head>
+
+<body>
+  <div id="app"></div>
+  <div id="app2"></div>
+</body>
+
+</html>
