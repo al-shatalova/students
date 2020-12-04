@@ -32,7 +32,7 @@
 
 				}
 
-	// при запуске приложения
+	// вызывается непосредственно перед рендерингом компонента
 	componentWillMount(nextProps) {
 
 	console.log("componentWillMoun()");
@@ -46,6 +46,7 @@
 
 	}
 	
+	// вызывается после рендеринга компонента.
 	componentDidMount(){
 	console.log("componentDidMount()");
 	}
@@ -56,7 +57,7 @@
 	return true;
 	}
 	
-	//после нажатия на кнопку
+	//ызывается перед обновлением компонента 
 	componentWillUpdate(nextProps, nextState){
 	console.log("componentWillUpdate()");
 	}
