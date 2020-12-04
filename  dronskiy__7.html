@@ -63,14 +63,14 @@
           return (
             <div class="container mx-auto grid grid justify-items-stretch">
               <div class="mb-12 justify-items-center">
-              <button
-                class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
-                onClick={this.press}
-                className={this.state.class}
-              >
-                {this.state.label}
-              </button>
-            </div>
+                <button
+                  class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+                  onClick={this.press}
+                  className={this.state.class}
+                >
+                  {this.state.label}
+                </button>
+              </div>
             </div>
           );
         }
@@ -125,11 +125,9 @@
         render() {
           return (
             <div class="container mx-auto grid justify-items-auto">
-              <div>
-                <li class="font-extralight title-font text-gray-900">
-                  {this.props.name}
-                </li>
-              </div>
+              <li class="font-extralight title-font text-gray-900">
+                {this.props.name}
+              </li>
             </div>
           );
         }

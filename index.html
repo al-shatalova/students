@@ -1,199 +1,135 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Лаба 7</title>
+    <meta charset="utf-8" />
+    <title>Лаба 8</title>
+    <script
+      src="https://unpkg.com/react@16/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
   </head>
+
   <body>
-    <div id="clock"></div>
-    <div id="click"></div>
-    <div id="student-list"></div>
-
-    <link href="/tailwind.css" rel="stylesheet" />
-
-    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
-    <!-- Don't use this in production: -->
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <div id="app"></div>
 
     <script type="text/babel">
-      class ClickButton extends React.Component {
+      class UserForm extends React.Component {
         constructor(props) {
           super(props);
-          this.state = { class: "off", label: "Нажми" };
-          this.press = this.press.bind(this);
-          console.log("constructor");
+
+          this.nameField = React.createRef();
+          this.ageField = React.createRef();
+
+          this.handleSubmit = this.handleSubmit.bind(this);
         }
 
-        compomentWillMount() {
-          console.log("compomentWillMount");
-        }
-        componentWillReceiveProps(nextProps) {
-          console.log("componentWillReceiveProps");
-        }
-
-        componentWillUnmount() {
-          console.log("componentWillUnmount");
-        }
-
-        shouldComponentUpdate(nextProps, nextState) {
-          console.log("shouldComponentUpdate");
-          return true;
-        }
-
-        componentWillUpdate(nextProps, nextState) {
-          console.log("componentWillUpdate");
-        }
-
-        componentDidUpdate(prevProps, prevState) {
-          console.log("componentDidUpdate");
-        }
-
-        componentDidMount() {
-          console.log("componentDidMount");
-        }
-
-        press() {
-          let className = this.state.class === "off" ? "on" : "off";
-          this.setState({ class: className });
+        handleSubmit(e) {
+          e.preventDefault();
+          console.log(this.nameField.current);
+          let name = this.nameField.current.state.name;
+          let age = this.ageField.current.state.age;
+          if (
+            this.nameField.current.state.valid &&
+            this.ageField.current.state.valid
+          ) {
+            alert("Имя: " + name + " Возраст: " + age);
+          }
         }
 
         render() {
           return (
-            <div class="container mx-auto grid grid justify-items-stretch">
-              <div class="mb-12 justify-items-center">
-              <button
-                class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
-                onClick={this.press}
-                className={this.state.class}
-              >
-                {this.state.label}
-              </button>
-            </div>
-            </div>
+            <form onSubmit={this.handleSubmit}>
+              <NameField value={this.props.name} ref={this.nameField} />
+              <AgeField value={this.props.age} ref={this.ageField} />
+              <input type="submit" value="Отправить" />
+            </form>
           );
         }
       }
 
-      ReactDOM.render(<ClickButton />, document.getElementById("click"));
-
-      class Clock extends React.Component {
+      class NameField extends React.Component {
         constructor(props) {
           super(props);
-          this.state = { date: new Date() };
+          let name = props.value;
+          let nameIsValid = this.validateName(name);
+          this.state = { name: name, valid: nameIsValid };
+          this.onNameChange = this.onNameChange.bind(this);
         }
 
-        componentDidMount() {
-          this.timerID = setInterval(() => this.tick(), 1000);
+        onNameChange(e) {
+          let val = e.target.value;
+          console.log(val);
+          let valid = this.validateName(val);
+          this.setState({ name: val, valid: valid });
         }
 
-        componentWillUnmount() {
-          clearInterval(this.timerID);
-        }
-
-        tick() {
-          this.setState({
-            date: new Date(),
-          });
+        validateName(name) {
+          return name && name.length > 2;
         }
 
         render() {
+          // цвет границы для поля для ввода имени
+          let nameColor = this.state.valid === true ? "green" : "red";
           return (
-            <div class="container md px-5 py-24 mx-auto grid grid justify-items-stretch">
-              <div class="mb-12 justify-items-center">
-                <h3 class="font-medium title-font mb-4 text-gray-900">
-                  It is time to drink tea
-                </h3>
-                <h3 class="font-extralight">
-                  It is {this.state.date.toLocaleTimeString()} already.
-                </h3>
-              </div>
-            </div>
+            <p>
+              <label>Имя:</label>
+              <br />
+              <input
+                type="text"
+                value={this.state.name}
+                onChange={this.onNameChange}
+                style={{ borderColor: nameColor }}
+              />
+            </p>
           );
         }
       }
 
-      ReactDOM.render(<Clock />, document.getElementById("clock"));
-
-      const propsValues = {
-        title: "Список группы",
-        items: ["Безос", "Канье", "Трамп", "Путин", "Конев", "Зайкин"],
-      };
-
-      class Item extends React.Component {
-        render() {
-          return (
-            <div class="container mx-auto grid justify-items-auto">
-              <div>
-                <li class="font-extralight title-font text-gray-900">
-                  {this.props.name}
-                </li>
-              </div>
-            </div>
-          );
-        }
-      }
-      class SearchPlugin extends React.Component {
+      class AgeField extends React.Component {
         constructor(props) {
           super(props);
-          this.onTextChanged = this.onTextChanged.bind(this);
+          let age = props.value;
+          let ageIsValid = this.validateAge(age);
+          this.state = { age: age, valid: ageIsValid };
+          this.onAgeChange = this.onAgeChange.bind(this);
         }
 
-        onTextChanged(e) {
-          var text = e.target.value.trim();
-          this.props.filter(text);
+        onAgeChange(e) {
+          let val = e.target.value;
+          console.log(val);
+          let valid = this.validateAge(val);
+          this.setState({ age: val, valid: valid });
         }
+
+        validateAge(age) {
+          return age && age >= 0;
+        }
+
         render() {
+          // цвет границы для поля для ввода имени
+          let nameColor = this.state.valid === true ? "green" : "red";
           return (
-            <input
-              class="form-input mt-1 block w-1/4"
-              placeholder="Поиск"
-              onChange={this.onTextChanged}
-            />
+            <p>
+              <label>Возраст: </label>
+              <br />
+              <input
+                type="number"
+                value={this.state.age}
+                onChange={this.onAgeChange}
+                style={{ borderColor: nameColor }}
+              />
+            </p>
           );
         }
       }
 
-      class ItemsList extends React.Component {
-        constructor(props) {
-          super(props);
-          this.state = { items: this.props.data.items };
-          this.filterList = this.filterList.bind(this);
-        }
-
-        filterList(text) {
-          var filteredList = this.props.data.items.filter(function (item) {
-            return item.toLowerCase().search(text.toLowerCase()) !== -1;
-          });
-          this.setState({ items: filteredList });
-        }
-        render() {
-          return (
-            <div>
-              <div class="container mx-auto grid justify-items-auto">
-                <div>
-                   <h2>{this.props.data.title}</h2>
-                                  
-                  <SearchPlugin filter={this.filterList} />
-                                  
-                  <ul>
-                                        
-                    {this.state.items.map(function (item) {
-                      return <Item key={item} name={item} />;
-                    })}
-                                    
-                  </ul>
-                </div>
-              </div>
-                     
-            </div>
-          );
-        }
-      }
       ReactDOM.render(
-        <ItemsList data={propsValues} />,
-        document.getElementById("student-list")
+        <UserForm name="" age="18" />,
+        document.getElementById("app")
       );
     </script>
   </body>
