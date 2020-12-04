@@ -1,0 +1,94 @@
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>task 14 forms</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+    <!--    <link type="text/css" rel="stylesheet" href="kharlamova_12.css"/>-->
+
+</head>
+
+<body>
+<div id="app">
+
+</div>
+
+
+<script type="text/babel">
+    class UserForm extends React.Component {
+        constructor(props) {
+            super(props);
+
+            this.nameField = React.createRef();
+            this.ageField = React.createRef();
+
+            this.handleSubmit = this.handleSubmit.bind(this);
+        }
+
+        handleSubmit(e) {
+            e.preventDefault();
+            console.log(this.nameField.current);
+            let name = this.nameField.current.state.value;
+            let age = this.ageField.current.state.value;
+            if (this.nameField.current.state.valid && this.ageField.current.state.valid) {
+                alert("Имя: " + name + " Возраст: " + age);
+            }
+        }
+
+        render() {
+            return (
+                <form onSubmit={this.handleSubmit}>
+                    <ValidatableField label="Имя"
+                                      type="text"
+                                      ref={this.nameField}
+                                      validateFn={(name) => name && name.length > 2}
+                                      defaultValue=""/>
+                    <ValidatableField label="Возраст"
+                                      type="number"
+                                      ref={this.ageField}
+                                      validateFn={(age) => age && age >= 0}
+                                      defaultValue="18"/>
+                    <input type="submit" value="Отправить"/>
+                </form>
+            );
+        }
+    }
+
+    class ValidatableField extends React.Component {
+        constructor(props) {
+            super(props);
+            let value = props.defaultValue;
+            let valid = props.validateFn(value);
+            this.state = {value: value, valid: valid};
+            this.onValueChange = this.onValueChange.bind(this);
+        }
+
+        onValueChange(e) {
+            let val = e.target.value;
+            console.log(val);
+            let valid = this.props.validateFn(val);
+            this.setState({value: val, valid: valid});
+        }
+
+        render() {
+            let color = this.state.valid === true ? "green" : "red";
+            return <p>
+                <label>{this.props.label}</label><br/>
+                <input type={this.props.type}
+                       value={this.state.value}
+                       onChange={this.onValueChange}
+                       style={{borderColor: color}}/>
+            </p>
+        }
+    }
+
+    ReactDOM.render(
+        <UserForm name="" age="18"/>,
+        document.getElementById("app")
+    )
+</script>
+
+</body>
+
+</html>
