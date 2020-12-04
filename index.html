@@ -61,9 +61,17 @@
 
         render() {
           return (
-            <button class="animate-pulse text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg shadow-2xl" onClick={this.press} className={this.state.class}>
-              {this.state.label}
-            </button>
+            <div class="container mx-auto grid grid justify-items-stretch">
+              <div class="mb-12 justify-items-center">
+              <button
+                class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+                onClick={this.press}
+                className={this.state.class}
+              >
+                {this.state.label}
+              </button>
+            </div>
+            </div>
           );
         }
       }
@@ -98,7 +106,7 @@
                   It is time to drink tea
                 </h3>
                 <h3 class="font-extralight">
-                  It is {this.state.date.toLocaleTimeString()}.
+                  It is {this.state.date.toLocaleTimeString()} already.
                 </h3>
               </div>
             </div>
@@ -110,14 +118,7 @@
 
       const propsValues = {
         title: "Список группы",
-        items: [
-          "Безос",
-          "Канье",
-          "Трамп",
-          "Путин",
-          "Конев",
-          "Зайкин",
-        ],
+        items: ["Безос", "Канье", "Трамп", "Путин", "Конев", "Зайкин"],
       };
 
       class Item extends React.Component {
@@ -125,7 +126,9 @@
           return (
             <div class="container mx-auto grid justify-items-auto">
               <div>
-                <li class="font-extralight title-font text-gray-900">{this.props.name}</li>
+                <li class="font-extralight title-font text-gray-900">
+                  {this.props.name}
+                </li>
               </div>
             </div>
           );
@@ -142,7 +145,13 @@
           this.props.filter(text);
         }
         render() {
-          return <input placeholder="Поиск" onChange={this.onTextChanged} />;
+          return (
+            <input
+              class="form-input mt-1 block w-1/4"
+              placeholder="Поиск"
+              onChange={this.onTextChanged}
+            />
+          );
         }
       }
 
@@ -162,18 +171,22 @@
         render() {
           return (
             <div>
-                                       <h2>{this.props.data.title}</h2>
-                              
-              <SearchPlugin filter={this.filterList} />
-                              
-              <ul>
-                                    
-                {this.state.items.map(function (item) {
-                  return <Item key={item} name={item} />;
-                })}
-                                
-              </ul>
-                          
+              <div class="container mx-auto grid justify-items-auto">
+                <div>
+                   <h2>{this.props.data.title}</h2>
+                                  
+                  <SearchPlugin filter={this.filterList} />
+                                  
+                  <ul>
+                                        
+                    {this.state.items.map(function (item) {
+                      return <Item key={item} name={item} />;
+                    })}
+                                    
+                  </ul>
+                </div>
+              </div>
+                     
             </div>
           );
         }
