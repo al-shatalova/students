@@ -7,9 +7,9 @@ export default class TodoList extends React.Component {
     super(props);
   }
 
-  shouldComponentUpdate(prevProps) {
-    return prevProps.todoList.length % 5 === 0;
-  }
+  // shouldComponentUpdate(prevProps) {
+  //   return prevProps.todoList.length % 5 === 0;
+  // }
 
   render() {
     return (

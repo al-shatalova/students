@@ -1,14 +1,18 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Form, Input, Button } from 'antd';
 
-const initialState = '';
+// const initialState = '';
 
 const TodoInput = ({ submitFn }) => {
-  const [val, setVale] = useState(initialState);
+  // const [val, setVale] = useState(initialState);
+  const todoItem = useRef('');
   const submitFrom = (e) => {
-    submitFn(e.todo);
-    setVale(initialState);
+    submitFn(todoItem.current.state.value);
+    // setVale(initialState);
   };
+  useEffect(() => {
+    todoItem.current.focus();
+  }, []);
   return (
     <div
       style={{
@@ -19,14 +23,14 @@ const TodoInput = ({ submitFn }) => {
       }}
     >
       <Form onFinish={submitFrom}>
-        <Form.Item
-          // labelCol={{ span: 0 }}
-          // wrapperCol={{ span: 32 }}
-          name="todo"
-          label="Todo"
-          rules={[{ required: true, message: 'Type your todo here' }]}
-        >
-          <Input value={val} onChange={setVale} />
+        <Form.Item name="todo" label="Todo" rules={[{ required: true, message: 'Type your todo here' }]}>
+          {/* ref allows to drop usage of useState */}
+          <Input
+            placeholder="Wash cat"
+            /* value={val} onChange={setVale} */
+            type="text"
+            ref={todoItem}
+          />
         </Form.Item>
         <Form.Item>
           <Button type="primary" htmlType="submit">
