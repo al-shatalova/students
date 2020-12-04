@@ -19,14 +19,14 @@
         <div id="timer"></div>
         <script type="text/babel">
 			    
-			class ClickButton extends React.Component {
+				class ClickButton extends React.Component {
 
-                constructor(props) {
-                    super(props);
-                    this.state = {class: "off", label: "Нажми"};
-                    this.press = this.press.bind(this);
-                    console.log("constructor");
-                }
+					constructor(props) {
+						super(props);
+						this.state = {class: "off", label: "Нажми"};
+						this.press = this.press.bind(this);
+						console.log("constructor");
+						}
 
 				compomentWillMount(){
 					console.log('compomentWillMount');
