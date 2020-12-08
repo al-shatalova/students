@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Lab7</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+    <script type="text/babel">
+        class ClickButton extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {class: "off", label: "Нажми"};
+                this.press = this.press.bind(this);
+                console.log("component Generate!");
+            }
+            press(){
+                let className = (this.state.class==="off")?"on":"off";
+                this.setState({class: className});
+            }
+            render() {
+                return <button onClick={this.press} className={this.state.class}>{this.state.label}</button>;
+            }
+            componentDidUpdate(nextProps) {
+                console.log("component's State update!");
+            }
+        }
+
+        class Timer extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = { seconds: 0 };
+            }
+            tick() {
+                this.setState(state => ({
+                seconds: state.seconds + 1
+                }));
+            }
+            componentDidMount() {
+                this.interval = setInterval(() => this.tick(), 1000);
+            }
+            render() {
+                return <div>seconds leave: {this.state.seconds}</div>;
+            }
+        }
+        ReactDOM.render(
+            <div>
+                <ClickButton />
+                <Timer />
+            </div>,
+            document.getElementById("app")
+        )
+    </script>
+</body>
+</html>
