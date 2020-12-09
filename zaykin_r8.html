@@ -81,7 +81,7 @@
             return (
                 <form onSubmit={this.handleSubmit}>
                 <NameField value="" ref="nameField" />
-                <AgeField value="0" ref="ageField" />
+                <AgeField value="20" ref="ageField" />
                 <input type="submit" value="Отправить" />
             </form>
         );
@@ -89,7 +89,7 @@
     }
 
     ReactDOM.render(
-        <UserForm name="" age="20" />,
+        <UserForm />,
         document.getElementById("app")
     )
     </script>
