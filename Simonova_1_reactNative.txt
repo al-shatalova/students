@@ -1,0 +1,101 @@
+import React from 'react';
+
+import { StyleSheet, Text, View, Image } from 'react-native';
+
+const LotsOfStyles = () => {
+
+return (
+
+<View style={styles.container}>
+
+<Text style={styles.black}>Журнал Bright</Text>
+<View style={styles.container2}>
+
+<Text style={styles.news}>Новости</Text>
+
+<Image style={styles.imagestyle} source={require('./components/img.jpg')} />
+
+<Text style={[styles.title]}>Превращаем стресс в своего помощника</Text>
+
+<Text style={[styles.mainText]}>Исследователи Йельского университета заявляют, что люди, которые рассматривают стресс, как возможность личностного роста, отмечают улучшение качества жизни. Сегодня узнаем, как это работает и как увидеть положительные стороны стресса.</Text>
+</View>
+
+</View>
+
+);
+
+};
+
+const styles = StyleSheet.create({
+
+container: {
+
+backgroundColor: '#E2DBDB',
+
+alignItems: 'center',
+flex:1
+
+},
+
+container2: {
+
+marginTop: 10,
+backgroundColor: '#F9F6F6',
+marginBottom: 50,
+
+marginLeft: 10,
+flex:1
+
+},
+
+bigBlue: {
+
+color: 'blue',
+
+fontWeight: 'bold',
+fontSize: 30,
+
+},
+
+title: {
+  fontSize: 20,
+  fontWeight: 'bold',
+  marginLeft: 20,
+},
+
+mainText: {
+  marginLeft: 20,
+  marginTop: 20,
+  fontSize: 17,
+},
+
+black: {
+fontWeight: 'bold',
+justifyContent: 'center',
+alignItems: 'center',
+color: 'black',
+marginTop: 50,
+flexDirection: 'column',
+fontSize: 20,
+
+},
+
+imagestyle:{
+  width: 280,
+  height: 100,
+  marginLeft: 20,
+  marginTop: 20
+},
+
+news:{
+  marginTop: 30,
+  color: 'blue',
+  marginLeft: 20,
+  marginButton: 30,
+
+  
+}
+
+});
+
+export default LotsOfStyles;
