@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello World</title>
+    <meta charset="utf-8"/>
+    <script>
+      let arr = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A',
+                 '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A',
+                 '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A',
+                 '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
+                 
+      getSum(arr)
+      
+      function getSum(arr) {
+        var sum = 0
+        var i = arr.length - 1
+        for (i; i >= 0; i--){
+          if (arr[i] > 0) {
+            sum += parseInt (arr[i])
+          } else if (arr[i] == 'J'){
+            sum += 11
+          } else if (arr[i] == 'Q'){
+            sum += 12
+          } else if (arr[i] == 'K'){
+            sum += 13
+          } else if (arr[i] == 'A'){
+            sum += 14
+          } else {
+            alert('alert' + arr[i])
+          }
+        }
+        alert(`Массив: ${arr}, \nСумма карт: ${sum}`)
+      }
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
