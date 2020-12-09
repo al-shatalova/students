@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Формы в React</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.production.min.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
+    <script type="text/babel">
+      class UserForm extends React.Component {
+        constructor(props) {
+          super(props);
+          var name = props.name;
+          var nameIsValid = this.validateName(name);
+          var age = props.age;
+          var ageIsValid = this.validateAge(age);
+          this.state = {
+            name: name,
+            age: age,
+            nameValid: nameIsValid,
+            ageValid: ageIsValid,
+          };
+          this.nameInput = React.createRef();
+          this.ageInput = React.createRef();
+          this.onNameChange = this.onNameChange.bind(this);
+          this.onAgeChange = this.onAgeChange.bind(this);
+          this.handleSubmit = this.handleSubmit.bind(this);
+        }
+        componentDidMount() {
+          this.ageInput.addEventListener("input", this.onAgeChange);
+          this.nameInput.addEventListener("input", this.onNameChange);
+        }
+        validateAge(age) {
+          return age > 0;
+        }
+        validateName(name) {
+          return name.length > 2;
+        }
+        onAgeChange(e) {
+          var val = e.target.value;
+          var valid = this.validateAge(val);
+          this.setState({ age: val, ageValid: valid });
+        }
+        onNameChange(e) {
+          var val = e.target.value;
+          var valid = this.validateName(val);
+          this.setState({ name: val, nameValid: valid });
+        }
+
+        handleSubmit(e) {
+          e.preventDefault();
+          if (this.state.nameValid === true && this.state.ageValid === true) {
+            alert("Имя: " + this.state.name + " Возраст: " + this.state.age);
+          }
+        }
+
+        render() {
+          // цвет границы для поля для ввода имени
+          var nameColor = this.state.nameValid === true ? "green" : "red";
+          // цвет границы для поля для ввода возраста
+          var ageColor = this.state.ageValid === true ? "green" : "red";
+          return (
+            <form onSubmit={this.handleSubmit} className="p-3">
+              <div className="form-group">
+                <label>Имя:</label>
+                <input
+                  type="text"
+                  value={this.state.name}
+                  style={{ borderColor: nameColor }}
+                  ref={(input) => {
+                    this.nameInput = input;
+                  }}
+                  className="form-control w-25"
+                />
+              </div>
+              <div className="form-group">
+                <label>Возраст:</label>
+                <input
+                  type="number"
+                  value={this.state.age}
+                  style={{ borderColor: ageColor }}
+                  ref={(input) => {
+                    this.ageInput = input;
+                  }}
+                  className="form-control w-25"
+                />
+              </div>
+              <input type="submit" value="Отправить" />
+            </form>
+          );
+        }
+      }
+      ReactDOM.render(
+        <UserForm name="" age="0" />,
+        document.getElementById("app")
+      );
+    </script>
+  </body>
+</html>
