@@ -1,0 +1,63 @@
+import * as React from 'react';
+import { Text, View, StyleSheet, Image } from 'react-native';
+import Constants from 'expo-constants';
+import { Linking } from 'react-native';
+// You can import from local files
+import AssetExample from './components/AssetExample';
+// or any pure javascript modules available in npm
+import { Card } from 'react-native-paper';
+
+const url="https://google.com"
+
+const LabaStili = () => {
+  return ( 
+   <View style={{backgroundColor: '#EDF0F1'}}>
+      <Text 
+      style={{ fontWeight: 'bold', 
+      fontSize: 17, 
+      textAlign: "center", 
+      marginTop: 40, 
+      marginBottom: 10}}>Журнал Bright</Text>
+      <View 
+      style={{ backgroundColor: "white",  
+      borderRadius: 5, 
+      margin: 3,}} >
+
+        <Text onPress={() => Linking.openURL(url)} 
+        style={{
+          marginLeft: 25, 
+          marginBottom: 30, 
+          marginTop: 30, 
+          fontSize: 12, 
+          color: 'blue'}}  >Новости</Text>
+          
+          <Image source={{uri: 'http://brightmagazine.ru/wp-content/uploads/2020/12/pexels-andrea-piacquadio-3755761-1024x683.jpg'}} 
+          style={{ 
+            width: 240, 
+            height: 120, 
+            marginLeft: 25,}} />
+         
+         <Text 
+         style={{fontWeight: 'bold',
+         fontSize: 25,
+         marginLeft: 25,
+         marginRight: 20,
+         marginTop: 18}}>Превращаем стресс в своего помощника</Text>
+         
+         <Text 
+         style={{marginTop: 15,
+         marginLeft: 25,
+         marginRight: 20,
+         marginBottom: 30}}>Исследователи Йельского университета 
+    заявляют, что люди, которые рассматривают стресс, как возможность личностного роста, 
+    отмечают улучшение качества жизни. Сегодня узнаем, как это работает и как увидеть 
+    положительные стороны стресса.</Text>
+      </View>
+     
+    </View>
+    );
+    };
+
+export default LabaStili;
+
+
