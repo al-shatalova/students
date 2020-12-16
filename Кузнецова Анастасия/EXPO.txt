@@ -1,0 +1,38 @@
+import React from 'react';
+import { StyleSheet, Text, View, Image } from 'react-native';
+import Constants from 'expo-constants';
+const DOG = () => {
+    return (
+      <View style={styles.glavView}>
+        <Text style={styles.zagolovok}>
+          Журнал Домашние питомцы
+        </Text>
+        <View style={styles.dogView}>
+          <Text style={styles.dogText}>
+            Новости
+          </Text>
+          <View style={{alignContent:"center",alignItems:"center"}}>
+          <Image style={styles.dogImage} source={require('Pers.jpg')} />
+          </View>
+          <Text  style={styles.dogText2}>
+            Полезные лакомства для четвероногих!
+          </Text>
+          <Text style={{marginLeft:10,marginTop:13}}>
+            Лакомства для собак можно разделить на две основные группы: домашние и магазинные. Домашние вкусняшки готовят самостоятельно из натуральных продуктов – фруктов, овощей, мяса, субпродуктов, сыра и т. д.
+          </Text>
+        </View>
+      </View> 
+    );
+};
+const styles=StyleSheet.create(
+{
+  dogImage:{height:280,width: 350},
+  glavView:{backgroundColor: "#ECF0F1", width:"100%",height:"100%",paddingTop:20},
+  zagolovok:{textAlign:"center",fontWeight:"bold",fontSize:16,marginLeft:10,marginBottom:10},
+  dogView:{backgroundColor: "#FFF",padding:5,marginLeft:10},
+  dogText:{color:"#2837FF",padding:7,marginBottom:10,marginTop:10,marginLeft:10},
+  dogText2:{color:"black",fontSize:20,fontWeight:"bold",padding:3,marginLeft:10,marginTop:10}
+});
+
+export default DOG;
+
