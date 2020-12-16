@@ -1,0 +1,71 @@
+import * as React from 'react';
+import { Text, View, StyleSheet, Image } from 'react-native';
+import Constants from 'expo-constants';
+import { Linking } from 'react-native';
+
+// You can import from local files
+import AssetExample from './components/AssetExample';
+
+// or any pure javascript modules available in npm
+import { Card } from 'react-native-paper';
+
+
+export default function App() {
+  return (
+    <View style={styles.big}>
+      <Text style={styles.logo}>Журнал Bright</Text>
+      <View style={styles.small}>
+      <Text style={styles.news}>Новости</Text>
+      <Image style={styles.img} source={{uri: 'http://brightmagazine.ru/wp-content/uploads/2020/08/pexels-kaboompics-com-5876.jpg',}}/>
+      <Text style={styles.heading}>7 продуктов, которые нужно навсегда исключить из своего рациона</Text>
+      <Text style={styles.info}>Здоровое питание – это система, причем для большинства людей она абсолютно индивидуальна. В зависимости от того, сжигаете ли вы калории или наоборот, стараетесь набрать массу, питание играет основную роль и оно обязательно должно быть сбалансированным. Нет волшебной таблетки, как и определенных продуктов, которые вы сможете добавить или исключить из рациона, что приведет к невероятным результатам.</Text>
+    </View>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+big: {
+flex: 1,
+justifyContent: 'center',
+backgroundColor: '#ECF0F1',
+padding: 8,
+},
+logo: {
+fontSize: 24,
+fontWeight: "bold",
+marginBottom: 10,
+textAlign: "center",
+marginTop: 20 
+},
+small:{
+justifyContent: 'center',
+alignContent: "flex-start",
+backgroundColor: 'white',
+borderRadius: 9,
+padding: 8,
+},
+news:{
+marginHorizontal: 24,
+marginTop: 30,
+color: '#6655D9'
+},
+img:{
+marginTop:30,
+width: 310,
+height: 150,
+marginLeft: 25,
+},
+
+heading: {
+marginVertical: 20,
+marginHorizontal: 24,
+fontSize: 18,
+fontWeight: 'bold'
+},
+info:{
+marginHorizontal: 24
+}
+});
+
+
