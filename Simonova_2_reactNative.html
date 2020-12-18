@@ -1,0 +1,69 @@
+import * as React from 'react';
+import { Text, View, StyleSheet } from 'react-native';
+import Constants from 'expo-constants';
+
+// You can import from local files
+import AssetExample from './components/AssetExample';
+
+// or any pure javascript modules available in npm
+import { Card } from 'react-native-paper';
+
+export default function App() {
+  return (
+
+        <View style={{flex: 1}}>
+        <View style={styles.block}>
+        <Text style={styles.titleS}>5 Книжных новинок октября</Text>
+        </View>
+        <View style={styles.block1}>
+        <Text style={styles.txt}>"Кадишь.com" Натан Ингландер. Издательство "Книжники"</Text>
+        </View>
+        <View style={styles.block2}>
+        <Text style={styles.txt2}>Ироничная новелла Натана Ингландера, две личные истории культовой Патти Смит, репортаж британской журналистки о будущем человечества, дебютный роман Оушена Вуонга и журналистское расследование о создании «Моссада». В нашей подборке рассказываем о пяти захватывающих книжных новинках, которые достойны того, чтобы появиться на ваших полках.</Text>
+        </View>
+      </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  block2: {
+    textAlign: 'center',
+    backgroundColor: 'skyblue',
+    flex: 7,
+  },
+
+  txt:{
+      fontSize: 20,
+      marginTop: 30
+  },
+
+  txt2:{
+      textAlign: 'center',
+       marginTop: 40,
+       marginLeft:10,
+       marginRight: 10
+  },
+  block1: {
+    textAlign: 'center',
+    backgroundColor: 'powderblue',
+    flex: 2,
+    alignItems: 'center'
+    
+  },
+  block: {
+    textAlign: 'center',
+    flex: 1,
+    alignItems: 'center'
+    
+  },
+
+  titleS:{
+alignItems: 'center',
+fontWeight: 'bold',
+textAlign: 'center',
+fontSize: 20,
+marginTop: 40,
+marginBottom: 5
+
+  }
+});
