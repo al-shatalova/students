@@ -1,29 +1,48 @@
-import React from 'react';
-import { Text, View } from 'react-native';
+import * as React from 'react';
+import { StyleSheet, Text, SafeAreaView, ScrollView,  View, TextInput, Image, Button, Alert, Linking  } from 'react-native';
+import Constants from 'expo-constants';
 
-const FlexDimensionsBasics = () => {
-    return (
-      // Try removing the `flex: 1` on the parent View.
-      // The parent will not have dimensions, so the children can't expand.
-      // What if you add `height: 300` instead of `flex: 1`?
-      <View style={{flex: 1}}>
-        <View style={{flex: 0.5, backgroundColor: 'white'}}>
-          <Text style={{fontSize: 18, marginLeft:20, textAlign:"center",marginRight:20, marginBottom:2, fontWeight: "bold"}}>
-          5 книжных новинок октября
-          </Text>
-        </View>
-        <View style={{flex: 2, backgroundColor: '#D3D3D3'}}>
-        <Text style={{textAlign:"center",fontSize: 18, marginTop: 30, marginLeft:20,marginRight:20}}>
-          «Кадиш.com» Натан Ингландер. Издательство «Книжники»
-          </Text>
-        </View>
-        <View style={{flex: 10, backgroundColor: '#A9A9A9'}}>
-        <Text style={{textAlign:"center",fontSize: 18, marginTop: 30, marginLeft:20,marginRight:20}}>
-          Новый роман известного американского прозаика Натана Ингландера — острая и ироничная история о метаниях между современной реальностью и заветами предков. После смерти отца герой принимает прагматичное решение — воспользоваться услугами специального сервиса: чтение заупокойной молитвы по усопшему. Однако переложив на других эту обременительную обязанность, он оказывается в положении библейского Исава, что продал первородство за чечевичную похлебку. И теперь ни любовь к семье, ни здравый смысл, ни нужда — ничто не остановит его в попытке обрести утраченное, а заодно и перевернуть вверх дном жизнь прочих персонажей.
-          </Text>
-        </View>
-      </View>
-    );
-};
 
-export default FlexDimensionsBasics;
+
+export default function App() {
+  return (
+    <View style={styles.container}>
+      <ScrollView>
+      <Text>
+      Ценный питательный овощ с высоким содержанием крахмала. Вкус – характерный, мягкий. Сорта отличаются формой и размером клубней, цветом кожуры и среза, вкусом. Для картофеля употребимо такое понятие как рассыпчатость. Содержит пищевые волокна, микро- и макроэлементы, витамины. Рекомендован для здорового и диетического питания.
+
+Подают как отдельный гарнир к мясу, рыбе, птице. Используют для приготовления первых блюд, салатов, рагу, запеканок, пюре. Особенно вкусен в обжаренном виде, лидер продаж в сфере питания – картофель фри. Хорошо сочетается с овощами, специями, грибами, соленой капустой. Подчеркивают вкус сливочное масло, майонез, соусы.
+</Text>
+<Image
+      style={styles.potato}
+        source={{
+          uri: 'https://lh3.googleusercontent.com/proxy/n95y7rJfH24lK1ijIYYRbCuh_2-g4yUl9e22pycdfmaL2b1BoUYGHLRw076kcqHBB3g2C-2KR4sb4BJBkzmoSc6Q_G62RqkEkBoRumS9SWKlFQ',
+        }}
+      />
+      <Button
+        title="Купить картошку"
+        color="#f194ff"
+        onPress={ ()=>{ Linking.openURL('https://google.com')}}
+      />
+      </ScrollView>
+
+      
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    justifyContent: 'center',
+    paddingTop: Constants.statusBarHeight,
+    backgroundColor: '#ecf0f1',
+    padding: 8,
+  },
+  potato: {
+    marginTop: 10,
+    width: 315,
+    height: 300,
+    marginBottom: 10,
+  },
+  
+});
