@@ -1,0 +1,24 @@
+import React from 'react';
+import { Text, View } from 'react-native';
+
+const FlexDimensionsBasics = () => {
+    return (
+      // Try removing the `flex: 1` on the parent View.
+      // The parent will not have dimensions, so the children can't expand.
+      // What if you add `height: 300` instead of `flex: 1`?
+      <View style={{flex: 1}}>
+        <View style={{flex: 1, backgroundColor: '#D3D3D3'}}>
+          <Text style={{fontSize: 18, marginTop: 100, marginLeft:20, textAlign:"center",marginRight:20}}>
+          Топ-10 pet friendly авиакомпаний в мире
+          </Text>
+          </View>
+        <View style={{flex: 3, backgroundColor: '#A9A9A9'}} >
+          <Text style={{textAlign:"center",fontSize: 18, marginTop: 30, marginLeft:20,marginRight:20}}>
+          Все мы находимся в ожидании открытия всех международных границ, чтобы отправиться в свободное путешествие мечты. Путешественники, которые являются хозяевами домашних питомцев всегда находятся между дилеммой: оставить четвероного друга дома или смело отправляться открывать мир вместе. Поэтому сегодня мы приготовили для вас список pet friendly авиакомпаний. Скажем по секрету: российская авиакомпания в ней тоже есть!
+          </Text>
+          </View>
+      </View>
+    );
+};
+
+export default FlexDimensionsBasics;
