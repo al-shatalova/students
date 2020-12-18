@@ -1,0 +1,50 @@
+import * as React from 'react';
+import { Text, View, StyleSheet, ScrollView, Button, Alert, TextInput, SafeAreaView } from 'react-native';
+import Constants from 'expo-constants';
+
+// You can import from local files
+import AssetExample from './components/AssetExample';
+
+// or any pure javascript modules available in npm
+import { Card } from 'react-native-paper';
+
+
+
+export default function App() {
+  const [value, onChangeText] = React.useState('Можно вводить текст');
+  return (  
+    <SafeAreaView style={styles.container}>
+    <Button
+         title="Press me"
+         onPress={() => Alert.alert('Simple Button pressed')}
+         />
+    <TextInput
+      style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+      onChangeText={text => onChangeText(text)}
+      value={value}
+    />
+      <ScrollView style={styles.scrollView}>
+        <Text style={styles.text}>
+          Исследователи Йельского университета заявляют, что люди, которые рассматривают стресс, как возможность личностного роста, отмечают улучшение качества жизни. Сегодня узнаем, как это работает и как увидеть положительные стороны стресса.
+        </Text>
+      </ScrollView>
+      
+    </SafeAreaView>
+
+  );
+  
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginTop: Constants.statusBarHeight,
+  },
+  scrollView: {
+    backgroundColor: '#EDF0F1',
+    marginHorizontal: 20,
+  },
+  text: {
+    fontSize: 42,
+  },
+});
