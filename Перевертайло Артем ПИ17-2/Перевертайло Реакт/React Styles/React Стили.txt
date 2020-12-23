@@ -1,0 +1,37 @@
+import React from 'react';
+import { StyleSheet, Text, View, Image } from 'react-native';
+import Constants from 'expo-constants';
+const Football = () => {
+    return (
+      <View style={styles.glavView}>
+        <Text style={styles.zagolovok}>
+          Журнал France Football
+        </Text>
+        <View style={styles.footballView}>
+          <Text style={styles.footballText}>
+            Новости
+          </Text>
+          <View style={{alignContent:"center",alignItems:"center"}}>
+          <Image style={styles.footballImage} source={require('./messi.jpg')} />
+          </View>
+          <Text  style={styles.footballText2}>
+            Месси получил 6-й «Золотой мяч». Это рекорд
+          </Text>
+          <Text style={{marginLeft:13,marginTop:10,marginRight:13}}>
+            Нападающий «Барселоны» Лионель Месси получил «Золотой мяч» на гала-вечере в театре Шатле. Журнал France Football назвал 32-летнего аргентинца лучшим футболистом 2019 года. Месси стал обладателем «Золотого мяча» в рекордный шестой раз. Ранее он получал приз в 2009, 2010, 2011, 2012 и 2015 годах.
+          </Text>
+        </View>
+      </View>
+    );
+};
+const styles=StyleSheet.create(
+{
+  footballImage:{height:250,width: 300},
+  glavView:{backgroundColor: "#ECF0F1", width:"100%",height:"100%",paddingTop:20},
+  zagolovok:{textAlign:"center",fontWeight:"bold",fontSize:16,marginTop:15, marginLeft:10,marginBottom:10},
+  footballView:{backgroundColor: "white",padding:5,marginLeft:10},
+  footballText:{color:"blue",padding:9,marginBottom:10,marginTop:10,marginLeft:10},
+  footballText2:{color:"black",fontSize:20,fontWeight:"bold",padding:3,marginLeft:10,marginTop:10}
+});
+
+export default Football;
