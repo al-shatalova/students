@@ -1,0 +1,67 @@
+import * as React from 'react';
+import { View, Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import {StyleSheet, TextInput, ScrollView, Button, SafeAreaView , Image} from 'react-native';
+
+
+const HomeScreen = ({ navigation }) => {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Первый экран</Text>
+      <Button
+      title="Перейти на второй экран"
+      onPress={() =>
+        navigation.navigate('Second')
+      }
+    />
+    </View>
+  );
+}
+
+const SecondScreen = ({ navigation}) => {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <Text>Вторая страница</Text>
+    <Button
+      title="На книгу контаков"
+      onPress={() =>
+        navigation.navigate('Third')
+      }
+    />
+    <Button title="Назад" onPress={() => {navigation.goBack(); }}/>
+    </View>
+  );
+};
+
+const ThirdScreen = ({ navigation}) => {
+  return (
+    <View>
+    <Text>Это книга контактов</Text>
+    <Text>Илья: 89898989</Text>
+     <Text>Валентина: 89898989</Text>
+     <Button title="На главный экран" onPress={() => {navigation.popToTop(); }}/>
+    </View>
+    );
+};
+
+
+const Stack = createStackNavigator();
+
+function App() {
+  return (
+    <NavigationContainer>
+            <Stack.Navigator>
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{ title: 'Welcome' }}
+        />
+        <Stack.Screen name="Second" component={SecondScreen} />
+        <Stack.Screen name="Third" component={ThirdScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+
+export default App;
