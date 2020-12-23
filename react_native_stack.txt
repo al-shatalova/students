@@ -1,0 +1,97 @@
+import * as React from 'react';
+import { TextInput,Alert,Button, Text, View, StyleSheet } from 'react-native';
+import Constants from 'expo-constants';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+
+
+// You can import from local files
+import AssetExample from './components/AssetExample';
+
+// or any pure javascript modules available in npm
+import { Card } from 'react-native-paper';
+
+const Stack = createStackNavigator();
+
+export default function MyStack(){
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+        name='Home'
+        component={home}
+        />
+        <Stack.Screen name="Profile" component={profile} />
+      </Stack.Navigator>
+    </NavigationContainer>)};
+
+const home= ({ navigation }) => {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.paragraph}>
+        Authorization
+      </Text>
+      <Text style={{fontSize: 24}}>
+        Name
+      </Text>
+      <TextInput
+      style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+    />
+    <Text style={{fontSize: 24}}>
+        Password
+      </Text>
+    <TextInput
+      style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+    />
+    <Text style={{fontSize: 24,color: '#ecf0f1'}}>
+        /////
+      </Text>
+        <Button
+        title="Sign in"
+        onPress={() =>
+        navigation.navigate('Profile')
+      }
+      />
+      <View style={styles.container2}>
+      </View>
+      <Button
+        title="Sign up"
+        onPress={() => Alert.alert('Пока не готово')}
+      />
+      
+    </View>
+   
+  );
+}
+
+const profile= ({ navigation }) => {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.paragraph}>
+        hello, user 2747895
+      </Text>
+      
+    </View>
+  );
+}
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 5,
+    justifyContent: 'center',
+    paddingTop: Constants.statusBarHeight,
+    backgroundColor: '#ecf0f1',
+    padding: 20,
+  },
+  container2: {
+    backgroundColor: '#ecf0f1',
+    padding: 20,
+  },
+  paragraph: {
+    margin: 24,
+    fontSize: 24,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+});
