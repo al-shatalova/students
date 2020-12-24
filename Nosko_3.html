@@ -1,0 +1,114 @@
+<meta charset="utf-8" />
+<script>
+let nomer1=function()
+{
+	let k=0;
+	let ch=0;
+	let b=0;
+	for(let i=0;i<1000000;i++)
+	{
+		let t=Math.round(Math.random()*2)
+		switch(t)
+		{
+			case 0:
+				k++;
+				break;
+			case 1:
+				ch++;
+				break;
+			case 2:
+				b++;
+				break;
+		}
+	}
+	console.log(k);
+	console.log(ch);
+	console.log(b);
+}
+let nomer2=function()
+{
+	class Card
+	{
+		constructor(text)
+		{
+			this.text=text;
+		}
+		getInt()
+		{
+			switch(this.text)
+			{
+				case "J":
+					return 11;
+				case "Q":
+					return 12;
+				case "K":
+					return 13;
+				case "A":
+					return 14;
+			}
+			return this.text*1;
+		}
+	}
+	let m=[new Card("1"),new Card("A"),new Card("K"),new Card("9")];
+	let summaCard=function(m)
+	{
+		let summa=0;
+		for(let i in m)
+		{
+			summa+=m[i].getInt();
+		}
+		return summa;
+	}
+	console.log(summaCard(m));
+}
+let nomer3 = function()
+{
+	let m_k=0;
+	let m_ch=0;
+	let m_b=0;
+	let td=0;
+	let pred=null;
+	for(let i=0;i<1000000;i++)
+	{
+		let t=Math.round(Math.random()*2)
+		if(pred===null)
+		{
+			pred=t;
+			td=1;
+		}
+		else if(pred===t)
+		{
+			td++;
+		}
+		else
+		{
+			td=1;
+			pred=t;
+		}
+		switch(t)
+		{
+			case 0:
+				if(m_k<td)
+				{
+					m_k=td;
+				}
+				break;
+			case 1:
+				if(m_ch<td)
+				{
+					m_ch=td;
+				}
+				break;
+			case 2:
+				if(m_b<td)
+				{
+					m_b=td;
+				}
+				break;
+		}
+	}
+	console.log(m_k);
+	console.log(m_ch);
+	console.log(m_b);
+}
+</script>

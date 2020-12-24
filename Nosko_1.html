@@ -1,0 +1,62 @@
+<meta charset="utf-8" />
+Носко М.М. ПИ17-1
+<div id="osn">
+0
+</div>
+<input type="button" value="7" onclick="dob_ch('7')">
+<input type="button" value="8" onclick="dob_ch('8')">
+<input type="button" value="9" onclick="dob_ch('9')">
+<br />
+<input type="button" value="4" onclick="dob_ch('4')">
+<input type="button" value="5" onclick="dob_ch('5')">
+<input type="button" value="6" onclick="dob_ch('6')">
+<br />
+<input type="button" value="1" onclick="dob_ch('1')">
+<input type="button" value="2" onclick="dob_ch('2')">
+<input type="button" value="3" onclick="dob_ch('3')">
+<br />
+<input type="button" value="0" onclick="dob_ch('0')">
+<br />
+<input type="button" value="Очистить" onclick="vyvod('0')">
+<br />
+<input type="button" value="+" onclick="new_op(function(a,b){return a+b})">
+<input type="button" value="-" onclick="new_op(function(a,b){return a-b})">
+<input type="button" value="/" onclick="new_op(function(a,b){if(b!=0){return a/b}else{return 0}})">
+<input type="button" value="*" onclick="new_op(function(a,b){return a*b})">
+<br />
+<input type="button" value="=" onclick="ravno()">
+<script>
+let vyvod=function(a)
+{
+	document.getElementById("osn").innerHTML=a;
+}
+let dob_ch=function(a)
+{
+	if(document.getElementById("osn").innerHTML.trim()=="0")
+	{
+		document.getElementById("osn").innerHTML=a;
+	}
+	else
+	{
+		document.getElementById("osn").innerHTML+=a;
+	}
+	
+}
+let get_ch=function()
+{
+	return document.getElementById("osn").innerHTML*1;
+}
+let pam=0;
+let op=function(a,b){return a+b};
+let new_op=function(f)
+{
+	pam=get_ch();
+	vyvod("0");
+	op=f;
+}
+let ravno=function()
+{
+	vyvod(op(pam,get_ch()));
+	pam=0;
+}
+</script>
