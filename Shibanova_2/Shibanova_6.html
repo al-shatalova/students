@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script> 
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script> 
+  <title>Shibanova_6</title>
+  <style>
+    button{
+            width: 100px;
+            height:100px;
+            border-radius: 1px;
+            margin:50px;
+        }
+        .on{
+            color:rgb(255, 255, 255);
+            background-color: rgb(0, 58, 216);
+        }
+        .off{
+            color:rgb(252, 252, 252);
+            background-color: rgb(98, 135, 236);
+        }
+
+  </style>
+
+  <script type="text/babel">
+    function Hello(props) { 
+      return <div> 
+            <p>Фамилия: {props.surname}</p> 
+            <p>Имя: {props.name}</p>
+            <p>Отчество: {props.middlename}</p>  
+            <p>Возраст: {props.age}</p> 
+      </div>; } 
+
+     ReactDOM.render( 
+              <Hello surname="Shibanova" name="Ekaterina" middlename="Dmitrievna" age="21" />, 
+              document.getElementById("app1") 
+          ) 
+
+    
+    class ClickButton extends React.Component {
+             
+           constructor(props) {
+               super(props);
+               this.state = {class: "off", label: "Click the button to change the color"};
+                 
+               this.press = this.press.bind(this);
+           }
+           press(){
+               let className = (this.state.class==="off")?"on":"off";
+               this.setState({class: className});
+           }
+           render() {
+               return <button onClick={this.press} className={this.state.class}>{this.state.label}</button>;
+           }
+       }
+         
+       ReactDOM.render(
+           <ClickButton />,
+           document.getElementById("app2")
+       )
+
+
+  </script>
+</head>
+<body>
+  <div id="app1"></div>
+  <div id="app2"></div>
+</body>
+</html>
