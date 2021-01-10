@@ -1,0 +1,99 @@
+<meta charset="utf-8" />
+<script>
+function getRandomInt(min ,max){
+    return Math.floor(Math.random()*(max-min+1))+min;
+}
+
+function getCard(){
+    let cards = ['2' ,'3', '4' , '5', '6' , '7' , '8', '9' ,'10' , 'J' , 'Q', "K" , 'A' ]
+    return cards[getRandomInt(0,cards.length - 1)];
+}
+
+function getSum(hand){
+    let sum = 0;
+    for (var i=0; i <hand.length;i++){
+        let card = hand[i];
+        if (card != 'A'){
+            if (card == 'J' || card == 'Q' || card == 'K') {
+                sum+= 10;
+            } else {
+                sum+= parseInt(card);
+            }
+        }
+    }
+    for (var i=0; i <hand.length;i++){        
+        let card = hand[i];
+        if (card == 'A'){
+            if (sum > 10) {
+                sum+= 1;
+            } else {
+                sum+=11
+            }
+        }
+    }
+    return sum
+}       
+let dealer = [getCard()];
+let player = [getCard(),getCard()];
+
+let answer = '';
+let lose = false;
+let fl = false;
+function getStatus(){
+    return  `Рука дилера ${dealer}
+Ваша рука ${player}`    
+}
+
+do {
+    answer = confirm(`${getStatus()} Сумма : ${getSum(player)}
+                    Продолжаем?`);
+    if ((answer) && (!fl)){
+        player.push(getCard());
+        sum = getSum(player);
+        if (sum > 21){
+            alert (`Перебор ${getStatus()}
+            Вы проиграли`);
+            lose = true;
+            break;
+        } else if (sum == '21'){
+            alert (`BlackJack ${getStatus()}`)
+            answer = confirm(`Забрать ставку(Да/нет)`);
+            if (answer){
+                alert('Вы забираете свою ставку!');
+                answer = false
+            }
+            else {
+                fl = true;
+            }
+        }
+    }
+    alert (getStatus());
+} while (answer);
+if (!lose){
+    do {
+                dealer.push(getCard());
+                sumdel = getSum(dealer);
+                if (sumdel > 21){
+                    alert (`Перебор!!!
+                    Вы победили!
+                     ${getStatus()}`);
+                    break;
+            } else if (sumdel == '21'){
+                if (fl){ 
+                    alert (`BlackJack ${getStatus()}.
+                    Вы остаетесь со своей ставкой`)}
+                else{alert (`BlackJack ${getStatus()}.
+                    Вы проиграли(`)
+                }
+            }
+    alert (getStatus());   
+    }while (sumdel<17)}
+if(!lose){
+    if (sumdel<sum){
+    alert (`${getStatus()} 
+    Вы победили!`);}
+    else{
+        alert (`${getStatus()} 
+        Вы проиграли(`);}
+    }
+</script>
