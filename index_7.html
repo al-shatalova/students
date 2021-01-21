@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<style>
+		ol.myclass {
+			counter-reset: myCounter;
+		}
+
+		li.myclass {
+			list-style: none;
+		}
+
+		li.myclass:before {
+			counter-increment: myCounter;
+			content: counter(myCounter);
+			color: white;
+			background: #2980B9;
+			display: inline-block;
+			text-align: center;
+			margin: 5px 10px;
+			line-height: 40px;
+			width: 40px;
+			height: 40px;
+		}
+	</style>
+	<title>Седьмая</title>
+</head>
+
+<body>
+	<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+	<div id="forclock"></div>
+	<div id="app1"></div>
+	<div id="spisok"></div>
+	<div id="som"></div>
+	<div id="mylogall">
+		Ход событий:
+		<ol class='myclass' id="mylogdiv">
+		</ol>
+	</div>
+	<script type="text/babel">
+		function mylog(text) {
+			document.getElementById("mylogdiv").innerHTML += "<li class='myclass'>" + text + "</li>";
+		}
+		class ClickButton extends React.Component {
+			constructor(props) {
+				mylog("Вызван конструктор компонента");
+				super(props);
+				this.state = { class: "off", label: this.props.txt };
+				this.press = this.press.bind(this);
+				this.samounichtozheniye = this.samounichtozheniye.bind(this);
+				this.somounichtozheniye = this.somounichtozheniye.bind(this);
+			}
+			press() {
+				mylog("Нажатие на кнопку");
+				this.setState({ label: "Получилось" })
+			}
+			shouldComponentUpdate() {
+				if (Math.random() >= 0.7) {
+					mylog("Компонент сейчас обновится");
+					return true;
+				}
+				else {
+					mylog("Компонент не хочет обновляться");
+				}
+
+			}
+			componentWillReceiveProps(nextProps) {
+				mylog("Компонент получает параметры");
+			}
+			componentDidMount() {
+				mylog("Встраивание компонента произведено");
+			}
+			componentWillUnmount() {
+				mylog("Компонент будет убран со страницы");
+				ReactDOM.unmountComponentAtNode(document.getElementById('som'));
+				ReactDOM.render(
+					<MyClock />,
+					document.getElementById('forclock')
+				);
+				ReactDOM.render(
+					<ItemsList data={propsValues} />,
+					document.getElementById("spisok")
+				)
+				document.getElementById("mylogall").innerHTML = "";
+			}
+			samounichtozheniye() {
+				ReactDOM.unmountComponentAtNode(document.getElementById('app1'));
+			}
+			somounichtozheniye() {
+				ReactDOM.unmountComponentAtNode(document.getElementById('som'));
+			}
+			render() {
+				mylog("Отрисовка компонента");
+				return (<div><button onClick={this.press} >{this.state.label}</button><br /><button onClick={this.samounichtozheniye}>Самоуничтожение</button><br /><button onClick={this.somounichtozheniye}>Сомоуничтожение</button></div>);
+			}
+		}
+		class SomClass extends React.Component {
+			render() {
+				return <img src="https://cdn24.img.ria.ru/images/105968/03/1059680391_485:0:2111:1626_320x0_80_0_0_867add2d7706abca22244b36973d7d89.jpg" />;
+			}
+		}
+		class MyClock extends React.Component {
+			constructor(props) {
+				super(props);
+				this.state = { txt: new Date().toString() };
+				this.timer = setInterval(() => {
+					ReactDOM.unmountComponentAtNode(document.getElementById('forclock'));
+					ReactDOM.render(
+						<MyClock />,
+						document.getElementById('forclock')
+					);
+				}, 1000)
+			}
+			componentWillUnmount() {
+				clearTimeout(this.timer);
+			}
+			render() {
+				return <div>Текущее время: {this.state.txt}</div>;
+			}
+		}
+		ReactDOM.render(
+			<ClickButton txt="Текст кнопки" />,
+			document.getElementById('app1')
+		);
+		ReactDOM.render(
+			<SomClass />,
+			document.getElementById('som')
+		);
+		const propsValues = {
+			title: "Список группы",
+			items: [
+				"аСтудент 1",
+				"аСтудент 2",
+				"бСтудент 3",
+				"вСтудент 4",
+				"вСтудент 5",
+				"вСтудент 6"
+			]
+		};
+		class Item extends React.Component {
+			render() {
+				return <li>{this.props.name}</li>;
+			}
+		}
+		class SearchPlugin extends React.Component {
+			constructor(props) {
+				super(props);
+				this.onTextChanged = this.onTextChanged.bind(this);
+			}
+			onTextChanged(e) {
+				var text = e.target.value.trim(); // удаляем пробелы
+				this.props.filter(text); // передаем введенный текст в родительский компонент
+			}
+			render() {
+				return <input placeholder="Поиск" onChange={this.onTextChanged} />;
+			}
+		}
+		class ItemsList extends React.Component {
+			constructor(props) {
+				super(props);
+				this.state = { items: this.props.data.items };
+				this.filterList = this.filterList.bind(this);
+			}
+			filterList(text) {
+				var filteredList = this.props.data.items.filter(function (item) {
+					return item.toLowerCase().search(text.toLowerCase()) !== -1;
+				});
+				this.setState({ items: filteredList });
+			}
+			render() {
+				return (
+					<div>
+						<h2>{this.props.data.title}</h2>
+						<SearchPlugin filter={this.filterList} />
+						<ul>
+							{
+								this.state.items.map(function (item) {
+									return <Item key={item} name={item} />
+								})
+							}
+						</ul>
+					</div>);
+			}
+		}
+	</script>
+</body>
+
+</html>

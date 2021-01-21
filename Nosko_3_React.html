@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		@font-face {
+		font-family: 'Alverata CYR';
+		src: local('Alverata W06 PE Md'), local('AlverataW06-PEMd'),
+		url('AlverataW06-PEMd.woff2') format('woff2'),
+		url('AlverataW06-PEMd.woff') format('woff');
+		font-weight: 500;
+		font-style: normal;
+		font-display: swap;
+		}
+
+		@font-face {
+		font-family: 'Alverata CYR';
+		src: local('AlverataCYR'),
+		url('AlverataCYR.woff2') format('woff2'),
+		url('AlverataCYR.woff') format('woff');
+		font-weight: normal;
+		font-style: normal;
+		font-display: swap;
+		}
+
+		@font-face {
+		font-family: 'Alverata CYR';
+		src: local('Alverata W07 PE Bold'), local('AlverataW07-PEBold'),
+		url('AlverataW07-PEBold.woff2') format('woff2'),
+		url('AlverataW07-PEBold.woff') format('woff');
+		font-weight: bold;
+		font-style: normal;
+		font-display: swap;
+		}
+	</style>
+    <meta charset="utf-8" />
+    <title>Носко лаба №3</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+</head>
+<body>
+<div id="app"></div>
+<script type="text/babel"> 
+const user = {
+id : 25438772,
+age: 21,
+firstName: 'Максим',
+otchestvoName: 'Михайлович',
+lastName: 'Носко',
+getFullName: function(){ 
+return `${this.firstName} ${this.otchestvoName} ${this.lastName}`;
+}
+};
+ReactDOM.render(
+	<div style={{textAlign:'center',color:'black', fontFamily:'Alverata CYR'}}>
+			<p>Полное имя: {user.getFullName()}</p>
+			<p>Возраст: {user.age}</p>
+	</div>,
+	document.getElementById("app")
+)
+</script>
+</body>
+</html>

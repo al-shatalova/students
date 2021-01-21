@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		@font-face {
+		font-family: 'Alverata CYR';
+		src: local('Alverata W06 PE Md'), local('AlverataW06-PEMd'),
+		url('AlverataW06-PEMd.woff2') format('woff2'),
+		url('AlverataW06-PEMd.woff') format('woff');
+		font-weight: 500;
+		font-style: normal;
+		font-display: swap;
+		}
+
+		@font-face {
+		font-family: 'Alverata CYR';
+		src: local('AlverataCYR'),
+		url('AlverataCYR.woff2') format('woff2'),
+		url('AlverataCYR.woff') format('woff');
+		font-weight: normal;
+		font-style: normal;
+		font-display: swap;
+		}
+
+		@font-face {
+		font-family: 'Alverata CYR';
+		src: local('Alverata W07 PE Bold'), local('AlverataW07-PEBold'),
+		url('AlverataW07-PEBold.woff2') format('woff2'),
+		url('AlverataW07-PEBold.woff') format('woff');
+		font-weight: bold;
+		font-style: normal;
+		font-display: swap;
+		}
+	</style>
+    <meta charset="utf-8" />
+    <title>Носко лаба №4</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+</head>
+<body>
+<div id="timer-example"></div>
+<script type="text/babel"> 
+class Timer extends React.Component {
+  constructor(props) {
+    super(props);
+	let ts=prompt('Введите количество секунд')*1;
+    this.state = { seconds: ts, start:ts };
+  }
+
+  tick() {
+	if(this.state.seconds>0)
+	{
+		this.setState(state => ({
+		  seconds: state.seconds - 1
+		}));
+	}
+	else
+	{
+		window.location.href="https://komp-remont-service.ru/wp-content/uploads/bsod_2.jpg";
+	}
+  }
+
+  componentDidMount() {
+    this.interval = setInterval(() => this.tick(), 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
+  render() {
+    return (
+      <div style={{fontSize:'100px',textAlign:'center',color:'black', fontFamily:'Alverata CYR'}}>
+        Осталось: {this.state.seconds}
+		<br />
+		<progress value={this.state.start-this.state.seconds} max={this.state.start}>
+		</progress>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(
+  <Timer />,
+  document.getElementById('timer-example')
+);
+
+</script>
+</body>
+</html>
