@@ -1,0 +1,108 @@
+import * as React from 'react';
+import { Text, View, StyleSheet, ScrollView, Button, Alert, TextInput } from 'react-native';
+import Constants from 'expo-constants';
+
+// You can import from local files
+import AssetExample from './components/AssetExample';
+
+// or any pure javascript modules available in npm
+import { Card } from 'react-native-paper';
+
+export default function App() {
+  const [value, onChangeText] = React.useState('Useless Placeholder');
+  return (
+    <View style={styles.container}>
+      <Text style={styles.paragraph}>
+        5 книжных новинок октября
+      </Text>
+      <View style={styles.headerSection}>
+        <Text style={styles.headertext}>
+          "Кадиш.com" Натан Ингландер. Издательство "Книжки"
+        </Text>
+      </View>
+      <View style={styles.MainTextSection}>
+          <Text style={styles.text}>
+          Ироничная новелла Натана Ингландера, две личные истории культовой Патти Смит, репортаж британской журналистки о будущем человечества, дебютный роман Оушена Вуонга и журналистское расследование о создании «Моссада». В нашей подборке рассказываем о пяти захватывающих книжных новинках, которые достойны того, чтобы появиться на ваших полках.
+        </Text>
+        <TextInput
+          style={{ height: 50, borderColor: 'gray', borderWidth: 1, marginBottom: 10 }}
+          onChangeText={text => onChangeText(text)}
+          value={value}
+        />
+        <Button
+        title="Press me"
+        onPress={() => Alert.alert('Simple Button pressed')}
+        />
+      </View>
+      <View style={styles.MainTextSection}>
+       <ScrollView style={styles.scrollView}>
+        <Text style={styles.text}>
+Чтобы насладиться идеальной дегустацией вина в домашних условиях, нет необходимости быть экспертом винного мира.
+
+1.Используйте отдельный бокал для каждого вида вина
+
+Если вы собираетесь дегустировать несколько вин, обязательно приготовьте отдельный бокал для каждого из них. Таким образом вы не будете смешивать ароматы, наслаждаясь каждым из них по отдельности.
+
+2.Пробуйте вино вслепую
+
+В данном случае «вслепую» означает не только закрытые глаза. Если вам подарили вино, попробуйте дегустировать его, не читая этикетки и не ориентируясь на бренд. Так вы не будете зависеть от ожиданий и сможете ориентироваться только на свои ощущения. Закройте глаза, чувствуйте аромат, смакуйте и наслаждайтесь.
+
+3. Наслаждайтесь многообразием цветов
+
+Прежде чем отпить глоток, изучите оттенки благородного напитка, который находится в вашем бокале. Знали ли вы, что белые вина могут иметь десятки оттенков, в красные – и того больше?
+
+4. Держите бокал за ножку
+
+Причина очень проста: держа бокал за ножку, вы избегаете нагревания вина руками. Так вы сможете медленно поворачивать бокал, наблюдая, как на стенках возникают следы в виде подтеков. Их еще называют «ножки» или «слезы вина».
+
+
+5. Вдохните аромат несколько раз
+
+Многим может показаться забавным жест сомелье, который долго вдыхает аромат перед тем, как сделать глоток. Однако это поможет открыть многообразие ароматов вина, стоит только погрузиться в процесс и быть в моменте. Перед дегустацией лучше не наносить парфюм или средства с ярко выраженным запахом.
+
+
+6. Делитесь впечатлениями
+
+Все мы совершенно по-разному воспринимаем ароматы и вкусы, поэтому всегда интересно проводить дегустацию в компании, чтобы делиться ощущениями и удивляться их многообразию.
+        </Text>
+      </ScrollView>
+      </View>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  paragraph: {
+    fontSize: 18,
+    marginBottom: 10,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  headerSection: {
+    flex: 1,
+    backgroundColor: '#ecf0f1',
+  },
+  MainTextSection: {
+    flex: 4,
+    backgroundColor: 'darkgrey',
+  },
+  headertext: {
+    textAlign: 'center',
+    fontSize: 18,
+    marginTop: 20,
+  },
+  text: {
+    textAlign: 'center',
+    fontSize: 14,
+    marginTop: 20,
+    marginLeft: 20,
+    marginRight: 20,
+    marginBottom: 20
+  },
+  scrollView: {
+    height: 100
+  },
+});

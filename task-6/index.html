@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h2>Очко (игра в 21)</h2>
+<p class="playerScore">Ваш счет: </p>
+<p class="dillerScore">Cчет диллера: </p>
+
+<button class="cont">Продолжаем</button>
+<button class="stop">Пас</button>
+<button class="new">Новая игра</button>
+
+
+<script>
+    const cards = [`2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `J`, `Q`, `K`, `A`];
+
+    const randomInteger = function (min, max) {
+        let rand = min + Math.random() * (max + 1 - min);
+        return Math.floor(rand);
+    };
+
+    const getCard = function () {
+        return cards[randomInteger(0, cards.length - 1)];
+    }
+
+    const getSum = function (arr) {
+        let sum = 0;
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] == `J`) {
+                sum += 10;
+            } else if (arr[i] == `Q`) {
+                sum += 10;
+            } else if (arr[i] == `K`) {
+                sum += 10;
+            } else if (arr[i] == `A`) {
+                sum += 11;
+            } else if (arr[i] > 0) {
+                sum += parseInt(arr[i]);
+            }
+        }
+
+        return sum;
+    }
+
+    const startNewGame = function () {
+        let playerScore = 0;
+        let dillerScore = 0;
+        const playerHand = [];
+        playerHand.push(getCard());
+        playerHand.push(getCard());
+        const dillerHand = [];
+        dillerHand.push(getCard());
+        playerScore += getSum(playerHand);
+        dillerScore += getSum(dillerHand);
+
+        return {
+            playerScore,
+            dillerScore,
+        };
+    };
+
+    const stopGame = function (array) {
+        console.log(array.dillerScore);
+        if (array.dillerScore < 18) {
+            while (array.dillerScore < 18) {
+                array.dillerScore += parseInt(getSum(getCard()));
+            };
+            if (array.dillerScore > 21 && array.playerScore < 21) {
+                alert(`Вы победили! Ваш счет: ${array.playerScore}, Cчет диллера: ${array.dillerScore}`);
+                playerScore.textContent = `Ваш счет: `;
+                dillerScore.textContent =  `Cчет диллера: `;
+            } else if (array.playerScore < 21 && array.dillerScore < 21 && array.dillerScore > array.playerScore) {
+                alert(`Вы проиграли! Ваш счет: ${array.playerScore}, Cчет диллера: ${array.dillerScore}`);
+                playerScore.textContent = `Ваш счет: `;
+                dillerScore.textContent =  `Cчет диллера: `;
+            } else if (array.playerScore < 21 && array.dillerScore < 21 && array.dillerScore < array.playerScore) {
+                alert(`Вы победили! Ваш счет: ${array.playerScore}, Cчет диллера: ${array.dillerScore}`);
+                playerScore.textContent = `Ваш счет: `;
+                dillerScore.textContent = `Cчет диллера: `;
+            }
+
+        } else if (array.playerScore < 21 && array.dillerScore < 21 && array.dillerScore > array.playerScore) {
+            alert(`Вы проиграли! Ваш счет: ${array.playerScore}, Cчет диллера: ${array.dillerScore}`);
+            playerScore.textContent = `Ваш счет: `;
+            dillerScore.textContent =  `Cчет диллера: `;
+        } else if (array.playerScore < 21 && array.dillerScore < 21 && array.dillerScore < array.playerScore) {
+            alert(`Вы победили! Ваш счет: ${array.playerScore}, Cчет диллера: ${array.dillerScore}`);
+            playerScore.textContent = `Ваш счет: `;
+            dillerScore.textContent =  `Cчет диллера: `;
+        }
+
+
+    }
+
+    const cont = document.querySelector(`.cont`);
+    const newGame = document.querySelector(`.new`);
+    const stop = document.querySelector(`.stop`);
+    const playerScore = document.querySelector(`.playerScore`);
+    const dillerScore = document.querySelector(`.dillerScore`);
+    let arr = startNewGame();
+
+    cont.addEventListener(`click`, function () {
+        arr.playerScore += parseInt(getSum(getCard()));
+        playerScore.textContent = `Ваш счет: ${arr.playerScore}`;
+        arr.dillerScore += parseInt(getSum(getCard()));
+        dillerScore.textContent =  `Cчет диллера: ${arr.dillerScore}`;
+
+        if (arr.playerScore == 21) {
+            alert(`Вы победили! Ваш счет: ${arr.playerScore}, Cчет диллера: ${arr.dillerScore}`);
+            playerScore.textContent = `Ваш счет: `;
+            dillerScore.textContent =  `Cчет диллера: `;
+        }  else if (arr.playerScore < 21 && arr.dillerScore > 21) {
+            alert(`Вы победили! Ваш счет: ${arr.playerScore}, Cчет диллера: ${arr.dillerScore}`);
+            playerScore.textContent = `Ваш счет: `;
+            dillerScore.textContent =  `Cчет диллера: `;
+        } else if (arr.playerScore > 21) {
+            alert(`Вы проиграли! Ваш счет: ${arr.playerScore}, Cчет диллера: ${arr.dillerScore}`);
+            playerScore.textContent = `Ваш счет: `;
+            dillerScore.textContent =  `Cчет диллера: `;
+        } else if (arr.dillerScore == 21 && arr.playerScore != 21) {
+            alert(`Вы проиграли! Ваш счет: ${arr.playerScore}, Cчет диллера: ${arr.dillerScore}`);
+            playerScore.textContent = `Ваш счет: `;
+            dillerScore.textContent =  `Cчет диллера: `;
+        }   else if (arr.dillerScore == 21 && arr.playerScore == 21) {
+            alert(`Ничья Ваш счет: ${arr.playerScore}, Cчет диллера: ${arr.dillerScore}`);
+            playerScore.textContent = `Ваш счет: `;
+            dillerScore.textContent =  `Cчет диллера: `;
+        }
+    });
+
+    newGame.addEventListener(`click`, function () {
+        arr = startNewGame();
+        playerScore.textContent = `Ваш счет: ${arr.playerScore}`;
+        dillerScore.textContent =  `Cчет диллера: ${arr.dillerScore}`;
+        if (arr.playerScore == 21) {
+            alert(`БЛЕКДЖЕК`);
+            playerScore.textContent = `Ваш счет: `;
+            dillerScore.textContent =  `Cчет диллера: `;
+        }
+    });
+
+    stop.addEventListener(`click`, function () {
+        stopGame(arr);
+    });
+
+
+
+
+
+</script>
+</body>
+</html>
