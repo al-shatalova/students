@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Знакомство с render</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style type="text/css">
+   h1 {
+    font-family: cursive;
+    color: DarkCyan;
+   }
+  </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+      ReactDOM.render(
+        <h1>
+          <center>
+            <i>Hello, world!</i>
+          </center>
+        </h1>,
+        document.getElementById('root'));
+
+    </script>
+  </body>
+</html>
