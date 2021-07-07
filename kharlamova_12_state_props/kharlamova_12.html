@@ -1,0 +1,63 @@
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>task 8 react render</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="kharlamova_12.css"/>
+
+</head>
+
+<body>
+<div id="msg">
+
+</div>
+<div id="btn">
+</div>
+
+
+<script type="text/babel">
+    class Hello extends React.Component {
+        render() {
+            return <div>
+                <p>Имя: {this.props.name}</p>
+                <p>Возраст: {this.props.age}</p>
+            </div>;
+        }
+    }
+
+    class ClickButton extends React.Component {
+
+        constructor(props) {
+            super(props);
+            this.state = {class: "off", label: "Включить"};
+            this.press = this.press.bind(this);
+        }
+
+        press() {
+            let className = (this.state.class === "off") ? "on" : "off";
+            let label = className === "off" ? "Включить" : "Выключить";
+            this.setState({class: className, label: label});
+        }
+
+        render() {
+            return <button onClick={this.press} className={this.state.class}>{this.state.label}</button>;
+        }
+    }
+
+    ReactDOM.render(
+        <Hello name="Ульяна" age="20"/>,
+        document.getElementById("msg")
+    )
+
+    ReactDOM.render(
+        <ClickButton/>,
+        document.getElementById("btn")
+    )
+
+</script>
+
+</body>
+
+</html>
