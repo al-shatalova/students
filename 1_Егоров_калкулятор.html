@@ -1,0 +1,18 @@
+<meta charset="utf-8">
+<script>
+	let num1 = +prompt('Введите число 1: ');
+	let num2 = +prompt('Введите число 2: ');
+
+	if (isNaN(num1) || isNaN(num2)) {
+		alert('Некорректный ввод');
+		window.location.reload();
+	} else {
+		alert(`
+		Сумма = ${num1 + num2}
+		Произведение = ${num1 * num2}
+		Разница = ${num1 - num2}
+		Результат деления = ${num1 / num2}`);
+	}
+
+	
+</script>
