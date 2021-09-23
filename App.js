@@ -8,70 +8,55 @@ import AssetExample from './components/AssetExample';
 // or any pure javascript modules available in npm
 import { Card } from 'react-native-paper';
 
-
-
-const LotsOfStyles = () => {
+const FlexDimensionsBasics = () => {
   return (
-    <View style={styles.back}>
-    <View >
-    <Text style={styles.header}>Журнал Bright</Text>
-    </View>
-    <View style={styles.container}>
-    <Text style={styles.headerLow}>Новости</Text>
-    <Image style = {styles.picture}
-        source={{
-          uri: 'https://i.pinimg.com/564x/a5/be/3d/a5be3d83f75c97b4cc87dffe5ae169ae.jpg',
-        }}
-      />
-    <Text style={[styles.headerMain]}>Превращаем стресс в своего помощника</Text>
-    <Text style={styles.regularText}>Исследователи Йельского университета заявляют, что люди, которые рассматривают стресс, как возможность личностного роста, отмечают улучшения качества жизни. Сегодня узнаем, как это работает и как увидеть положительные стороны стресса.</Text>
-    </View> 
+    // Try removing the `flex: 1` on the parent View.
+    // The parent will not have dimensions, so the children can't expand.
+    // What if you add `height: 300` instead of `flex: 1`?
+    <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, backgroundColor: 'rgb(255, 255, 255)' }}> 
+      <Text style = {styles.header}>
+      5 книжных новинок октября
+      </Text>
+      </View>
+      <View style={{ flex: 2, backgroundColor: 'rgb(233, 233, 233)' }}>
+      <Text style = {styles.regularText}>
+      «Кадиш.com» Натан Ингландер. Издательство «Книжники»
+      </Text>
+      < /View>
+      <View style={{ flex: 3, backgroundColor: 'rgb(147, 147, 147)' }}>
+      <Text style={[styles.regularText, {fontSize:14}]}>
+      Ироничная новелла Натана Ингландера, две личные истории культовой Патти Смит, репортаж британской журналистики о будущем человечеста, дебютный роман Оушена Вуонга и журалистское расследование о создании «Моссада». В нашей подборке рассказываем о пяти захватывающийх книжных новинках, которые достойны того, чтобы появиться на ваших полках.
+      </Text>
+      < /View>
     </View>
   );
 };
 
+
 const styles = StyleSheet.create({
-  back: {
-    backgroundColor:'rgba(240, 239, 240,1)'
-  },
-  container: {
-    marginTop: 20,
-    marginLeft: 10,
-    marginRight: 10,
-    marginBottom: 300,
-    backgroundColor:'rgba(255, 255, 255, 1)',
-    borderRadius: 7},
   header: {
-    marginTop: 70,
+    marginTop: 100,
     textAlign: 'center',
     fontWeight: 'bold',
     fontSize: 18,
   },
-  picture: {
-    marginTop: 40,
-    marginLeft: 20,
-    width: 300,
-    height: 180,
-  },
-  headerLow: {
-    marginTop: 40,
-    marginLeft: 20,
-    color:'rgba(90, 9, 231, 1)'
-  },
   headerMain: {
     marginTop: 20,
-    marginLeft: 20,
+    textAlign: 'center',
     fontWeight: 'bold',
     fontSize: 26
   },
   regularText: {
+    textAlign: 'center',
     marginTop: 20,
     marginLeft: 20,
+    marginRight: 20,
     marginBottom: 30,
-    fontSize: 16
+    fontSize: 18
   },
 });
 
 
 
-export default LotsOfStyles;
+export default FlexDimensionsBasics;
