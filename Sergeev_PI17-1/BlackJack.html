@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>BlackJack</title>
+	<script>
+		var lose=0;
+		var wins=0;
+		let cards = new Map();
+		let suit = ['b', 'c', 'p', 'k']
+		for (var i = 2; i <15; i++) {
+			for (var m = suit.length - 1; m >= 0; m--) {
+				//alert ('check '+i.toString()+m.toString())
+				if (i<10) {
+					cards.set(i+'-'+suit[m], i)
+				}
+				else if (i==10) {
+					cards.set(i+'-'+suit[m], 10)
+				}
+				else if (i==11) {
+					cards.set('J-'+suit[m], 10)
+				}
+				else if (i==12) {
+					cards.set('D-'+suit[m], 10)
+				}
+				else if (i==13) {
+					cards.set('K-'+suit[m], 10	)
+				}
+				else if (i==14) {
+					cards.set('T-'+suit[m], 11)
+				}
+			}
+		}
+
+		console.log(cards);
+		function getSum(mas_cards) {
+			var score = 0;
+			for (var c = mas_cards.length - 1; c >= 0; c--) {
+				score = cards.get(mas_cards[c]) + score;
+			}
+			return score;
+		}
+
+
+
+		// Получаем случайный ключ массива
+		// var rand = Math.floor(Math.random() * cards.length);
+
+		// console.log(cards.get([rand]));
+
+
+		function clear_score() {
+			players_score=0;
+			players_cards=[];
+			diller_cards=[];
+			diller_score=0;
+			document.getElementById('Pscore').value=players_score;
+			document.getElementById('Pcards').value=players_cards;
+			document.getElementById('Dscore').value=diller_score;
+			document.getElementById('Dcards').value=diller_cards;
+			document.getElementById('morebutton').disabled=false;
+			document.getElementById('thatsallbutton').disabled=false;
+		}
+		function gamestop() {
+			document.getElementById('morebutton').disabled=true;
+			document.getElementById('thatsallbutton').disabled=true;
+		}
+
+		var players_cards = [];
+		var diller_cards = [];
+		function more() {
+			var pcards = document.getElementById("Pcards");
+			var pscore = document.getElementById("Pscore");
+			players_cards.push('K-b').toString();
+			pcards.value=players_cards;
+			players_score = getSum(players_cards)
+			pscore.value=players_score;
+			if (players_score>21){
+				alert('You lose')
+				lose=lose+1;
+				document.getElementById("lose").value=lose;
+				gamestop();
+			}
+		}
+		function thatsall(){
+			var dcards = document.getElementById("Dcards");
+			var dscore = document.getElementById("Dscore");
+			while (dscore.value<19){
+				diller_cards.push('2-b').toString();
+				dcards.value=diller_cards;
+				diller_score = getSum(diller_cards)
+				dscore.value=diller_score;
+			}
+
+			if (dscore.value>21) {
+				pwin();
+			}
+
+			else if (dscore.value<22) {
+				if (dscore.value>document.getElementById("Pscore").value) {
+					plose();
+				}
+				else if (dscore.value<document.getElementById("Pscore").value) {
+					pwin();
+				}
+				else if (dscore.value==document.getElementById("Pscore").value){
+					alert('Nichya');
+					gamestop();
+				}
+
+			}	
+		}	
+		function plose(){
+			alert('You lose!')
+			lose=lose+1;
+			document.getElementById("lose").value=lose;
+			gamestop();
+		}	
+		function pwin(){
+			alert ('You win!');
+			wins=wins+1;
+			document.getElementById("wins").value=wins;
+			gamestop();
+		}		
+	</script>
+</head>
+<body>
+	<div align="center">
+		<p>Win <input type="number" id="wins" readonly="True" placeholder="0"></p>
+		<p>Lose <input type="number" id="lose" readonly="True" placeholder="0"></p>
+	</div>
+	<div align="center">
+		<p>Diller's cards</p>
+		<input type="text" id="Dcards" readonly="True" placeholder="NoCards">
+		<input type="number" id="Dscore" readonly="True" placeholder="0">
+	</div>
+	<div  align="center">
+		<p>Your cards</p>
+		<input type="text" id="Pcards" readonly="True" placeholder="NoCards">
+		<input type="number" id="Pscore" readonly="True" placeholder="0">
+	</div>
+	<div align="center">
+		<p></p>
+		<input id='morebutton' type="button" value='More' onclick='more()' >
+		<input id='thatsallbutton' type="button" value='Thats all' onclick='thatsall()'>
+	</div>
+	<div align="center">
+		<p></p>
+		<input type="button" value='New game' onclick='clear_score()'>
+	</div>
+</body>
+</html>

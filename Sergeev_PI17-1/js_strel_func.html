@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script>
+		let no_func = () => {};
+		alert (no_func());
+		var mass = [5, 6, 13, 0, 1, 18, 23];
+		alert (mass);
+		var plus = mass.reduce((a, b) => a + b); 
+		alert (plus) ;
+		var for2 = mass.filter(v => v % 2 == 0); 
+		alert (for2);
+		var x2 = mass.map(v => v * 2);       
+		alert (x2);
+		var allmails_html = '';
+		var mails = ['mail1@mail.ru', 'mail2@mail.ru', 'mail3@mail.ru', 'mail4@mail.ru', 'mail5@mail.ru', 'mail6@mail.ru', 'mail7@mail.ru', 'mail8@mail.ru',];	
+		var first_mail = mails.filter(m => m == 'mail1@mail.ru'); 
+		console.log(first_mail.indexOf(mails[0]) != -1);
+		for (var i = mails.length - 1; i >= 0; i--) 
+		{
+
+			if (first_mail.indexOf(mails[i]) != -1) 
+			{
+				var allmails_html = allmails_html + '<input type="text"  id="' + mails[i] + '" readonly="True" placeholder="mail" size="150" value= "' +mails[i]+' это отфильтрованная почта">' 
+			}
+			else 
+			{
+				var allmails_html = allmails_html + '<input type="text"  id="' + mails[i] + '" readonly="True" placeholder="mail" size="50" value= ' +mails[i]+'>' 
+			}
+		}	
+	</script>
+</head>
+<body>
+	<span id=allmails></span>
+	<script>
+		document.getElementById('allmails').innerHTML = allmails_html;
+	</script>
+</body>
+</html>

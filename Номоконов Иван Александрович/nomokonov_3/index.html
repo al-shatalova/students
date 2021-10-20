@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+
+    <title>Hello React</title>
+
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.production.min.js"
+    ></script>
+
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <div id="app"></div>
+    <script type="text/babel">
+      const user = {
+        id: 1,
+        age: 21,
+        firstName: "Иван",
+        lastName: "Номоконов",
+        group: "ПИ17-2",
+        getFullName: function () {
+          return `${this.firstName} ${this.lastName}`;
+        },
+      };
+      ReactDOM.render(
+        <div>
+          <h2 className="ml-5">5 + 2 = {5 + 2}</h2>
+          <div className="card mb-3 w-50 ml-5">
+            <div className="card-header">{user.getFullName()}</div>
+            <div className="card-body">
+              <p className="card-text">Возраст: {user.age} год</p>
+              <p className="card-text">Группа: {user.group}</p>
+            </div>
+          </div>
+        </div>,
+        document.getElementById("app")
+      );
+    </script>
+  </body>
+</html>

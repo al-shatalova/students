@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>Формы в React</title>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+
+    <script type="text/babel">
+        class UserForm extends React.Component {
+            constructor(props) {
+                super(props);
+                var name = props.name;
+                var nameIsValid = this.validateName(name);
+                var age = props.age;
+                var ageIsValid = this.validateAge(age);
+                this.state = {
+                    name: name,
+                    age: age,
+                    nameValid: nameIsValid,
+                    ageValid: ageIsValid,
+                };
+                this.nameInput = React.createRef();
+                this.ageInput = React.createRef();
+                this.onNameChange = this.onNameChange.bind(this);
+                this.onAgeChange = this.onAgeChange.bind(this);
+                this.handleSubmit = this.handleSubmit.bind(this);
+            }
+            componentDidMount() {
+                this.ageInput.addEventListener("input", this.onAgeChange);
+                this.nameInput.addEventListener("input", this.onNameChange);
+            }
+            validateAge(age) {
+                return age >= 0;
+            }
+            validateName(name) {
+                return name.length > 2;
+            }
+            onAgeChange(e) {
+                var val = e.target.value;
+                var valid = this.validateAge(val);
+                this.setState({ age: val, ageValid: valid });
+            }
+            onNameChange(e) {
+                var val = e.target.value;
+                console.log(val);
+                var valid = this.validateName(val);
+                this.setState({ name: val, nameValid: valid });
+            }
+
+            handleSubmit(e) {
+                e.preventDefault();
+                if (this.state.nameValid === true && this.state.ageValid === true) {
+                    alert("Имя: " + this.state.name + " Возраст: " + this.state.age);
+                }
+                else {
+                    alert('Валидация не пройдена')
+                }
+            }
+
+            render() {
+                // цвет границы для поля для ввода имени
+                var nameColor = this.state.nameValid === true ? "green" : "red";
+                // цвет границы для поля для ввода возраста
+                var ageColor = this.state.ageValid === true ? "green" : "red";
+                return (
+                    <form onSubmit={this.handleSubmit} class="w-50 px-5 mt-2">
+                        <div class="form-group w-50">
+                            <label>Имя:</label><br />
+                            <input class="form-control" type="text" value={this.state.name}
+                                onChange={this.onNameChange} style={{ borderColor: nameColor }}
+                                ref={(input) => {
+                                    this.nameInput = input;
+                                }} />
+                        </div>
+                        <div class="form-group w-50">
+                            <label>Возраст:</label><br />
+                            <input class="form-control" type="number" value={this.state.age}
+                                onChange={this.onAgeChange} style={{ borderColor: ageColor }}
+                                ref={(input) => {
+                                    this.ageInput = input;
+                                }} />
+                        </div>
+                        <input class="btn btn-primary mt-2" type="submit" value="Отправить" />
+                    </form>
+                );
+            }
+        }
+        ReactDOM.render(
+            <UserForm name="" age="0" />,
+            document.getElementById("app")
+        )
+    </script>
+</body>
+
+</html>

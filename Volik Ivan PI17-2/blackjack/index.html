@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlackJack</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+</head>
+
+<body>
+    <div class="field container h-100">
+        <div class="d-flex justify-content-between pt-4 pb-2 h-50">
+            <div class="dealer-cards">
+                <span>Счет дилера: <span class="dealer-score">0</span></span>
+
+            </div>
+            <div class="cards-pack"></div>
+        </div>
+        <div class="d-flex justify-content-between pt-2 pb-4 h-50">
+            <div class="player-cards">
+                <span>Счет игрока: <span class="player-score">0</span></span>
+            </div>
+            <div class="action-buttons d-flex flex-column h-100 justify-content-center">
+                <div class="bet mb-3">
+                    <div class="w-100 mb-3">Оставшаяся сумма: <span class="sum">90</span></div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <button class="bet-action btn btn-danger minus" data-delta="-1">-</button>
+                        <span class="value">10</span>
+                        <button class="bet-action btn btn-success plus" data-delta="1">+</button>
+                    </div>
+                </div>
+                <button class="btn btn-primary start">Играем</button>
+                <button class="btn btn-danger check d-none mb-1">Пас</button>
+                <button class="btn btn-success call d-none mt-1">Ещё</button>
+                <button class="btn btn-primary new-game d-none">Новая игра</button>
+            </div>
+        </div>
+    </div>
+    <script src="scripts.js" type="module"></script>
+</body>
+
+</html>

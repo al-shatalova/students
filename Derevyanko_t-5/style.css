@@ -1,0 +1,12 @@
+html {
+    box-sizing: border-box;
+}
+
+.btn_start{
+    background-color: #4be3f3;
+    border: 0;
+}
+
+.btn_start:hover{
+    background-color: #127782;
+}

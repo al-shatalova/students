@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script>
+		function p1 () {
+			let no_func = () => {};
+			alert (no_func());
+		}
+		function p2 () {
+			var mass = [5, 6, 13, 0, 1, 18, 23];
+			alert (mass);
+			var plus = mass.reduce((a, b) => a + b); 
+			alert (plus) ;
+			var for2 = mass.filter(v => v % 2 == 0); 
+			alert (for2);
+			var x2 = mass.map(v => v * 2);       
+			alert (x2);
+		}
+		
+		function p3 ()
+		{
+			var allmails_html = '<table>';
+			var mails = ['mail1@mail.ru', 'mail2@mail.ru', 'mail3@mail.ru', 'mail4@mail.ru', 'mail5@mail.ru', 'mail6@mail.ru', 'mail7@mail.ru', 'mail8@mail.ru',];	
+			var first_mail = mails.filter(m => m == 'mail1@mail.ru'); 
+			console.log(first_mail.indexOf(mails[0]) != -1);
+			for (var i = mails.length - 1; i >= 0; i--) 
+			{
+
+				if (first_mail.indexOf(mails[i]) != -1) 
+				{
+					var allmails_html = allmails_html + '<tr><td>'+mails[i]+' это отфильтрованная почта</td></tr>' 
+				}
+				else 
+				{
+					var allmails_html = allmails_html + '<tr><td>'+mails[i]+'</td></tr>' 
+				}
+			}
+			var allmails_html = allmails_html + '</table>';
+			document.getElementById('allmails').innerHTML = allmails_html;
+		}	
+	</script>
+</head>
+<body>
+	<table width="400" border="0" cellpadding="5" cellspacing="0">
+   <col width="150" valign="top">
+   <col width="250" valign="top">
+   <tr>
+    <td style="background: #B0B28E">
+      
+      <input type="button" value="Создайте пустую стрелочную функцию возвращает undefined" onclick="p1()">
+    </td>
+    </tr>
+    <tr>
+    <td style="background: #CCCCCC">
+      <input type="button" value="Создайте массив и напишите стрелочные функции для него:
+    суммирование всех элементов, выявить все четные, умножить каждый
+    элемент на 2." onclick="p2()">
+      
+    </td>
+    </tr>
+    <tr>
+    <td style="background: #B0B28E">
+      
+      <input type="button" value="Создайте массив с e-mail. Организуйте фильтр на странице html по
+названию почты." onclick="p3()">
+		<table>
+			<span id=allmails></span>
+		</table>
+		
+    </td>
+    </tr>
+      
+
+  </table>\
+	<table>
+		
+		<script>
+			
+		</script>
+	</table>
+</body>
+</html>
