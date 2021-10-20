@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+<script type="text/javascript">   
+function f1()
+	{
+		//Заполнение массива
+		var arr = [];
+		for(i=0; i<=1000000; i++) 
+		{
+			arr[i] = Math.floor(Math.random()*(3));
+		}
+		alert("красных: "+FirstTask(arr));
+	};
+
+function f2()
+	{
+		//Заполнение массива
+		var arr = [];
+		for(i=0; i<=35; i++) 
+		{
+			c = Math.floor(Math.random()*(14-6))+6;
+			if (c==11)
+				{
+					c='J'
+				}
+			else if (c==12)
+				{
+					c='Q'
+				}
+			else if (c==13)
+				{
+					c='K'
+				}
+			else if (c==14)
+				{
+					c='A'
+				}
+			arr[i]=c
+		}
+		alert("Очков: "+getSum(arr));
+	};
+function FirstTask(arr) 
+{
+	var red=0
+	var i=arr.length-1
+	for (i;i>=0;i--)
+		{
+			if (arr[i]==0)
+				{
+					red=red+1
+				}
+		}
+	return red
+}                            
+function getSum(arr) 
+{
+	var sum=0
+	var i=arr.length-1
+	for (i;i>=0;i--)
+		{
+			if (arr[i]>0)
+				{
+
+					sum+=parseInt (arr[i])
+				}
+			else if (arr[i] =='J')
+				{
+					sum+=11
+				}
+			else if (arr[i] =='Q')
+				{
+					sum+=12
+				}	
+			else if (arr[i] =='K')
+				{
+					sum+=13
+				}
+			else if (arr[i] =='A')
+				{
+					sum+=14
+				}
+			else {
+				alert('alert' + arr[i])
+				}
+		}
+	return sum
+}                                           
+</script>    	
+
+</head>
+<body>
+<form>
+<pre>
+Выполнил Афиногенов Сергей ПИ18-3
+</pre>
+<input type="button" value="1 Задание" id="b1" onclick="f1()">
+<input type="button" value="2 Задание" id="b2" onclick="f2()">
+</body>
+</html>
+
+
