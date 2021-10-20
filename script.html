@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>script examples</title>
+</head>
+<body>
+	<div>
+		<br> Задание 1
+		<br>Количество красных значений <input type="text" id=red readonly >
+	</div>
+
+	<div>
+		<br> Задание 2
+		<br> Карты: <input type="text" id=col readonly style="margin-top:12px; margin-bottom:12px" >
+		<br>Сумма карт <input type="text" id=cart readonly >
+	</div>
+
+	<script type="text/javascript">
+		// Задание 1
+		var arr = []
+		for(i=0; i<=1000000; i++) {
+		arr[i] = Math.round(Math.random()*2);
+		}
+		
+		document.getElementById("red").value = arr.filter(function (a) {return a == 0}).length
+		
+		//Задание 2
+
+		var arr2 = [2,3,4,7,'J','Q','K','A']
+
+		function getSum(arr) {
+			var sum = 0
+			var i = arr.length - 1
+			for (i; i >= 0; i--){
+				if (arr[i] >0 ) {
+					sum += parseInt(arr[i])
+				}
+				else if (arr[i] == 'J'){
+					sum += 10
+				} else if (arr[i] == 'Q'){
+					sum += 11
+				} else if (arr[i] == 'K') {
+					sum += 12
+				} else if (arr[i] == 'A') {
+					sum += 13
+				} else {alert('alert'+arr[i])}
+			}
+			return sum
+		}
+		document.getElementById("col").value = arr2
+		document.getElementById("cart").value = getSum(arr2)
+
+	</script>
+</body>
+</html>
+
