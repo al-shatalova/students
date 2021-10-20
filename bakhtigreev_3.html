@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+
+	<div>
+		<h3>Количество выпадений "красного":</h3>
+		<p id="t1"></p>
+	</div>
+
+	<div>
+		<h3>Сумма очков карт в колоде:</h3>
+		<p id="t2"></p>
+	</div>
+
+	<script>
+		//Задание 1.
+		var arr = [];
+		var arr2 = ['красный', 'черный', 'белый'];
+		for(i=0; i<=1000000; i++) {
+			arr[i] = arr2[Math.round(Math.random()*2)];
+		}
+
+		document.getElementById('t1').innerHTML = arr.filter(function(x){return x=='красный'}).length;
+
+		//Задание 2.
+		var arr3 = ['6','7','8','9','10','J','Q','K','A'] 
+
+		function getSum(arr) {
+			var sum = 0;
+			for (var i = 0; i <= arr3.length; i++) {
+				if(arr[i] > 0) {
+					sum += parseInt(arr[i])
+					}
+				else if(arr[i]=='J'){
+					sum+=11
+					}
+				else if(arr[i]=='Q'){
+					sum+=12
+					}
+				else if(arr[i]=='K'){
+					sum+=13
+					}
+				else if(arr[i]=='A'){
+					sum+=14
+					}
+			}
+			return sum
+		}
+
+		document.getElementById('t2').innerHTML = getSum(arr3);
+
+	</script>
+</body>
+</html>
