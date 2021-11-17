@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Hello React</title>
+    <style type="text/css">
+        div {
+            font-family: cursive;
+            font-size : 50px;
+            text-align: center;
+            background-image: linear-gradient(90deg, #7B68EE, #DC143C);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+</head>
+<body>
+<!--опишем объект-->
+<script type="text/babel">
+const user = {
+        id : 5,
+        age: 20,
+        firstName: 'Алёна',
+        lastName: 'Чистоклетова',
+        middleName: 'Александровна',
+        getFullName: function(){
+            return ` ${this.lastName} ${this.firstName} ${this.middleName}`;
+        }
+    };
+    ReactDOM.render(
+        <div id={user.id}>
+            <p>Полное имя: {user.getFullName()}</p>
+            <p>Возраст: {user.age}</p>
+        </div>,
+        document.getElementById("app")
+    )
+   </script>
+<!--поместим описанный объект-->
+<div id="app"> </div>
+</body>
+</html>
