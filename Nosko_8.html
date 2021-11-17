@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Формы в React</title>
+    </head>
+    <body>
+        <div id="app"></div>
+        <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+        <script type="text/babel">
+            class NameForForm extends React.Component
+            {
+                constructor(props)
+                {
+                    super(props);
+                    var name = props.name;
+                    var nameIsValid = this.validateName(name);
+                    this.onNameChange = this.onNameChange.bind(this);
+                    this.state = {name: name,nameValid: nameIsValid};
+                }
+                validateName(name)
+                {
+                    return name.length>2;
+                }
+                onNameChange(e)
+                {
+                    var val = e.target.value;
+                    console.log(val);
+                    var valid = this.validateName(val);
+                    this.setState({name: val, nameValid: valid});
+                }
+                render()
+                {
+                    // цвет границы для поля для ввода имени
+                    var nameColor = this.state.nameValid===true?"green":"red";
+                    return (
+                        <p>
+                            <label>Имя:</label>
+                            <br />
+                            <input type="text" value={this.state.name} onChange={this.onNameChange} style={{ borderColor: nameColor }} />
+                        </p>
+                    );
+                }
+            }
+            class AgeForForm extends React.Component
+            {
+                constructor(props)
+                {
+                    super(props);
+                    var age = props.age;
+                    var ageIsValid = this.validateAge(age);
+                    this.onAgeChange = this.onAgeChange.bind(this);
+                    this.state = {age: age,ageValid: ageIsValid};
+                }
+                validateAge(age)
+                {
+                    return age>0;
+                }
+                onAgeChange(e)
+                {
+                    var val = e.target.value;
+                    console.log(val);
+                    var valid = this.validateAge(val);
+                    this.setState({age: val, ageValid: valid});
+                }
+                render()
+                {
+                    // цвет границы для поля для ввода имени
+                    var ageColor = this.state.ageValid===true?"green":"red";
+                    return (
+                        <p>
+                            <label>Возраст:</label>
+                            <br />
+                            <input type="text" value={this.state.age} onChange={this.onAgeChange} style={{ borderColor: ageColor }} />
+                        </p>
+                    );
+                }
+            }
+            class LvlForForm extends React.Component
+            {
+                constructor(props)
+                {
+                    super(props);
+                    var lvl = props.lvl;
+                    var lvlIsValid = this.validateLvl(lvl);
+                    this.onLvlChange = this.onLvlChange.bind(this);
+                    this.state = {lvl: lvl,lvlValid: lvlIsValid};
+                }
+                validateLvl(lvl)
+                {
+                    return lvl!=="pusto";
+                }
+                onLvlChange(e)
+                {
+                    var val = e.target.value;
+                    console.log(val);
+                    var valid = this.validateLvl(val);
+                    this.setState({lvl: val, lvlValid: valid});
+                }
+                render()
+                {
+                    // цвет границы для поля для ввода имени
+                    var lvlColor = this.state.lvlValid===true?"green":"red";
+                    return (
+                        <p>
+                            <label>Уровень соморазвития:</label>
+                            <br />
+                            <select value={this.state.lvl} onChange={this.onLvlChange} style={{ borderColor: lvlColor }}>
+                                <option value="pusto">Выберите уровень</option>
+                                <option value="lvl1">LVL 1</option>
+                                <option value="lvl15">LVL 15</option>
+                                <option value="lvl80">LVL 80</option>
+                            </select>
+                            <br />
+                            <img src={this.state.lvl+".jpg"} />
+                        </p>
+                    );
+                }
+            }
+            class UserForm extends React.Component
+            {
+                constructor(props)
+                {
+                    super(props);
+                    this.handleSubmit = this.handleSubmit.bind(this);
+                }
+                handleSubmit(e)
+                {
+                    e.preventDefault();
+                    if(this.refs.name.state.nameValid===true&&this.refs.age.state.ageValid===true&&this.refs.lvl.state.lvlValid===true)
+                    {
+                        alert("Имя: " + this.refs.name.state.name + " Возраст: " + this.refs.age.state.age+" Уровень: "+this.refs.lvl.state.lvl);
+                    }
+                }
+                render()
+                {
+                    return (
+                        <form onSubmit={this.handleSubmit}>
+                            <NameForForm name="" ref="name" />
+                            <AgeForForm age="" ref="age" />
+                            <LvlForForm lvl="pusto" ref="lvl" />
+                            <input type="submit" value="Отправить" />
+                        </form>
+                    );
+                }
+            }
+        ReactDOM.render(
+            <UserForm name="" age="0" lvl="pusto" />,
+            document.getElementById("app")
+        );
+    </script>
+    </body>
+</html>
