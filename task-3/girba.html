@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Title</title>
+</head>
+<body>
+<main>
+    <label class="form__number">
+        Введите число 1
+        <input type="number" class="form__number-input">
+    </label>
+    <label class="form__radio" for="minus">+</label>
+    <input class="form__radio-input" name="ratio" type="radio" id="minus" value="+" checked>
+    <label class="form__radio" for="plus">-</label>
+    <input class="form__radio-input" name="ratio" type="radio" id="plus" value="-">
+    <label class="form__radio" for="delenie">/</label>
+    <input class="form__radio-input" name="ratio" type="radio" id="delenie" value="/">
+    <label class="form__radio" for="unmozhit">*</label>
+    <input class="form__radio-input" name="ratio" type="radio" id="unmozhit" value="*">
+    <label class="form__number">
+        Введите число 2
+        <input type="number" class="form__number-inputsec">
+    </label>
+    <button class="submit">Отправить</button>
+    <p class="res">Результат: </p>
+    </section>
+</main>
+
+<script>
+    const form = function () {
+        let number1 = document.querySelector(".form__number-input").value;
+        let radio = document.querySelector(".form__radio-input:checked").value;
+        let number2 = document.querySelector(".form__number-inputsec").value;
+        let res = document.querySelector(".res");
+        if (radio == "+") {
+            return res.textContent = "Результат: " + (Number.parseInt(number1) +  Number.parseInt(number2));
+        }
+        if (radio == "-") {
+            return res.textContent = "Результат: " + (Number.parseInt(number1) - Number.parseInt(number2));
+        }
+        if (radio == "/") {
+            return res.textContent = "Результат: " + (Number.parseInt(number1) / Number.parseInt(number2));
+        }
+        if (radio == "*") {
+            return res.textContent = "Результат: " + (Number.parseInt(number1) * Number.parseInt(number2));
+        }
+    }
+    let button = document.querySelector(".submit");
+    button.addEventListener("click", form);
+</script>
+
+</body>
+</html>

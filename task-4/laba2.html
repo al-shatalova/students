@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<label>
+    У какого молодца часто капает с конца?
+    <input onchange="f()" class="first">
+</label>
+<label>
+    Сто одежек и все без застежек
+    <input onchange="s()" class="second">
+</label>
+<p class="text">Количество правильных ответов:</p>
+
+<button onclick="drink()">Бухаем?</button>
+
+<script>
+    let otgatki = 0;
+    let firstAnswer = "Кран";
+    let secondAnswer = "Капуста";
+    let answers = 0;
+    function f () {
+        if (document.querySelector(".first").value == firstAnswer) {
+            alert("Верно");
+            answers += 1;
+            text.textContent = "Количество правильных ответов: " + answers
+        } else {
+            alert("Неверно");
+        }
+    }
+
+    function s () {
+        if (document.querySelector(".second").value == secondAnswer) {
+            alert("Верно");
+            answers += 1;
+            text.textContent = "Количество правильных ответов: " + answers
+        } else {
+            alert("Неверно");
+        }
+    }
+
+    let text = document.querySelector(".text");
+    text.textContent = "Количество правильных ответов: "
+
+    for (let i = 1; i <= 10; i++) {
+        console.log(i);
+    }
+
+    function drink () {
+        let drink = 0;
+        while (drink != 1) {
+            drink = prompt("Еще по одной?", 0);
+        }
+    }
+</script>
+</body>
+</html>

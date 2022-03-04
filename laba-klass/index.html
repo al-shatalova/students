@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // первое задание
+    class User {
+        constructor(name) {
+            this.name = name;
+        }
+
+        hello() {
+            alert(`Привет ${this.name}!`);
+        }
+    }
+
+    const user = new User(`Владимир Гирба`);
+    user.hello();
+
+    // второе задание
+
+    class Clock {
+        constructor({template}) {
+            this.template = template;
+        }
+
+        render() {
+            let date = new Date();
+
+            let hours = date.getHours();
+            if (hours < 10) hours = `0` + hours;
+
+            let mins = date.getMinutes();
+            if (mins < 10) mins = `0` + mins;
+
+            let secs = date.getSeconds();
+            if (secs < 10) secs= `0` + secs;
+
+            let output = this.template.replace(`h`, hours).replace(`m`, mins).replace(`s`, secs);
+
+            const node = document.createElement(`div`);
+            node.textContent = output;
+            document.body.insertAdjacentElement(`afterbegin`, node);
+        }
+
+        stop () {
+            clearInterval(this.timer);
+        }
+
+        start () {
+            this.render();
+            this.timer = setInterval(() => this.render(), 1000);
+        }
+    }
+
+    const clock = new Clock({template:`h:m:s`});
+    clock.start();
+</script>
+</body>
+</html>
