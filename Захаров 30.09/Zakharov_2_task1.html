@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var gues = 0;
+    var answer1, answer2;
+
+    answer1 = prompt("Riddle 1. Type smth");
+
+    if (answer1 === 'ответ1'){
+        alert("Correct. Next riddle");
+
+        gues = gues + 1;
+    }
+
+    else {
+        alert("Incorrect. Next riddle");
+    }
+
+    answer2 = prompt("Riddle 2. Type smth");
+
+    if (answer2 === 'ответ1'){
+        alert("Correct:)");
+
+        gues = gues + 1;
+    }
+
+    else {
+        alert("Incorrect:(");
+    }
+
+    alert(gues);
+
+</script>
+
+</body>
+</html>

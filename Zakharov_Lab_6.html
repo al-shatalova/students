@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+</head>
+<body>
+	<input id="email" type="text" placeholder="Введите email">
+	<div id="list">
+	</div>
+	<script>
+		const emails = ["abcd@gmail.com",
+			"student@mail.ru",
+			"hello@yandex.ru",
+			"zakharovpetr@mail.ru",
+			"ivanovaa@gmail.com"
+		];
+		
+		document.getElementById("email").addEventListener("input", evt => {
+			const text = evt.target.value;
+			const results = [];
+			for (let i = 0; i < emails.length; i++) {
+				if (emails[i].indexOf(text) > -1) {
+					results.push(emails[i]);
+				}
+			}
+			
+			document.getElementById("list").innerHTML = results.join("<br>");
+		});
+	</script>
+</body>
+</html>
