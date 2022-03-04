@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
+
+    var cards = [];
+    var sum = 0;
+
+    for (var i = 0; i < 6; i++){
+        cards.push(getRandomInt(2, 14))
+    }
+
+    alert(cards);
+
+    for (var i = 0; i < 6; i++){
+        sum = sum + cards[i];
+    }
+
+    alert(sum);
+</script>
+</body>
+</html>
