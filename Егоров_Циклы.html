@@ -1,0 +1,53 @@
+<meta charset="utf-8">
+<script>
+	// Задание 1
+
+	let answers = 0;
+	let question1 = prompt('Как называется наша планета?');
+	
+	if (question1 == 'Земля') {
+		alert('Верно');
+		answers++;
+	} else {
+		alert('Не верно')
+	}
+
+	let question2 = prompt('Как называется наша страна?');
+
+	if (question2 == 'Россия') {
+		alert('Верно');
+		answers++;
+	} else {
+		alert('Не верно')
+	}
+
+	alert(`Отгадано: ${answers}`);
+
+
+	// Задание 2
+
+	for (let i = 1; i <= 10; i++) {
+		alert(i);
+	}
+
+	// Задание 3 
+
+	do {
+		alert('Еще по одной!')
+	} while (prompt('Введите 1 для выхода') != '1')
+
+
+	// Задание 4
+	 
+	let rand = Math.round(1 - 0.5 + Math.random() * (5 - 1 + 1));
+	let num = prompt('Угадай число от 1 до 5');
+
+	while (num != rand) {
+		console.log(rand);
+		num = prompt('Угадай число от 1 до 5');
+	}
+
+	alert('Верно!')
+
+	
+</script>
